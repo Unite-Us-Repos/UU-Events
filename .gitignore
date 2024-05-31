@@ -1,0 +1,19 @@
+# Ignore everything
+*
+
+# Don't ignore directories
+!*/
+
+#Track github actions
+!.github/**
+!/.gitignore
+!/post-deploy.sh
+
+# Track only theme folder and its contents
+!/wp-content/themes/uuevents/**
+
+# But ignore node_modules and vendor within theme
+/wp-content/themes/uuevents/._*
+/wp-content/themes/uuevents/**/._*
+/wp-content/themes/uuevents/node_modules/
+/wp-content/themes/uuevents/vendor/
