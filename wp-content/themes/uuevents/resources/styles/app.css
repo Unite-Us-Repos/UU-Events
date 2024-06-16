@@ -488,7 +488,7 @@ body .map-wrap {
   @apply text-action text-lg font-semibold px-0 py-6 bg-transparent border-none underline decoration-2 hover:text-action-dark
 }
 .button-purple {
-  @apply border-purple bg-purple
+  @apply border-electric-purple bg-electric-purple text-white
 }
 .footer-section ul {
   margin-bottom: 0;
@@ -621,9 +621,9 @@ body .map-wrap {
 }
 .wp-pagenavi .current {
   padding: 1rem;
-  border-top: 2px solid #2874AF;
+  border-top: 2px solid #216CFF;
   margin-top: -1.5px;
-  color: #2874AF;
+  color: #216CFF;
   @apply hidden sm:inline-block
 }
 .wp-pagenavi .extend {
@@ -867,7 +867,7 @@ ol.ol-circles li::before{
   color:#FFF;
   font-weight:400;
   font-size: 1.5rem;
-  border:solid 4px #2874AF;
+  border:solid 4px #216CFF;
   counter-increment: list-number-inner;
   content: counter(list-number-inner);
   width:56px;

@@ -36,7 +36,7 @@
         <form data-sf-form-id="2207" data-is-rtl="0" data-maintain-state="" data-results-url="https://uniteus.com/search-results/" data-ajax-url="https://uniteus.com/?sfid=2207&amp;sf_action=get_data&amp;sf_data=results" data-ajax-form-url="https://uniteus.com/?sfid=2207&amp;sf_action=get_data&amp;sf_data=form" data-display-result-method="shortcode" data-use-history-api="1" data-template-loaded="0" data-lang-code="en" data-ajax="1" data-ajax-data-type="json" data-ajax-links-selector=".pagination a" data-ajax-target="#search-filter-results-2207" data-ajax-pagination-type="normal" data-update-ajax-url="0" data-only-results-ajax="1" data-scroll-to-pos="window" data-scroll-on-action="pagination" data-init-paged="1" data-auto-update="" action="https://uniteus.com/search-results/" method="post" class="searchandfilter" id="search-filter-form-2207" autocomplete="off" data-instance-count="1"><ul><li class="sf-field-post_type" data-sf-field-name="_sf_post_type" data-sf-field-type="post_type" data-sf-field-input-type="radio"><div class="relative w-full" x-data="Components.popover({ open: false, focus: false })" x-init="init()" @keydown.escape="onEscape" @close-popover-group.window="onClosePopoverGroup"><button type="button" x-state:on="Item active" x-state:off="Item inactive" class="group w-full top-10 justify-between inline-flex items-center rounded-md bg-white text-base font-medium focus:outline-none focus:ring-2 focus:ring-action focus:ring-offset-2 text-sm text-brand" :class="{ 'text-brand': open, 'text-brand': !(open) }" @click="toggle" @mousedown="if (open) $event.preventDefault()" aria-expanded="false" :aria-expanded="open.toString()">
                 <span>Search criteria</span>
 <svg width="9" height="14" viewBox="0 0 9 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M4.58496 0C4.85018 5.96046e-08 5.10453 0.105357 5.29207 0.292893L8.29207 3.29289C8.68259 3.68342 8.68259 4.31658 8.29207 4.70711C7.90154 5.09763 7.26838 5.09763 6.87785 4.70711L4.58496 2.41421L2.29207 4.70711C1.90154 5.09763 1.26838 5.09763 0.877854 4.70711C0.48733 4.31658 0.48733 3.68342 0.877854 3.29289L3.87785 0.292893C4.06539 0.105357 4.31975 0 4.58496 0ZM0.877854 9.29289C1.26838 8.90237 1.90154 8.90237 2.29207 9.29289L4.58496 11.5858L6.87785 9.29289C7.26838 8.90237 7.90154 8.90237 8.29207 9.29289C8.68259 9.68342 8.68259 10.3166 8.29207 10.7071L5.29207 13.7071C4.90154 14.0976 4.26838 14.0976 3.87785 13.7071L0.877854 10.7071C0.48733 10.3166 0.48733 9.68342 0.877854 9.29289Z" fill="#2874AF"></path>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M4.58496 0C4.85018 5.96046e-08 5.10453 0.105357 5.29207 0.292893L8.29207 3.29289C8.68259 3.68342 8.68259 4.31658 8.29207 4.70711C7.90154 5.09763 7.26838 5.09763 6.87785 4.70711L4.58496 2.41421L2.29207 4.70711C1.90154 5.09763 1.26838 5.09763 0.877854 4.70711C0.48733 4.31658 0.48733 3.68342 0.877854 3.29289L3.87785 0.292893C4.06539 0.105357 4.31975 0 4.58496 0ZM0.877854 9.29289C1.26838 8.90237 1.90154 8.90237 2.29207 9.29289L4.58496 11.5858L6.87785 9.29289C7.26838 8.90237 7.90154 8.90237 8.29207 9.29289C8.68259 9.68342 8.68259 10.3166 8.29207 10.7071L5.29207 13.7071C4.90154 14.0976 4.26838 14.0976 3.87785 13.7071L0.877854 10.7071C0.48733 10.3166 0.48733 9.68342 0.877854 9.29289Z" fill="#216CFF"></path>
 </svg>
 
 </button>   <div x-show="open" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-1" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 -translate-y-1" x-description="Flyout menu, show/hide based on flyout menu state." class="absolute filter-drop-menu inset-x-0 z-10 transform bg-white ring-1 ring-black ring-opacity-5 shadow-lg rounded" x-ref="panel" @click.away="open = false" style="display: none;">
@@ -52,7 +52,7 @@
 </div>
 <style>
 #ajax-filters.search-filters input[type="submit"] {
-  background: #2874AF;
+  background: #216CFF;
   color: white;
   padding: 22px 48px;
 }
@@ -305,7 +305,7 @@
       </nav>
       <div class="hidden lg:flex items-center justify-end lg:flex-1 lg:w-0">
         <a href="https://app.uniteus.io/" class="whitespace-nowrap text-base font-medium text-brand hover:text-brand"> Log In </a>
-        <a href="/demo/" class="button button-solid mx-8">Demo</a>
+        <a href="/demo/" class="button button-purple mx-8">Demo</a>
         <div x-data="{ 'showSearchModal': false }" @keydown.escape="showSearchModal = false">
   <!-- Trigger for Modal -->
   <button type="button" @click="showSearchModal = true" class="rounded-lg flex items-center justify-center">
@@ -334,7 +334,7 @@
         <form data-sf-form-id="2207" data-is-rtl="0" data-maintain-state="" data-results-url="https://uniteus.com/search-results/" data-ajax-url="https://uniteus.com/?sfid=2207&amp;sf_action=get_data&amp;sf_data=results" data-ajax-form-url="https://uniteus.com/?sfid=2207&amp;sf_action=get_data&amp;sf_data=form" data-display-result-method="shortcode" data-use-history-api="1" data-template-loaded="0" data-lang-code="en" data-ajax="1" data-ajax-data-type="json" data-ajax-links-selector=".pagination a" data-ajax-target="#search-filter-results-2207" data-ajax-pagination-type="normal" data-update-ajax-url="0" data-only-results-ajax="1" data-scroll-to-pos="window" data-scroll-on-action="pagination" data-init-paged="1" data-auto-update="" action="https://uniteus.com/search-results/" method="post" class="searchandfilter" id="search-filter-form-2207" autocomplete="off" data-instance-count="2"><ul><li class="sf-field-post_type" data-sf-field-name="_sf_post_type" data-sf-field-type="post_type" data-sf-field-input-type="radio"><div class="relative w-full" x-data="Components.popover({ open: false, focus: false })" x-init="init()" @keydown.escape="onEscape" @close-popover-group.window="onClosePopoverGroup"><button type="button" x-state:on="Item active" x-state:off="Item inactive" class="group w-full top-10 justify-between inline-flex items-center rounded-md bg-white text-base font-medium focus:outline-none focus:ring-2 focus:ring-action focus:ring-offset-2 text-sm text-brand" :class="{ 'text-brand': open, 'text-brand': !(open) }" @click="toggle" @mousedown="if (open) $event.preventDefault()" aria-expanded="false" :aria-expanded="open.toString()">
                 <span>Search criteria</span>
 <svg width="9" height="14" viewBox="0 0 9 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M4.58496 0C4.85018 5.96046e-08 5.10453 0.105357 5.29207 0.292893L8.29207 3.29289C8.68259 3.68342 8.68259 4.31658 8.29207 4.70711C7.90154 5.09763 7.26838 5.09763 6.87785 4.70711L4.58496 2.41421L2.29207 4.70711C1.90154 5.09763 1.26838 5.09763 0.877854 4.70711C0.48733 4.31658 0.48733 3.68342 0.877854 3.29289L3.87785 0.292893C4.06539 0.105357 4.31975 0 4.58496 0ZM0.877854 9.29289C1.26838 8.90237 1.90154 8.90237 2.29207 9.29289L4.58496 11.5858L6.87785 9.29289C7.26838 8.90237 7.90154 8.90237 8.29207 9.29289C8.68259 9.68342 8.68259 10.3166 8.29207 10.7071L5.29207 13.7071C4.90154 14.0976 4.26838 14.0976 3.87785 13.7071L0.877854 10.7071C0.48733 10.3166 0.48733 9.68342 0.877854 9.29289Z" fill="#2874AF"></path>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M4.58496 0C4.85018 5.96046e-08 5.10453 0.105357 5.29207 0.292893L8.29207 3.29289C8.68259 3.68342 8.68259 4.31658 8.29207 4.70711C7.90154 5.09763 7.26838 5.09763 6.87785 4.70711L4.58496 2.41421L2.29207 4.70711C1.90154 5.09763 1.26838 5.09763 0.877854 4.70711C0.48733 4.31658 0.48733 3.68342 0.877854 3.29289L3.87785 0.292893C4.06539 0.105357 4.31975 0 4.58496 0ZM0.877854 9.29289C1.26838 8.90237 1.90154 8.90237 2.29207 9.29289L4.58496 11.5858L6.87785 9.29289C7.26838 8.90237 7.90154 8.90237 8.29207 9.29289C8.68259 9.68342 8.68259 10.3166 8.29207 10.7071L5.29207 13.7071C4.90154 14.0976 4.26838 14.0976 3.87785 13.7071L0.877854 10.7071C0.48733 10.3166 0.48733 9.68342 0.877854 9.29289Z" fill="#216CFF"></path>
 </svg>
 
 </button>   <div x-show="open" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-1" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 -translate-y-1" x-description="Flyout menu, show/hide based on flyout menu state." class="absolute filter-drop-menu inset-x-0 z-10 transform bg-white ring-1 ring-black ring-opacity-5 shadow-lg rounded" x-ref="panel" @click.away="open = false" style="display: none;">
@@ -350,7 +350,7 @@
 </div>
 <style>
 #ajax-filters.search-filters input[type="submit"] {
-  background: #2874AF;
+  background: #216CFF;
   color: white;
   padding: 22px 48px;
 }

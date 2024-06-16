@@ -11,6 +11,8 @@
 
 # Track only theme folder and its contents
 !/wp-content/themes/uuevents/**
+!/wp-content/modern-events-calendar/app/skins/**
+!/wp-content/modern-events-calendar/app/libraries/**
 
 # But ignore node_modules and vendor within theme
 /wp-content/themes/uuevents/._*

@@ -1,4 +1,4 @@
-<section class="component-section relative bg-white  padding-collapse-t sab__test">
+<section class="component-section relative bg-white  padding-collapse-t ">
   <div class="absolute bottom-0 border border-blue-900 -ml-4 w-full h-3/6 -mb-[1px] bg-blue-900"></div>
 
   <div class="component-inner-section relative ">

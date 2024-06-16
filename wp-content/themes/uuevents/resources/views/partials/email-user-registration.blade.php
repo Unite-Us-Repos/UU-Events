@@ -232,13 +232,13 @@
                                <!--[if mso]>
         <table class="pc-w620-width-315" border="0" cellpadding="0" cellspacing="0" role="presentation" align="center" style="border-collapse: separate;">
             <tr>
-                <td valign="middle" align="center" style="text-align: center;color: #ffffff;border-radius: 8px;background-color: #2874af;padding: 14px 25px 14px 25px;" bgcolor="#2874af">
+                <td valign="middle" align="center" style="text-align: center;color: #ffffff;border-radius: 8px;background-color: #216CFF;padding: 14px 25px 14px 25px;" bgcolor="#216CFF">
                                     <a class="pc-font-alt" style="display: inline-block;text-decoration: none;white-space: nowrap;font-family: Arial, Helvetica;font-weight: bold;font-size: 16px;line-height: 24px;letter-spacing: -0.2px;color: #ffffff;" href="docs.uniteus.com" target="_blank">Explore All Events</a>
                                 </td>
             </tr>
         </table>
         <![endif]-->
-                               <!--[if !mso]><!-- --><a class="pc-w620-width-315" style="border-radius: 8px;background-color: #2874af;padding: 14px 25px 14px 25px;font-family: Arial, Helvetica;font-weight: bold;font-size: 16px;line-height: 24px;letter-spacing: -0.2px;color: #ffffff;display: inline-block;vertical-align: top;text-align: center;text-decoration: none;white-space: nowrap;-webkit-text-size-adjust: none;" href="{{ $login_url }}" target="_blank">Explore All Events</a>
+                               <!--[if !mso]><!-- --><a class="pc-w620-width-315" style="border-radius: 8px;background-color: #216CFF;padding: 14px 25px 14px 25px;font-family: Arial, Helvetica;font-weight: bold;font-size: 16px;line-height: 24px;letter-spacing: -0.2px;color: #ffffff;display: inline-block;vertical-align: top;text-align: center;text-decoration: none;white-space: nowrap;-webkit-text-size-adjust: none;" href="{{ $login_url }}" target="_blank">Explore All Events</a>
                                <!--<![endif]-->
                               </th>
                              </tr>
@@ -279,10 +279,10 @@
                    <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
                     <tr>
                      <!--[if gte mso 9]>
-                    <td height="1" valign="top" style="line-height: 1px; font-size: 1px; border-bottom: 10px solid #2874af;">&nbsp;</td>
+                    <td height="1" valign="top" style="line-height: 1px; font-size: 1px; border-bottom: 10px solid #216CFF;">&nbsp;</td>
                 <![endif]-->
                      <!--[if !gte mso 9]><!-- -->
-                     <td height="1" valign="top" style="line-height: 1px; font-size: 1px; border-bottom: 10px solid #2874af;">&nbsp;</td>
+                     <td height="1" valign="top" style="line-height: 1px; font-size: 1px; border-bottom: 10px solid #216CFF;">&nbsp;</td>
                      <!--<![endif]-->
                     </tr>
                    </table>

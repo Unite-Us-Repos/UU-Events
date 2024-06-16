@@ -235,13 +235,13 @@
                                <!--[if mso]>
         <table  border="0" cellpadding="0" cellspacing="0" role="presentation" align="center" style="border-collapse: separate;">
             <tr>
-                <td valign="middle" align="center" style="text-align: center;color: #ffffff;border-radius: 8px;background-color: #2874af;padding: 14px 19px 14px 19px;" bgcolor="#2874af">
+                <td valign="middle" align="center" style="text-align: center;color: #ffffff;border-radius: 8px;background-color: #216CFF;padding: 14px 19px 14px 19px;" bgcolor="#216CFF">
                                <a class="pc-font-alt" style="display: inline-block;text-decoration: none;white-space: nowrap;font-family: Arial, Helvetica;font-weight: normal;font-size: 16px;line-height: 24px;letter-spacing: -0.2px;color: #ffffff;" target="_blank"><span><span style="font-weight: 700;font-style: normal;white-space: pre-wrap;">Reset password</span></span></a>
                                 </td>
             </tr>
         </table>
         <![endif]-->
-                               <!--[if !mso]><!-- --><a href="{{ $reset_url }}" style="border-radius: 8px;background-color: #2874af;padding: 14px 19px 14px 19px;font-family: Arial, Helvetica;font-weight: normal;font-size: 16px;line-height: 24px;letter-spacing: -0.2px;color: #ffffff;display: inline-block;vertical-align: top;text-align: center;text-decoration: none;white-space: nowrap;-webkit-text-size-adjust: none;" target="_blank"><span><span style="font-weight: 700;font-style: normal;white-space: pre-wrap;">Reset password</span></span></a>
+                               <!--[if !mso]><!-- --><a href="{{ $reset_url }}" style="border-radius: 8px;background-color: #216CFF;padding: 14px 19px 14px 19px;font-family: Arial, Helvetica;font-weight: normal;font-size: 16px;line-height: 24px;letter-spacing: -0.2px;color: #ffffff;display: inline-block;vertical-align: top;text-align: center;text-decoration: none;white-space: nowrap;-webkit-text-size-adjust: none;" target="_blank"><span><span style="font-weight: 700;font-style: normal;white-space: pre-wrap;">Reset password</span></span></a>
                                <!--<![endif]-->
                               </th>
                              </tr>
@@ -282,10 +282,10 @@
                    <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
                     <tr>
                      <!--[if gte mso 9]>
-                    <td height="1" valign="top" style="line-height: 1px; font-size: 1px; border-bottom: 10px solid #2874af;">&nbsp;</td>
+                    <td height="1" valign="top" style="line-height: 1px; font-size: 1px; border-bottom: 10px solid #216CFF;">&nbsp;</td>
                 <![endif]-->
                      <!--[if !gte mso 9]><!-- -->
-                     <td height="1" valign="top" style="line-height: 1px; font-size: 1px; border-bottom: 10px solid #2874af;">&nbsp;</td>
+                     <td height="1" valign="top" style="line-height: 1px; font-size: 1px; border-bottom: 10px solid #216CFF;">&nbsp;</td>
                      <!--<![endif]-->
                     </tr>
                    </table>

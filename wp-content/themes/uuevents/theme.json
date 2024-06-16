@@ -1155,7 +1155,7 @@
         {
           "name": "Secondary",
           "slug": "secondary",
-          "color": "#2874af"
+          "color": "#216cff"
         },
         {
           "name": "Brand",
@@ -1165,7 +1165,7 @@
         {
           "name": "Action",
           "slug": "action",
-          "color": "#2874af"
+          "color": "#216cff"
         },
         {
           "name": "Dark-blue",
@@ -1206,6 +1206,11 @@
           "name": "Light-gradient",
           "slug": "light-gradient",
           "color": "#eef5fc"
+        },
+        {
+          "name": "Electric-purple",
+          "slug": "electric-purple",
+          "color": "#9643ff"
         },
         {
           "name": "Morado",
