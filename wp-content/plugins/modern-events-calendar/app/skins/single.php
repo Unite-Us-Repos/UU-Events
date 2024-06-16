@@ -1069,24 +1069,30 @@ class MEC_skin_single extends MEC_skins
         {
             $location_description_setting = isset($this->settings['location_description']) ? $this->settings['location_description'] : '';
             $location_terms = get_the_terms($event->data, 'mec_location');
+
             ?>
             <div class="mec-single-event-location">
                 <?php if($location['thumbnail']): ?>
                     <img class="mec-img-location" src="<?php echo esc_url($location['thumbnail'] ); ?>" alt="<?php echo (isset($location['name']) ? esc_attr($location['name']) : ''); ?>">
                 <?php endif; ?>
-                <i class="mec-sl-location-pin"></i>
                 <h3 class="mec-events-single-section-title mec-location"><?php echo esc_html($this->main->m('taxonomy_location', esc_html__('Location', 'mec'))); ?></h3>
                 <dl>
-                    <dd class="author fn org"><?php echo MEC_kses::element($this->get_location_html($location)); ?></dd>
+                    <?php if( is_plugin_active('mec-advanced-location/mec-advanced-location.php') && $this->settings['advanced_location']['location_enable_link_section_title']??false ): ?>
+                         <dd class="author fn org"><a href="<?php echo home_url().'/mec-location-details-single-page/?fesection=location&feparam='.$location['id']; ?>"><i class="mec-sl-location-pin"></i><h6><?php echo MEC_kses::element($this->get_location_html($location)); ?></h6></a></dd>
+                    <?php else: ?>
+                        <dd class="author fn org"><i class="mec-sl-location-pin"></i><h6><?php echo MEC_kses::element($this->get_location_html($location)); ?></h6></dd>
+                    <?php endif; ?>
                     <dd class="location"><address class="mec-events-address"><span class="mec-address"><?php echo (isset($location['address']) ? esc_html($location['address']) : ''); ?></span></address></dd>
                     <?php if(isset($location['opening_hour']) and trim($location['opening_hour'])): ?>
                     <dd class="mec-location-opening-hour">
+                        <i class="mec-sl-clock"></i>
                         <h6><?php esc_html_e('Opening Hour', 'mec'); ?></h6>
                         <span><?php echo esc_html($location['opening_hour']); ?></span>
                     </dd>
                     <?php endif; ?>
                     <?php if(isset($location['url']) and trim($location['url'])): ?>
                     <dd class="mec-location-url">
+                        <i class="mec-sl-sitemap"></i>
                         <h6><?php esc_html_e('Website', 'mec'); ?></h6>
                         <span><a href="<?php echo esc_url($location['url']); ?>" class="mec-color-hover" target="_blank"><?php echo esc_html($location['url']); ?></a></span>
                     </dd>
@@ -1454,11 +1460,19 @@ class MEC_skin_single extends MEC_skins
                     <img class="mec-img-organizer" src="<?php echo esc_url($organizer['thumbnail']); ?>" alt="<?php echo (isset($organizer['name']) ? esc_attr($organizer['name']) : ''); ?>">
                 <?php endif; ?>
                 <h3 class="mec-events-single-section-title"><?php echo esc_html($this->main->m('taxonomy_organizer', esc_html__('Organizer', 'mec'))); ?></h3>
+
                 <dl>
                 <?php if(isset($organizer['thumbnail'])): ?>
                     <dd class="mec-organizer">
-                        <i class="mec-sl-home"></i>
-                        <h6><?php echo (isset($organizer['name']) ? esc_html($organizer['name']) : ''); ?></h6>
+                    <?php if( is_plugin_active('mec-advanced-organizer/mec-advanced-organizer.php') && $settings['advanced_organizer']['organizer_enable_link_section_title']??false ): ?>
+                    <a href="<?php echo home_url().'/mec-organizer-details-single-page/?fesection=organizer&feparam='.$organizer['id']; ?>">
+                    <i class="mec-sl-home"></i>
+                    <h6><?php echo (isset($organizer['name']) ? esc_html($organizer['name']) : ''); ?></h6>
+                    </a>
+                    <?php else: ?>
+                    <i class="mec-sl-home"></i>
+                    <h6><?php echo (isset($organizer['name']) ? esc_html($organizer['name']) : ''); ?></h6>
+                    <?php endif; ?>
                     </dd>
                 <?php endif;
                 if(isset($organizer['tel']) && !empty($organizer['tel'])): ?>
@@ -1525,8 +1539,15 @@ class MEC_skin_single extends MEC_skins
                     <dl>
                     <?php if(isset($organizer['thumbnail'])): ?>
                         <dd class="mec-organizer">
-                            <i class="mec-sl-home"></i>
-                            <h6><?php echo (isset($organizer['name']) ? esc_html($organizer['name']) : ''); ?></h6>
+                       <?php if( is_plugin_active('mec-advanced-organizer/mec-advanced-organizer.php') && $this->settings['advanced_organizer']['organizer_enable_link_section_title']??false ): ?>
+                                <a href="<?php echo home_url().'/mec-organizer-details-single-page/?fesection=organizer&feparam='.$organizer['id']; ?>">
+                                    <i class="mec-sl-home"></i>
+                                     <h6><?php echo (isset($organizer['name']) ? esc_html($organizer['name']) : ''); ?></h6>
+                                </a>
+                            <?php else: ?>
+                                <i class="mec-sl-home"></i>
+                                <h6><?php echo (isset($organizer['name']) ? esc_html($organizer['name']) : ''); ?></h6>
+                            <?php endif; ?>
                         </dd>
                     <?php endif;
                     if(isset($organizer['tel']) && !empty($organizer['tel'])): ?>
@@ -1590,6 +1611,7 @@ class MEC_skin_single extends MEC_skins
         $display_title = (isset($this->settings['additional_locations_disable_title']) and $this->settings['additional_locations_disable_title']) ? false : true;
         ?>
         <div class="mec-single-event-additional-locations">
+            <h3 class="mec-events-single-section-title "><?php echo esc_html($this->main->m('other_locations', esc_html__('Other Locations', 'mec'))); ?></a></h3>
             <?php $i = 2; ?>
             <?php foreach($location_ids as $l_id): $l_id = apply_filters('wpml_object_id', $l_id, 'mec_location', true); if($l_id == $location_id) continue; $location = (isset($locations[$l_id]) ? $locations[$l_id] : NULL); if(!$location) continue; ?>
                 <div class="mec-single-event-location">
@@ -1603,7 +1625,11 @@ class MEC_skin_single extends MEC_skins
                     <?php endif; ?>
 
                     <dl>
-                        <dd class="author fn org"><?php echo MEC_kses::element($this->get_location_html($location)); ?></dd>
+                    <?php if( is_plugin_active('mec-advanced-location/mec-advanced-location.php') && $this->settings['advanced_location']['location_enable_link_section_title']??false ): ?>
+                         <dd class="author fn org"><a href="<?php echo home_url().'/mec-location-details-single-page/?fesection=location&feparam='.$location['id']; ?>"><i class="mec-sl-location-pin"></i><h6><?php echo $location['name']; ?></h6></a></dd>
+                    <?php else: ?>
+                        <dd class="author fn org"><i class="mec-sl-location-pin"></i><h6<?php echo (isset($location['name']) ? $location['name'] : ''); ?></h6></dd>
+                    <?php endif; ?>
                         <dd class="location"><address class="mec-events-address"><span class="mec-address"><?php echo (isset($location['address']) ? esc_html($location['address']) : ''); ?></span></address></dd>
                         <?php if(isset($location['opening_hour']) and trim($location['opening_hour'])): ?>
                         <dd class="mec-location-opening-hour">

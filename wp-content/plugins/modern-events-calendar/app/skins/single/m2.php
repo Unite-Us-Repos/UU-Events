@@ -9,8 +9,6 @@ defined('MECEXEC') or die();
 /** @var boolean $fes */
 /** @var stdClass $event */
 /** @var string $event_colorskin */
-/** @var array $occurrence_full */
-/** @var array $occurrence_end_full */
 
 $booking_options = get_post_meta($event->data->ID, 'mec_booking', true);
 if(!is_array($booking_options)) $booking_options = array();
@@ -28,60 +26,9 @@ $location = ($location_id ? $this->main->get_location_data($location_id) : array
 
 $organizer_id = $this->main->get_master_organizer_id($event);
 $organizer = ($organizer_id ? $this->main->get_organizer_data($organizer_id) : array());
-
-// Event Cost
-$cost = $this->main->get_event_cost($event);
 ?>
-<?php if(get_post_meta($event->ID, '_elementor_edit_mode', true)): $upload_dir = wp_upload_dir(); $css_url = $upload_dir['baseurl'].'/elementor/css/post-'.$event->ID.'.css'; $css_path = $upload_dir['basedir'].'/elementor/css/post-'.$event->ID.'.css'; ?>
-<?php if(file_exists($css_path)): ?>
-<link rel="stylesheet" href="<?php esc_url($css_url); ?>" media="all" />
-<?php endif; ?>
-<?php endif; ?>
-<div class="mec-wrap <?php echo esc_attr($event_colorskin); ?> clearfix <?php echo esc_attr($this->html_class); ?> mec-modal-wrap" id="mec_skin_<?php echo esc_attr($this->uniqueid); ?>">
+<div class="mec-wrap <?php echo esc_attr($event_colorskin); ?> clearfix <?php echo esc_attr($this->html_class); ?> mec-modal-wrap" id="mec_skin_<?php echo esc_attr($this->uniqueid); ?>" data-unique-id="<?php echo esc_attr($this->uniqueid); ?>">
     <article class="mec-single-event mec-single-modern mec-single-modal">
-        <?php echo MEC_kses::element($this->main->display_cancellation_reason($event, $this->display_cancellation_reason)); ?>
-        <h1 class="mec-single-title"><?php echo get_the_title($event->data->ID); ?></h1>
-        <div class="mec-single-event-bar">
-            <?php
-            // Event Date and Time
-            if(isset($event->data->meta['mec_date']['start']) and !empty($event->data->meta['mec_date']['start']))
-            {
-                $this->display_datetime_widget($event, $occurrence_full, $occurrence_end_full);
-            }
-            ?>
-
-            <?php
-            if($cost)
-            {
-                ?>
-                <div class="mec-event-cost">
-                    <i class="mec-sl-wallet"></i>
-                    <h3 class="mec-cost"><?php echo esc_html($this->main->m('cost', esc_html__('Cost', 'mec'))); ?></h3>
-                    <dl><dd class="mec-events-event-cost"><?php echo MEC_kses::element($cost); ?></dd></dl>
-                </div>
-                <?php
-            }
-            ?>
-
-            <?php
-            // Event labels
-            if(isset($event->data->labels) && !empty($event->data->labels))
-            {
-                $mec_items = count($event->data->labels);
-                $mec_i = 0; ?>
-                <div class="mec-single-event-label">
-                    <i class="mec-fa-bookmark-o"></i>
-                    <h3 class="mec-cost"><?php echo esc_html($this->main->m('taxonomy_labels', esc_html__('Labels', 'mec'))); ?></h3>
-                    <?php foreach($event->data->labels as $labels=>$label) :
-                    $seperator = (++$mec_i === $mec_items ) ? '' : ',';
-                    echo '<dl><dd style=color:"' . esc_attr($label['color']) . '">' . esc_html($label["name"] . $seperator) . '</dd></dl>';
-                    endforeach; ?>
-                </div>
-                <?php
-            }
-            ?>
-        </div>
-
         <div class="mec-events-event-image">
             <?php echo MEC_kses::element($this->display_image_module($event)); ?>
         </div>
@@ -100,11 +47,19 @@ $cost = $this->main->get_event_cost($event);
                             <img class="mec-img-organizer" src="<?php echo esc_url($organizer['thumbnail']); ?>" alt="<?php echo (isset($organizer['name']) ? esc_attr($organizer['name']) : ''); ?>">
                         <?php endif; ?>
                         <h3 class="mec-events-single-section-title"><?php echo esc_html($this->main->m('taxonomy_organizer', esc_html__('Organizer', 'mec'))); ?></h3>
+
                         <dl>
                         <?php if(isset($organizer['thumbnail'])): ?>
                         <dd class="mec-organizer">
-                            <i class="mec-sl-home"></i>
-                            <h6><?php echo (isset($organizer['name']) ? esc_html($organizer['name']) : ''); ?></h6>
+                            <?php if( is_plugin_active('mec-advanced-organizer/mec-advanced-organizer.php') && $settings['advanced_organizer']['organizer_enable_link_section_title']??false ): ?>
+                                <a href="<?php echo home_url().'/mec-organizer-details-single-page/?fesection=organizer&feparam='.$organizer['id']; ?>">
+                                    <i class="mec-sl-home"></i>
+                                    <h6><?php echo (isset($organizer['name']) ? esc_html($organizer['name']) : ''); ?></h6>
+                                </a>
+                            <?php else: ?>
+                                <i class="mec-sl-home"></i>
+                                <h6><?php echo (isset($organizer['name']) ? esc_html($organizer['name']) : ''); ?></h6>
+                            <?php endif; ?>
                         </dd>
                         <?php endif;
                         if(isset($organizer['tel']) && !empty($organizer['tel'])): ?>
@@ -168,13 +123,13 @@ $cost = $this->main->get_event_cost($event);
 
             <div class="mec-event-meta mec-color-before mec-frontbox">
 
-                <?php do_action('mec_single_virtual_badge', $event->data ); ?>
-                <?php do_action('mec_single_zoom_badge', $event->data ); ?>
+                <?php do_action('mec_single_virtual_badge', $event->data); ?>
+                <?php do_action('mec_single_zoom_badge', $event->data); ?>
                 <?php do_action('mec_single_webex_badge', $event->data); ?>
 
                 <?php
                 // Event Location
-                if($location_id and count($location))
+                if(count($location))
                 {
                     ?>
                     <div class="mec-single-event-location">
@@ -184,7 +139,11 @@ $cost = $this->main->get_event_cost($event);
                         <i class="mec-sl-location-pin"></i>
                         <h3 class="mec-events-single-section-title mec-location"><?php echo esc_html($this->main->m('taxonomy_location', esc_html__('Location', 'mec'))); ?></h3>
                         <dl>
-                        <dd class="author fn org"><?php echo MEC_kses::element($this->get_location_html($location)); ?></dd>
+                            <?php if( is_plugin_active('mec-advanced-location/mec-advanced-location.php') && $this->settings['advanced_location']['location_enable_link_section_title']??false ): ?>
+                                <dd class="author fn org"><a href="<?php echo home_url().'/mec-location-details-single-page/?fesection=location&feparam='.$location['id']; ?>"><?php echo MEC_kses::element($this->get_location_html($location)); ?></a></dd>
+                            <?php else: ?>
+                                <dd class="author fn org"><?php echo MEC_kses::element($this->get_location_html($location)); ?></dd>
+                            <?php endif; ?>
                         <dd class="location"><address class="mec-events-address"><span class="mec-address"><?php echo (isset($location['address']) ? esc_html($location['address']) : ''); ?></span></address></dd>
 
                         <?php if(isset($location['url']) and trim($location['url'])): ?>
@@ -194,7 +153,7 @@ $cost = $this->main->get_event_cost($event);
                             <span><a href="<?php echo esc_url($location['url']); ?>" class="mec-color-hover" target="_blank"><?php echo esc_html($location['url']); ?></a></span>
                         </dd>
                         <?php endif;
-                        $location_description_setting = isset($settings['location_description']) ? $settings['location_description'] : ''; $location_terms = get_the_terms($event->data, 'mec_location'); if($location_description_setting == '1' and is_array($location_terms) and count($location_terms)): foreach($location_terms as $location_term) { if ($location_term->term_id == $location['id'] ) {  if(isset($location_term->description) && !empty($location_term->description)): ?>
+                        $location_description_setting = isset($settings['location_description']) ? $settings['location_description'] : ''; $location_terms = get_the_terms($event->data, 'mec_location');  if($location_description_setting == '1' and is_array($location_terms) and count($location_terms)): foreach($location_terms as $location_term) { if ($location_term->term_id == $location['id'] ) {  if(isset($location_term->description) && !empty($location_term->description)): ?>
                         <dd class="mec-location-description">
                             <p><?php echo esc_html($location_term->description); ?></p>
                         </dd>
@@ -202,7 +161,6 @@ $cost = $this->main->get_event_cost($event);
                         </dl>
                     </div>
                     <?php
-                    $this->show_other_locations($event); // Show Additional Locations
                 }
                 ?>
 
@@ -216,24 +174,25 @@ $cost = $this->main->get_event_cost($event);
                         <dt><?php echo esc_html($this->main->m('taxonomy_categories', esc_html__('Category', 'mec'))); ?></dt>
                         <dl>
                         <?php
-                        foreach($event->data->categories as $category)
-                        {
-                            $color = ((isset($category['color']) and trim($category['color'])) ? $category['color'] : '');
+                            foreach($event->data->categories as $category)
+                            {
+                                $color = ((isset($category['color']) and trim($category['color'])) ? $category['color'] : '');
 
-                            $color_html = '';
-                            if($color) $color_html .= '<span class="mec-event-category-color" style="--background-color: '.esc_attr($color).';background-color: '.esc_attr($color).'">&nbsp;</span>';
+                                $color_html = '';
+                                if($color) $color_html .= '<span class="mec-event-category-color" style="--background-color: '.esc_attr($color).';background-color: '.esc_attr($color).'">&nbsp;</span>';
 
-                            $icon = (isset($category['icon']) ? $category['icon'] : '');
-                            $icon = isset($icon) && $icon != '' ? '<i class="' . esc_attr($icon) . ' mec-color"></i>' : '<i class="mec-fa-angle-right"></i>';
+                                $icon = (isset($category['icon']) ? $category['icon'] : '');
+                                $icon = isset($icon) && $icon != '' ? '<i class="' . esc_attr($icon) . ' mec-color"></i>' : '<i class="mec-fa-angle-right"></i>';
 
-                            echo '<dd class="mec-events-event-categories"><a href="'.esc_url(get_term_link($category['id'], 'mec_category')).'" class="mec-color-hover" rel="tag">' . MEC_kses::element($icon . esc_html($category['name']) . $color_html) .'</a></dd>';
-                        }
+                                echo '<dd class="mec-events-event-categories"><a href="'.get_term_link($category['id'], 'mec_category').'" class="mec-color-hover" rel="tag">' . MEC_kses::element($icon . esc_html($category['name']) . $color_html) . '</a></dd>';
+                            }
                         ?>
                         </dl>
                     </div>
                     <?php
                 }
                 ?>
+
                 <?php
                     // More Info
                     if($more_info)
@@ -242,7 +201,7 @@ $cost = $this->main->get_event_cost($event);
                         <div class="mec-event-more-info">
                             <i class="mec-sl-info"></i>
                             <h3 class="mec-cost"><?php echo esc_html($this->main->m('more_info_link', esc_html__('More Info', 'mec'))); ?></h3>
-                            <dl><dd class="mec-events-event-more-info"><a class="mec-more-info-button mec-color-hover" target="<?php echo esc_attr($more_info_target); ?>" href="<?php echo esc_url($more_info); ?>"><?php echo esc_html($more_info_title); ?></a></dd></dl>
+                            <dd class="mec-events-event-more-info"><a class="mec-more-info-button mec-color-hover" target="<?php echo esc_attr($more_info_target); ?>" href="<?php echo esc_url($more_info); ?>"><?php echo esc_html($more_info_title); ?></a></dd>
                         </div>
                         <?php
                     }
@@ -250,6 +209,7 @@ $cost = $this->main->get_event_cost($event);
 
             </div>
 
+            <!-- Speaker List Module -->
             <?php
 
             if(!empty($this->main->module('speakers.details', array('event' => $event)))) {
@@ -272,18 +232,14 @@ $cost = $this->main->get_event_cost($event);
 
             <div class="mec-event-content">
                 <div class="mec-single-event-description mec-events-content">
-                    <?php
-                        if(get_post_meta($event->ID, '_elementor_edit_mode', true) && class_exists('\Elementor\Plugin')) $content = \Elementor\Plugin::instance()->frontend->get_builder_content_for_display($event->ID);
-                        else $content = $this->main->get_post_content($event);
-
-                        echo MEC_kses::full($content);
-                    ?>
+                    <?php echo MEC_kses::full($this->main->get_post_content($event)); ?>
+                    <?php do_action('mec_accordion_skin_after_content', $event); ?>
+                    <?php echo MEC_kses::full($this->display_trailer_url($event)); ?>
+                    <?php echo MEC_kses::element($this->display_disclaimer($event)); ?>
                 </div>
-                <?php echo MEC_kses::full($this->display_trailer_url($event)); ?>
-                <?php echo MEC_kses::element($this->display_disclaimer($event)); ?>
             </div>
 
-            <?php do_action('mec_single_after_content', $event ); ?>
+            <?php do_action('mec_single_after_content', $event); ?>
 
             <!-- Custom Data Fields -->
             <?php $this->display_data_fields($event); ?>
@@ -296,18 +252,11 @@ $cost = $this->main->get_event_cost($event);
 
             <!-- Google Maps Module -->
             <div class="mec-events-meta-group mec-events-meta-group-gmap">
-                <?php echo MEC_kses::full($this->main->module('googlemap.details', array('event' => $this->events))); ?>
+                <?php echo MEC_kses::full($this->main->module('googlemap.details', array('event' => $this->events, 'auto_init'=>false, 'uniqueid' => $this->uniqueid))); ?>
             </div>
 
             <!-- Export Module -->
             <?php echo MEC_kses::full($this->main->module('export.details', array('event' => $event))); ?>
-
-            <!-- Countdown module -->
-            <?php if($this->main->can_show_countdown_module($event)): ?>
-            <div class="mec-events-meta-group mec-events-meta-group-countdown">
-                <?php echo MEC_kses::full($this->main->module('countdown.details', array('event' => $this->events))); ?>
-            </div>
-            <?php endif; ?>
 
             <!-- Hourly Schedule -->
             <?php $this->display_hourly_schedules_widget($event); ?>
@@ -324,7 +273,7 @@ $cost = $this->main->get_event_cost($event);
                 } elseif ( isset($settings['booking_user_login']) and $settings['booking_user_login'] == '0' and !is_user_logged_in() and isset($booking_options['bookings_limit_for_users']) and $booking_options['bookings_limit_for_users'] == '1' ) {
                     echo do_shortcode('[MEC_login]');
                 } else {
-                    echo MEC_kses::full($this->main->module('booking.default', array('event' => $this->events)));
+                    echo MEC_kses::full($this->main->module('booking.default', array('event' => $this->events, 'uniqueid' => $this->uniqueid)));
                 }
                 ?>
             </div>
@@ -339,15 +288,14 @@ $cost = $this->main->get_event_cost($event);
     </article>
 </div>
 <script>
-jQuery(".mec-speaker-avatar a, .mec-schedule-speakers a").on('click', function(e)
+// Fix modal speaker in some themes
+jQuery("#mec_skin_<?php echo esc_attr($this->uniqueid); ?> .mec-speaker-avatar-dialog a").on('click', function(e)
 {
     e.preventDefault();
 
-    var id =  jQuery(this).attr('href');
+    var id = jQuery(this).attr('href');
     lity(id);
-    jQuery(document).on('lity:close', function()
-    {
-        jQuery( ".mec-hourly-schedule-speaker-info" ).addClass('lity-hide');
-    });
+
+    return false;
 });
 </script>

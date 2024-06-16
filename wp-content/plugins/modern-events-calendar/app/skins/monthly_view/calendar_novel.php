@@ -76,7 +76,7 @@ elseif($week_start == 5) // Friday
                     // MEC Schema
                     do_action('mec_schema', $event);
 
-                    echo '<a class="'.($this->main->is_expired($event) ? 'mec-past-event ' : '').'event-single-link-novel" data-event-id="'.esc_attr($event->data->ID).'" href="'.esc_url($this->main->get_event_date_permalink($event, $event->date['start']['date'])).'" '.$target_url.'>';
+                    if($target_set !== 'no') echo '<a class="'.($this->main->is_expired($event) ? 'mec-past-event ' : '').'event-single-link-novel" data-event-id="'.esc_attr($event->data->ID).'" href="'.esc_url($this->main->get_event_date_permalink($event, $event->date['start']['date'])).'" '.$target_url.'>';
 
                     echo '<div style="background:'.esc_attr($event_color).'" class="mec-single-event-novel mec-event-article '.esc_attr($this->get_event_classes($event)).'">';
                     echo '<h4 class="mec-event-title">'.MEC_kses::element($event->data->title).'</h4>'.$this->main->get_normal_labels($event, $display_label).$this->main->display_cancellation_reason($event, $reason_for_cancellation);
@@ -89,7 +89,7 @@ elseif($week_start == 5) // Friday
                     echo MEC_kses::embed($this->display_custom_data($event));
 
                     echo '</div>';
-                    echo '</a>';
+                    if($target_set !== 'no') echo '</a>';
                 }
 
                 echo '</dt>';

@@ -86,7 +86,7 @@ $banner_module = $this->can_display_banner_module($event);
 
 			<!-- Custom Data Fields -->
 			<?php $this->display_data_fields($event); ?>
-			
+
 			<!-- FAQ -->
             <?php $this->display_faq($event); ?>
 
@@ -284,13 +284,20 @@ $banner_module = $this->can_display_banner_module($event);
 							<?php if(isset($organizer['thumbnail']) and trim($organizer['thumbnail'])): ?>
 								<img class="mec-img-organizer" src="<?php echo esc_url($organizer['thumbnail']); ?>" alt="<?php echo (isset($organizer['name']) ? esc_attr($organizer['name']) : ''); ?>">
 							<?php endif; ?>
-							<h3 class="mec-events-single-section-title"><?php echo esc_html($this->main->m('taxonomy_organizer', esc_html__('Organizer', 'mec'))); ?></h3>
-							<dl>
+                            <h3 class="mec-events-single-section-title"><?php echo esc_html($this->main->m('taxonomy_organizer', esc_html__('Organizer', 'mec'))); ?></h3>
+                            <dl>
 							<?php if(isset($organizer['thumbnail'])): ?>
 								<dd class="mec-organizer">
-									<i class="mec-sl-home"></i>
-									<h6><?php echo (isset($organizer['name']) ? esc_html($organizer['name']) : ''); ?></h6>
-								</dd>
+									<?php if( is_plugin_active('mec-advanced-organizer/mec-advanced-organizer.php') && $settings['advanced_organizer']['organizer_enable_link_section_title']??false ): ?>
+                                        <a href="<?php echo home_url().'/mec-organizer-details-single-page/?fesection=organizer&feparam='.$organizer['id']; ?>">
+                                            <i class="mec-sl-home"></i>
+                                            <h6><?php echo (isset($organizer['name']) ? esc_html($organizer['name']) : ''); ?></h6>
+                                        </a>
+                                    <?php else: ?>
+                                        <i class="mec-sl-home"></i>
+                                        <h6><?php echo (isset($organizer['name']) ? esc_html($organizer['name']) : ''); ?></h6>
+                                    <?php endif; ?>
+                                </dd>
 							<?php endif;
 							if(isset($organizer['tel']) && !empty($organizer['tel'])): ?>
 								<dd class="mec-organizer-tel">
@@ -340,7 +347,7 @@ $banner_module = $this->can_display_banner_module($event);
 
 				</div>
 
-				<?php do_action( 'mec_single_after_event_date', $event ) ?>
+				<?php do_action('mec_single_after_event_date', $event); ?>
 
 				<!-- Speakers Module -->
 				<?php echo MEC_kses::full($this->main->module('speakers.details', array('event' => $event))); ?>
@@ -407,7 +414,7 @@ if($rank_math_options != 'event') do_action('mec_schema', $event);
 ?>
 <script>
 // Fix modal speaker in some themes
-jQuery(".mec-speaker-avatar a, .mec-schedule-speakers a").on('click', function(e)
+jQuery(".mec-speaker-avatar-dialog a, .mec-schedule-speakers a").on('click', function(e)
 {
     e.preventDefault();
     lity(jQuery(this).attr('href'));

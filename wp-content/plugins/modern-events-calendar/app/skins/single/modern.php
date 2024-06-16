@@ -210,7 +210,7 @@ $cost = $this->main->get_event_cost($event);
     if($rank_math_options != 'event') do_action('mec_schema', $event);
 ?>
 <script>
-jQuery(".mec-speaker-avatar a, .mec-schedule-speakers a").on('click', function(e)
+jQuery(".mec-speaker-avatar-dialog a, .mec-schedule-speakers a").on('click', function(e)
 {
     e.preventDefault();
     lity(jQuery(this).attr('href'));

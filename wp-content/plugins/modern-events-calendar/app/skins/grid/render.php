@@ -47,6 +47,14 @@ if($this->style == 'colorful')
         $mec_data = $this->display_custom_data($event);
         $custom_data_class = !empty($mec_data) ? 'mec-custom-data' : '';
 
+        if (!$location['thumbnail']) {
+            $event_fallback_image = get_field('event_fallback_image', 'option');
+            if ($event_fallback_image) {
+              $event_fallback_image = $event_fallback_image['sizes']['large'];
+              $location['thumbnail'] = $event_fallback_image;
+            }
+        }
+
         // colorful
                 $colorful_bg_color = ($colorful_flag && isset($event->data->meta['mec_color'])) ? ' style="background: #' . esc_attr($event->data->meta['mec_color']) . '"' : '';
 
