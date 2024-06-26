@@ -65,7 +65,7 @@ if (!$more_info) {
 
    $event_button = '<a class="no-underline mt-6 button button-solid bg-action hover:bg-action-dark items-center gap-4" href="' . $more_info . '"' . $target . '><span class="text-white font-semibold">' . $more_info_button_text . '</span>
             <span><svg width="18" height="14" viewBox="0 0 18 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M10.6667 1.16675L16.5 7.00008M16.5 7.00008L10.6667 12.8334M16.5 7.00008L1.5 7.00008" stroke="#3B8BCA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              <path d="M10.6667 1.16675L16.5 7.00008M16.5 7.00008L10.6667 12.8334M16.5 7.00008L1.5 7.00008" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
             </span>
           </a>';
 

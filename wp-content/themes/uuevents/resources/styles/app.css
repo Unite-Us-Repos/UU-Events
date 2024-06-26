@@ -454,7 +454,55 @@ body .map-wrap {
 .button.share {
   @apply py-2
 }
+.button-solid {
+  @apply text-white bg-action border-action 
+  hover:border-action-hover hover:bg-action-hover hover:text-white;
+}
+.button-solid-purple {
+  @apply text-white bg-electric-purple border-electric-purple 
+  hover:bg-electric-purple-hover hover:border-electric-purple-hover hover:text-white;
+}
+.button-solid-white {
+  @apply text-blue-600 bg-white border-white hover:text-action drop-shadow-sm;
+}
 
+
+.button-hollow {
+  @apply text-action bg-transparent border-action
+  hover:!text-white hover:bg-action hover:border-action ;
+}
+.button-hollow-purple {
+  @apply text-electric-purple bg-transparent border-electric-purple 
+  hover:bg-electric-purple hover:border-electric-purple hover:text-white;
+}
+.button-hollow-purple img {
+  filter: brightness(0) saturate(100%) invert(50%) sepia(64%) saturate(5014%)
+  hue-rotate(241deg) brightness(95%) contrast(108%);
+}
+.button-hollow-white,
+.is-dark-bg .button-hollow {
+  @apply text-white bg-transparent border-white;
+}
+
+.bg-light-gradient .button-hollow,
+.bg-light .button-hollow {
+  @apply text-action border-action;
+}
+.bg-light-gradient .button-hollow-purple,
+.bg-light .button-hollow-purple {
+  @apply text-electric-purple border-electric-purple;
+}
+.button-hollow-white:hover {
+  @apply bg-action border-action !text-white;
+}
+.button-hollow-purple:hover {
+  @apply bg-electric-purple border-electric-purple !text-white;
+}
+.button svg path, 
+.button img {
+  fill: #fff;
+  opacity: 0.25;
+}
 .button-solid {
   @apply text-white bg-action
 }
@@ -484,12 +532,33 @@ body .map-wrap {
 
 .button-text {
   text-underline-offset: 3px;
-
   @apply text-action text-lg font-semibold px-0 py-6 bg-transparent border-none underline decoration-2 hover:text-action-dark
 }
 .button-purple {
   @apply border-electric-purple bg-electric-purple text-white
 }
+
+.acf-icon-action {
+  filter: brightness(0) saturate(100%) invert(30%) sepia(100%) saturate(2600%) hue-rotate(199deg) brightness(95%) contrast(105%);
+}
+.acf-icon-white {
+  filter: brightness(0) invert(1);
+  opacity: 1!important;
+}
+
+.acf-icon-electric-purple {
+  filter: brightness(0) saturate(100%) invert(50%) sepia(64%) saturate(5014%)
+    hue-rotate(241deg) brightness(95%) contrast(108%);
+}
+
+.button-hollow:hover .acf-icon-action {
+  filter: brightness(0) saturate(100%) invert(100%) sepia(3%) saturate(5310%)
+    hue-rotate(306deg) brightness(112%) contrast(102%);
+}
+.button-hollow-purple:hover img {
+  filter: brightness(0) invert(1);
+}
+
 .footer-section ul {
   margin-bottom: 0;
 }
@@ -508,8 +577,8 @@ body .map-wrap {
   background: linear-gradient(180deg, rgba(238,245,252,1) 30%, rgba(255,255,255,1) 90%);
 }
 .bg-dark-gradient {
-  background: #2C405A;
-  background: linear-gradient(180deg, #182A44 30%, #2C405A 90%);
+  background: #216cff;
+  background: linear-gradient(180deg, #182A44 30%, #216cff 90%);
 }
 .carousel-swiper {
   height: 350px;
@@ -597,7 +666,7 @@ body .map-wrap {
 .wp-pagenavi {
   margin: 0 auto;
   text-align: center;
-  color: #2C405A;
+  color: #216cff;
   @apply border-t border-blue-300
 }
 .pagination {
@@ -611,7 +680,7 @@ body .map-wrap {
   opacity: 0;
 }
 .wp-pagenavi a {
-  color: #2C405A;
+  color: #216cff;
   text-decoration: none;
   font-weight: 500;
   padding: 1rem;
@@ -863,7 +932,7 @@ ol.ol-circles li {
   margin:20px 0;
 }
 ol.ol-circles li::before{
-  background:#2C405A;
+  background:#216cff;
   color:#FFF;
   font-weight:400;
   font-size: 1.5rem;
