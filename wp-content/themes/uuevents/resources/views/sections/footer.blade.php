@@ -54,7 +54,7 @@
 
                <div class="col-span-2 mb-16 lg:mb-0">
         <h3 class="text-sm font-semibold text-blue-400 tracking-wider uppercase">Support</h3>
-                  <div class="menu-footer-support-container"><ul id="menu-footer-support" class="space-y-4 list-none"><li id="menu-item-363" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-363"><a href="/contact" class="text-white hover:text-white">Contact Us</a></li>
+                  <div class="menu-footer-support-container"><ul id="menu-footer-support" class="space-y-4 list-none"><li id="menu-item-363" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-363"><a href="https://uniteus.com/contact" class="text-white hover:text-white">Contact Us</a></li>
 <li id="menu-item-362" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-362"><a href="https://uniteus.com/networks/" class="text-white hover:text-white">Networks</a></li>
 <li id="menu-item-364" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-364"><a href="http://events.uniteus.com" class="text-white hover:text-white">Events</a></li>
 </ul></div>
