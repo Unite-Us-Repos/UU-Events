@@ -305,7 +305,7 @@
       </nav>
       <div class="hidden lg:flex items-center justify-end lg:flex-1 lg:w-0">
         <a href="https://app.uniteus.io/" class="whitespace-nowrap text-base font-medium text-brand hover:text-brand"> Log In </a>
-        <a href="/demo/" class="button button-purple mx-8">Demo</a>
+        <a href="https://uniteus.com/demo/" class="button button-purple mx-8">Demo</a>
         <div x-data="{ 'showSearchModal': false }" @keydown.escape="showSearchModal = false">
   <!-- Trigger for Modal -->
   <button type="button" @click="showSearchModal = true" class="rounded-lg flex items-center justify-center">
@@ -671,7 +671,7 @@
       <div class="py-6 px-5 space-y-6">
 
         <div>
-          <a href="/demo/" class="w-full text-center block button button-solid"> Demo </a>
+          <a href="https://uniteus.com/demo/" class="w-full text-center block button button-solid"> Demo </a>
           <p class="mt-6 text-center text-base font-medium">
             Have an account already?
             <a href="https://app.uniteus.io/"> Log in </a>
