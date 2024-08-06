@@ -537,7 +537,9 @@ body .map-wrap {
 .button-purple {
   @apply border-electric-purple bg-electric-purple text-white
 }
-
+.button-purple:hover {
+  @apply border-electric-purple-hover bg-electric-purple-hover text-white
+}
 .acf-icon-action {
   filter: brightness(0) saturate(100%) invert(30%) sepia(100%) saturate(2600%) hue-rotate(199deg) brightness(95%) contrast(105%);
 }
