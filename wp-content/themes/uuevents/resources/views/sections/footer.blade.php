@@ -63,8 +63,8 @@
       <div class="col-span-2 mb-16 lg:mb-0">
         <h3 class="text-sm font-semibold text-blue-400 tracking-wider uppercase">Company</h3>
                   <div class="menu-footer-company-container"><ul id="menu-footer-company" class="space-y-4 list-none"><li id="menu-item-3125" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3125"><a href="https://uniteus.com/community-map/" class="text-white hover:text-white">Community Map</a></li>
-<li id="menu-item-365" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-365"><a href="/knowledge-hub" class="text-white hover:text-white">Knowledge Hub</a></li>
-<li id="menu-item-366" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-366"><a href="/our-careers" class="text-white hover:text-white">Careers</a></li>
+<li id="menu-item-365" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-365"><a href="https://uniteus.com/knowledge-hub" class="text-white hover:text-white">Knowledge Hub</a></li>
+<li id="menu-item-366" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-366"><a href="https://uniteus.com/our-careers" class="text-white hover:text-white">Careers</a></li>
 <li id="menu-item-2171" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2171"><a href="https://uniteus.com/press/" class="text-white hover:text-white">Press</a></li>
 </ul></div>
               </div>
