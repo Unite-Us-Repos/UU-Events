@@ -67,7 +67,7 @@ const config = {
           300: '#c7d8e8', // dark pale blue
           400: '#52b4ff', // action light blue
           600: '#2c405a',
-          900: '#182a44', // dark blue
+          900: '#0b1538', // dark blue
         },
         'gray': {
           200: '#E5E7EB',
