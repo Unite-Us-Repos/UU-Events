@@ -445,7 +445,7 @@ $watch('isSticky', value => {
 
                             <div class="bg-gray-200 px-5 pt-4 pb-4 pl-12 view-all">
                                 <p class="text-base flex">
-                                    <a href="/knowledge-hub/"
+                                    <a href="https://uniteus.com/knowledge-hub/"
                                         class="menu-arrow text-gray-700 flex items-center gap-4 font-semibold ">View
                                         All Resources
                                         <svg width="16" height="14" viewBox="0 0 16 14" fill="none"
@@ -545,7 +545,7 @@ $watch('isSticky', value => {
                             <div class="bg-gray-200 px-5 pt-4 pb-4 pl-12">
                                 <p class="text-base font-semibold text-gray-700 flex">
                                     Have questions?&nbsp;
-                                    <a href="/contact"
+                                    <a href="https://uniteus.com/contact"
                                         class="menu-arrow text-action flex items-center !underline gap-1">Let's talk.
                                         <svg width="16" height="14" viewBox="0 0 16 14" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
