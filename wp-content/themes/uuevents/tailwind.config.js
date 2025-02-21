@@ -27,7 +27,9 @@ const config = {
     'xl:-ml-4',
     'xl:pl-4',
     'group-hover:text-action',
-    'inline-flex'
+    'inline-flex',
+    'sm:grid-cols-3', 
+    'lg:grid-cols-5',
   ],
   theme: {
     fontFamily: {

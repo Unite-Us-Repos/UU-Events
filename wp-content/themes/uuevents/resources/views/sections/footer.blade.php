@@ -36,122 +36,125 @@
 <footer class="footer-section component-section bg-blue-900" aria-labelledby="footer-heading">
     <h2 id="footer-heading" class="sr-only">Footer</h2>
     <div class="component-inner-section">
-        <div class="grid grid-cols-4 lg:grid-cols-12 lg:gap-8">
-            <div class="col-span-2 mb-16 lg:mb-0">
-                <h3 class="text-sm font-semibold text-blue-400 tracking-wider uppercase">Solutions</h3>
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 lg:gap-8">
+            <div class="mb-16 lg:mb-0">
+                <h3 class="text-sm font-semibold text-blue-400 tracking-wider uppercase">Industries</h3>
                 <div class="menu-footer-solutions-container">
                     <ul id="menu-footer-solutions" class="space-y-4 list-none">
-                        <li id="menu-item-361"
-                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-361"><a
-                                href="https://uniteus.com/solutions/government/" class="text-white hover:text-white">For
-                                Government</a></li>
-                        <li id="menu-item-358"
-                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-358"><a
-                                href="https://uniteus.com/solutions/providers/" class="text-white hover:text-white">For
-                                Providers</a></li>
-
-                        <li id="menu-item-360"
-                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-360"><a
-                                href="https://uniteus.com/solutions/health-plans/"
-                                class="text-white hover:text-white">For Health Plans</a></li>
-                        <li id="menu-item-359"
-                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-359"><a
-                                href="https://uniteus.com/solutions/nonprofits/" class="text-white hover:text-white">For
-                                Nonprofits</a></li>
+                        <li id="menu-item-8119"
+                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8119"><a
+                                href="https://uniteus.com/industries/government/"
+                                class="text-white hover:text-white footer_click">Government</a></li>
+                        <li id="menu-item-8118"
+                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8118"><a
+                                href="https://uniteus.com/industries/providers/"
+                                class="text-white hover:text-white footer_click">Providers</a></li>
+                        <li id="menu-item-8116"
+                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8116"><a
+                                href="https://uniteus.com/industries/payers/"
+                                class="text-white hover:text-white footer_click">Payers</a></li>
+                        <li id="menu-item-8117"
+                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8117"><a
+                                href="https://uniteus.com/industries/community/"
+                                class="text-white hover:text-white footer_click">Community-Based Organizations</a></li>
                     </ul>
                 </div>
             </div>
 
-            <div class="col-span-2 mb-16 lg:mb-0">
+            <div class="mb-16 lg:mb-0">
                 <h3 class="text-sm font-semibold text-blue-400 tracking-wider uppercase">Products</h3>
-                <div class="menu-footer-support-container">
-                    <ul id="menu-footer-support" class="space-y-4 list-none">
-
-                        <li id="menu-item-362"
-                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-362"><a
-                                href="https://uniteus.com/products/platform/"
-                                class="text-white hover:text-white">Platform</a></li>
-                        <li id="menu-item-364"
-                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-364"><a
-                                href="https://uniteus.com/products/insights/"
-                                class="text-white hover:text-white">Inisghts</a></li>
-                        <li id="menu-item-364"
-                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-364"><a
-                                href="https://uniteus.com/products/payments/"
-                                class="text-white hover:text-white">Payments</a></li>
-                        <li id="menu-item-364"
-                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-364"><a
-                                href="https://uniteus.com/professional-services/"
-                                class="text-white hover:text-white">Professional Services</a></li>
+                <div class="menu-footer-products-container">
+                    <ul id="menu-footer-products" class="space-y-4 list-none">
+                        <li id="menu-item-8110"
+                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8110"><a
+                                href="https://uniteus.com/products/closed-loop-referral-system/"
+                                class="text-white hover:text-white footer_click">Closed-Loop Referral System</a></li>
+                        <li id="menu-item-8111"
+                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8111"><a
+                                href="https://uniteus.com/products/resource-directory/"
+                                class="text-white hover:text-white footer_click">Resource Directory</a></li>
+                        <li id="menu-item-8113"
+                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8113"><a
+                                href="https://uniteus.com/products/social-care-data/"
+                                class="text-white hover:text-white footer_click">Predictive Analytics</a></li>
+                        <li id="menu-item-8114"
+                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8114"><a
+                                href="https://uniteus.com/products/care-coordination-services/"
+                                class="text-white hover:text-white footer_click">Care Coordination</a></li>
+                        <li id="menu-item-8115"
+                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8115"><a
+                                href="https://uniteus.com/products/professional-services/"
+                                class="text-white hover:text-white footer_click">Managed Services</a></li>
+                        <li id="menu-item-8112"
+                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8112"><a
+                                href="https://uniteus.com/products/social-care-revenue-cycle-management/"
+                                class="text-white hover:text-white footer_click">Social Care Revenue Cycle
+                                Management</a></li>
                     </ul>
                 </div>
             </div>
 
-            <div class="col-span-2 mb-16 lg:mb-0">
-                <h3 class="text-sm font-semibold text-blue-400 tracking-wider uppercase">Support</h3>
+            <div class="mb-16 lg:mb-0">
+                <h3 class="text-sm font-semibold text-blue-400 tracking-wider uppercase">Resources</h3>
                 <div class="menu-footer-support-container">
                     <ul id="menu-footer-support" class="space-y-4 list-none">
-                        <li id="menu-item-363"
-                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-363"><a
-                                href="https://uniteus.com/contact" class="text-white hover:text-white">Contact Us</a>
-                        </li>
-                        <li id="menu-item-362"
-                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-362"><a
-                                href="https://uniteus.com/networks/" class="text-white hover:text-white">Networks</a>
-                        </li>
-                        <li id="menu-item-364"
-                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-364"><a
-                                href="http://events.uniteus.com" class="text-white hover:text-white">Events</a></li>
+                        <li id="menu-item-8120"
+                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8120"><a
+                                href="https://uniteus.com/knowledge-hub/"
+                                class="text-white hover:text-white footer_click">All Resources</a></li>
+                        <li id="menu-item-8121"
+                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-8121"><a
+                                href="/blogs" class="text-white hover:text-white footer_click">Blogs</a></li>
+                        <li id="menu-item-8123"
+                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-8123"><a
+                                href="https://events.uniteus.com/"
+                                class="text-white hover:text-white footer_click">Events</a></li>
+                        <li id="menu-item-8122"
+                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-8122"><a
+                                href="/report" class="text-white hover:text-white footer_click">Reports</a></li>
+                        <li id="menu-item-8124"
+                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-8124"><a
+                                href="/webinar" class="text-white hover:text-white footer_click">Videos</a></li>
+                        <li id="menu-item-8125"
+                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-8125"><a
+                                href="/press" class="text-white hover:text-white footer_click">Newsroom</a></li>
                     </ul>
                 </div>
             </div>
 
-            <div class="col-span-2 mb-16 lg:mb-0">
+            <div class="mb-16 lg:mb-0">
                 <h3 class="text-sm font-semibold text-blue-400 tracking-wider uppercase">Company</h3>
                 <div class="menu-footer-company-container">
                     <ul id="menu-footer-company" class="space-y-4 list-none">
+                        <li id="menu-item-4851"
+                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4851"><a
+                                href="https://uniteus.com/about-us/"
+                                class="text-white hover:text-white footer_click">About Us</a></li>
+                        <li id="menu-item-8106"
+                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8106"><a
+                                href="https://uniteus.com/team/"
+                                class="text-white hover:text-white footer_click">Team</a></li>
+                        <li id="menu-item-8107"
+                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8107"><a
+                                href="https://uniteus.com/networks/"
+                                class="text-white hover:text-white footer_click">Networks</a></li>
+                        <li id="menu-item-8108"
+                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8108"><a
+                                href="https://uniteus.com/how-it-works/"
+                                class="text-white hover:text-white footer_click">How It Works</a></li>
                         <li id="menu-item-3125"
                             class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3125"><a
-                                href="https://uniteus.com/about-us/" class="text-white hover:text-white">About Us</a>
-                        </li>
-                        <li id="menu-item-3125"
-                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3125"><a
-                                href="https://uniteus.com/community-map/" class="text-white hover:text-white">Community
-                                Map</a></li>
-
-                        <li id="menu-item-365"
-                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-365"><a
-                                href="https://uniteus.com/knowledge-hub" class="text-white hover:text-white">Knowledge
-                                Hub</a></li>
-                        <li id="menu-item-366"
-                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-366"><a
-                                href="https://uniteus.com/our-careers" class="text-white hover:text-white">Careers</a>
-                        </li>
-                        <li id="menu-item-2171"
-                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2171"><a
-                                href="https://uniteus.com/press/" class="text-white hover:text-white">Press</a></li>
+                                href="https://uniteus.com/community-map/"
+                                class="text-white hover:text-white footer_click">Community Map</a></li>
+                        <li id="menu-item-8109"
+                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8109"><a
+                                href="https://uniteus.com/contact/"
+                                class="text-white hover:text-white footer_click">Contact</a></li>
                     </ul>
                 </div>
             </div>
 
-            <div class="col-span-2 mb-16 lg:mb-0">
-                <h3 class="text-sm font-semibold text-blue-400 tracking-wider uppercase">Legal</h3>
-                <div class="menu-footer-legal-container">
-                    <ul id="menu-footer-legal" class="space-y-4 list-none">
-                        <li id="menu-item-1644"
-                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-privacy-policy menu-item-1644">
-                            <a rel="privacy-policy" href="https://uniteus.com/privacy-policy/"
-                                class="text-white hover:text-white">Privacy Policy</a>
-                        </li>
-                        <li id="menu-item-1645"
-                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1645"><a
-                                href="https://uniteus.com/terms-of-service/" class="text-white hover:text-white">Terms
-                                of Service</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="col-span-4 lg:col-end-13 lg:col-span-3">
+            <div class="">
                 <h3 class="text-sm font-semibold text-blue-400 tracking-wider uppercase">Language</h3>
                 <div class="styled-select">
                     <div class="gtranslate_wrapper gt_container--s579vb" id="gt-wrapper-24563595">
@@ -275,8 +278,7 @@
             </div>
             <div class="newsletter">
                 <iframe src="https://marketing.uniteus.com/l/1001871/2022-12-15/31f9" width="100%" type="text/html"
-                    frameborder="0" allowtransparency="true" style="border: 0px; overflow: hidden; height: 46px;"
-                    title="Join our Newsletter" id="iFrameResizer0" scrolling="no"></iframe>
+                    frameborder="0" allowTransparency="true" style="border: 0" title="Join our Newsletter"></iframe>
             </div>
         </div>
         <div class="md:flex md:items-center md:justify-between">
@@ -286,7 +288,7 @@
                     <span class="sr-only">Facebook</span>
                     <img class="h-5 w-auto"
                         src="https://uniteus.com/wp-content/themes/uniteus-sage/resources/icons/social/facebook.svg?v=1"
-                        alt="Facebook">
+                        alt="Facebook logo" />
                 </a>
 
                 <a href="https://www.instagram.com/uniteushq/" target="_blank"
@@ -294,14 +296,14 @@
                     <span class="sr-only">Instagram</span>
                     <img class="h-5 w-auto"
                         src="https://uniteus.com/wp-content/themes/uniteus-sage/resources/icons/social/instagram.svg?v=1"
-                        alt="Instagram">
+                        alt="Instagram logo" />
                 </a>
 
                 <a href="https://twitter.com/uniteushq" target="_blank" class="text-white hover:text-blue-400">
-                    <span class="sr-only">Twitter</span>
+                    <span class="sr-only">X</span>
                     <img class="h-5 w-auto"
-                        src="https://uniteus.com/wp-content/themes/uniteus-sage/resources/icons/social/twitter.svg?v=1"
-                        alt="Twitter">
+                        src="https://uniteus.com/wp-content/themes/uniteus-sage/resources/icons/social/x.svg?v=1"
+                        alt="X logo" />
                 </a>
 
                 <a href="https://www.linkedin.com/company/uniteus/" target="_blank"
@@ -309,11 +311,39 @@
                     <span class="sr-only">Linkedin Modern</span>
                     <img class="h-5 w-auto"
                         src="https://uniteus.com/wp-content/themes/uniteus-sage/resources/icons/social/linkedin-modern.svg?v=1"
-                        alt="Linkedin Modern">
+                        alt="Linkedin Modern logo" />
                 </a>
+
+                <a href="https://www.youtube.com/@Uniteus" target="_blank" class="text-white hover:text-blue-400">
+                    <span class="sr-only">Youtube White</span>
+                    <img class="h-5 w-auto"
+                        src="https://uniteus.com/wp-content/themes/uniteus-sage/resources/icons/social/youtube-white.svg?v=1"
+                        alt="Youtube White logo" />
+                </a>
+
+
             </div>
-            <p class="text-base text-white my-6 lg:my-0 md:order-1">©{{ $currentYear }} Unite Us. All rights reserved.
-            </p>
+            <div class="md:flex">
+                <div class="pr-4">
+                    <p class="text-base text-white my-6 lg:my-0 md:order-1">&copy; 2025 Unite Us. All rights reserved.
+                    </p>
+                </div>
+
+                <div class="menu-footer-legal-container">
+                    <ul id="menu-footer-legal" class="space-y-4 list-none flex items-center gap-4 footer-legal">
+                        <li id="menu-item-1644"
+                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-privacy-policy menu-item-1644">
+                            <a rel="privacy-policy" href="https://uniteus.com/privacy-policy/"
+                                class="text-white hover:text-white footer_click">Privacy Policy</a>
+                        </li>
+                        <li id="menu-item-1645"
+                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1645"><a
+                                href="https://uniteus.com/terms-of-service/"
+                                class="text-white hover:text-white footer_click">Terms of Service</a></li>
+                    </ul>
+                </div>
+
+            </div>
         </div>
     </div>
 </footer>
