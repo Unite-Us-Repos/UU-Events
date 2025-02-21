@@ -1835,10 +1835,6 @@ select.gt_selector {
   .ajax-filters.search-filters {
     background: transparent;
   }
-  .ajax-filters.search-filters .sf-field-post_type {
-    border-top-left-radius: 8px;
-    border-bottom-left-radius: 8px;
-  }
   .ajax-filters.search-filters input[type="submit"] {
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
@@ -1849,6 +1845,8 @@ select.gt_selector {
   }
   .ajax-filters.search-filters .sf-field-search {
     border: none;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
   }
   .ajax-filters.search-filters ul li {
     padding: 0px 1rem;
@@ -1926,27 +1924,8 @@ select.gt_selector {
     border-bottom: none;
     border-right: 2px solid #eef5fc;
   }
-  .ajax-filters.greenhouse-filters ul {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
 }
 
-.ajax-filters.greenhouse-filters ul ul,
-.ajax-filters ul ul {
-  display: flex;
-  flex-direction: column;
-  margin: 5px 0;
-}
-.ajax-filters.greenhouse-filters ul ul li,
-.ajax-filters ul ul li {
-  border: none;
-  display: flex;
-  margin: 0;
-  padding: 0 10px;
-  font-size: 14px;
-  font-weight: 400px;
-}
 .ajax-filters ul ul li label {
   padding: 7px 10px;
 }
@@ -1968,4 +1947,20 @@ select.gt_selector {
 
 .ajax-filters .sf-input-checkbox, .ajax-filters .sf-input-radio {
   opacity: 0;
+}
+.ajax-filters li.sf-level-0:hover {
+  background: #eef5fc;
+}
+.searchandfilter ul {
+  margin: 0 !important;
+}
+
+.ajax-filters ul ul {
+  display: flex;
+  flex-direction: column;
+  margin: 5px 0;
+}
+
+.sf-field-post_type {
+  display: none !important;
 }
