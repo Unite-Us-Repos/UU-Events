@@ -104,20 +104,20 @@
                                 class="text-white hover:text-white footer_click">All Resources</a></li>
                         <li id="menu-item-8121"
                             class="menu-item menu-item-type-custom menu-item-object-custom menu-item-8121"><a
-                                href="/blogs" class="text-white hover:text-white footer_click">Blogs</a></li>
+                                href="https://uniteus.com/blogs" class="text-white hover:text-white footer_click">Blogs</a></li>
                         <li id="menu-item-8123"
                             class="menu-item menu-item-type-custom menu-item-object-custom menu-item-8123"><a
                                 href="https://events.uniteus.com/"
                                 class="text-white hover:text-white footer_click">Events</a></li>
                         <li id="menu-item-8122"
                             class="menu-item menu-item-type-custom menu-item-object-custom menu-item-8122"><a
-                                href="/report" class="text-white hover:text-white footer_click">Reports</a></li>
+                                href="https://uniteus.com/report" class="text-white hover:text-white footer_click">Reports</a></li>
                         <li id="menu-item-8124"
                             class="menu-item menu-item-type-custom menu-item-object-custom menu-item-8124"><a
-                                href="/webinar" class="text-white hover:text-white footer_click">Videos</a></li>
+                                href="https://uniteus.com/webinar" class="text-white hover:text-white footer_click">Videos</a></li>
                         <li id="menu-item-8125"
                             class="menu-item menu-item-type-custom menu-item-object-custom menu-item-8125"><a
-                                href="/press" class="text-white hover:text-white footer_click">Newsroom</a></li>
+                                href="https://uniteus.com/press" class="text-white hover:text-white footer_click">Newsroom</a></li>
                     </ul>
                 </div>
             </div>
