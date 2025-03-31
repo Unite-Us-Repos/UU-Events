@@ -17,3 +17,6 @@
 /wp-content/themes/uuevents/**/._*
 /wp-content/themes/uuevents/node_modules/
 /wp-content/themes/uuevents/vendor/
+/wp-content/themes/uuevents/composer.lock
+/wp-content/themes/uuevents/yarn.lock
+/wp-content/themes/uuevents/package-lock.json
