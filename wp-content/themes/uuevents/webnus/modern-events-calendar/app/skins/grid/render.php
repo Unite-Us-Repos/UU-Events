@@ -85,7 +85,7 @@ if($this->style == 'colorful')
                     <?php endif; ?>
             <div class="relative z-20 ml-8 -mt-8 w-16 h-16 mb-9 bg-white border border-pale-blue-light shadow-md rounded-md flex flex-col justify-center items-center">
 <span class="text-action font-bold text-3xl"><?php echo esc_html($this->main->date_i18n($this->date_format_minimal_1, strtotime($event->date['start']['date']))); ?></span>
-<span class="text-brand uppercase"><?php echo esc_html($this->main->date_i18n($this->date_format_minimal_2, strtotime($event->date['start']['date']))); ?></span></div>
+<span class="text-brand font-bold text-lg uppercase"><?php echo esc_html($this->main->date_i18n('M', strtotime($event->date['start']['date']))); ?></span></div>
             <div class="px-7 pb-10 z-20 relative">
                 <h3 class="mb-4 text-[28px] flex flex-wrap gap-2"><?php echo str_replace('mec-color-hover', 'group-hover:text-action', MEC_kses::element($this->display_link($event))); ?><?php echo MEC_kses::embed($this->display_custom_data($event)); ?><?php echo MEC_kses::element($this->main->get_flags($event));//.$event_color); ?>
 
