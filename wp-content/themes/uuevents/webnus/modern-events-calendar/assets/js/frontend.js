@@ -3538,7 +3538,7 @@ jQuery(window).on('load', function()
                 success: function (response) {
                     if (response.count === 0) {
                         // Append Items
-                        $("#mec_skin_events_" + settings.id).html('No events here');
+                        $("#mec_skin_events_" + settings.id).html('No events found!');
 
                         // Remove loading Class
                         $('.mec-modal-result').removeClass("mec-month-navigator-loading");
