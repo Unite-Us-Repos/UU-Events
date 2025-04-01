@@ -126,7 +126,7 @@ if (isset($event->data->labels)) {
 }
 
                     echo '<span class="mec-labels-normal shrink-0"><span data-style="Normal" class="tw-mec-label-normal mec-labels-group relative z-20" style="background-color:">'
-                    . $location_icon . str_replace('Audience :: ', '', $label['name']) . '</span></span>';
+                    . $location_icon . str_replace('Audience | ', '', $label['name']) . '</span></span>';
                 }
             }
                 ?>
