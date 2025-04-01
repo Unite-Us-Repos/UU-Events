@@ -1,3 +1,8 @@
+<style>
+    .tw-mec-label-normal.mec-labels-group {
+        margin-top: 0 !important;
+    }
+    </style>
 <?php
 /** no direct access **/
 defined('MECEXEC') or die();
@@ -34,6 +39,7 @@ if($this->style == 'colorful')
 
 
 
+
         echo '<div class="relative group bg-white border border-light shadow-lg rounded-lg overflow-hidden">';
 
         $location_id = $this->main->get_master_location_id($event);
@@ -65,7 +71,8 @@ if($this->style == 'colorful')
                        <?php $location_icon = '<svg width="14" height="17" viewBox="0 0 14 17" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path fill-rule="evenodd" clip-rule="evenodd" d="M11.7634 2.05025C14.3604 4.78392 14.3604 9.21608 11.7634 11.9497L7.06113 16.8995L2.35887 11.9497C-0.238114 9.21608 -0.238114 4.78392 2.35887 2.05025C4.95586 -0.683417 9.16641 -0.683418 11.7634 2.05025ZM7.06148 8.99996C8.11082 8.99996 8.96148 8.10453 8.96148 6.99996C8.96148 5.89539 8.11082 4.99996 7.06148 4.99996C6.01214 4.99996 5.16148 5.89539 5.16148 6.99996C5.16148 8.10453 6.01214 8.99996 7.06148 8.99996Z" fill="#216CFF"/>
 </svg>
-'; ?>
+';
+?>
             <div class="p-2"></div>
             <div class="absolute w-full top-0 p-2 bg-action rounded-t-lg z-20"></div>
             <?php if ($event->data->thumbnails['large']) :?>
@@ -81,9 +88,9 @@ if($this->style == 'colorful')
 <span class="text-brand uppercase"><?php echo esc_html($this->main->date_i18n($this->date_format_minimal_2, strtotime($event->date['start']['date']))); ?></span></div>
             <div class="px-7 pb-10 z-20 relative">
                 <h3 class="mb-4 text-[28px] flex flex-wrap gap-2"><?php echo str_replace('mec-color-hover', 'group-hover:text-action', MEC_kses::element($this->display_link($event))); ?><?php echo MEC_kses::embed($this->display_custom_data($event)); ?><?php echo MEC_kses::element($this->main->get_flags($event));//.$event_color); ?>
-                <?php
 
-                //.$this->main->display_cancellation_reason($event, $reason_for_cancellation)); ?><?php // do_action('mec_shortcode_virtual_badge', $event->data->ID); ?><?php //echo MEC_kses::element($this->get_label_captions($event,'mec-fc-style')); ?></h3>
+
+                </h3>
 
                    <?php if($this->localtime) echo MEC_kses::full($this->main->module('local-time.type2', array('event' => $event))); ?>
 <div class="flex flex-wrap gap-2">
@@ -91,32 +98,40 @@ if($this->style == 'colorful')
                     <span>
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path fill-rule="evenodd" clip-rule="evenodd" d="M10.0014 18C14.1987 18 17.6014 14.4183 17.6014 10C17.6014 5.58172 14.1987 2 10.0014 2C5.804 2 2.40137 5.58172 2.40137 10C2.40137 14.4183 5.804 18 10.0014 18ZM10.9514 6C10.9514 5.44772 10.526 5 10.0014 5C9.47669 5 9.05136 5.44772 9.05136 6V10C9.05136 10.2652 9.15145 10.5196 9.32961 10.7071L12.0166 13.5355C12.3876 13.9261 12.9891 13.9261 13.3601 13.5355C13.7311 13.145 13.7311 12.5118 13.3601 12.1213L10.9514 9.58579V6Z" fill="#216CFF"/>
-</svg>
-
-        </span>
-        <span class="text-brand text-sm">
+</span>
+        <span class="text-brand text-sm block">
                 <?php if($this->include_events_times) echo str_replace('mec-time-details', '', MEC_kses::element($this->main->display_time($start_time, $end_time))); ?>
         </span>
             </div>
+
+            <div class="flex flex-wrap gap-2 mt-4 w-full">
 <?php
-            $the_labels = MEC_kses::element($this->main->get_normal_labels($event, $display_label));
-                $the_labels = str_replace('class="mec-label-normal"', 'class="tw-mec-label-normal relative z-20"', $the_labels);
-                $the_labels = str_replace('background-color:">', 'background-color:">' . $location_icon, $the_labels);
-                echo $the_labels;
 
+
+
+if (isset($event->data->labels)) {
+                foreach ($event->data->labels as $labels => $label) {
+
+                    $is_audience = false;
+                    $location_icon = '<svg width="14" height="17" viewBox="0 0 14 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M11.7634 2.05025C14.3604 4.78392 14.3604 9.21608 11.7634 11.9497L7.06113 16.8995L2.35887 11.9497C-0.238114 9.21608 -0.238114 4.78392 2.35887 2.05025C4.95586 -0.683417 9.16641 -0.683418 11.7634 2.05025ZM7.06148 8.99996C8.11082 8.99996 8.96148 8.10453 8.96148 6.99996C8.96148 5.89539 8.11082 4.99996 7.06148 4.99996C6.01214 4.99996 5.16148 5.89539 5.16148 6.99996C5.16148 8.10453 6.01214 8.99996 7.06148 8.99996Z" fill="#216CFF"/>
+</svg>
+';
+                    if (str_contains($label['name'], 'Audience')) {
+
+    $location_icon = '</svg>
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M17.6013 10C17.6013 14.4183 14.1987 18 10.0013 18C5.804 18 2.40137 14.4183 2.40137 10C2.40137 5.58172 5.804 2 10.0013 2C14.1987 2 17.6013 5.58172 17.6013 10ZM11.9013 7C11.9013 8.10457 11.0507 9 10.0013 9C8.95201 9 8.10135 8.10457 8.10135 7C8.10135 5.89543 8.95201 5 10.0013 5C11.0507 5 11.9013 5.89543 11.9013 7ZM10.0013 11C8.08463 11 6.43311 12.195 5.68241 13.9157C6.72768 15.192 8.27487 16 10.0013 16C11.7278 16 13.2749 15.1921 14.3202 13.9158C13.5695 12.195 11.918 11 10.0013 11Z" fill="#2F71F4"/>
+</svg>';
+}
+
+                    echo '<span class="mec-labels-normal shrink-0"><span data-style="Normal" class="tw-mec-label-normal mec-labels-group relative z-20" style="background-color:">'
+                    . $location_icon . str_replace('Audience :: ', '', $label['name']) . '</span></span>';
+                }
+            }
                 ?>
-            </div>
-            <?php /*
-                <div class="mec-event-detail">
-
-
-                    <div class="mec-event-loc-place"><?php echo (isset($location['name']) ? esc_html($location['name']) : ''); ?></div>
-                    <?php echo str_replace('target="_blank">', 'target="_blank">' . $location_icon, MEC_kses::element($this->display_categories($event))); ?>
-                    <?php echo MEC_kses::element($this->display_organizers($event)); ?>
-                    <?php echo MEC_kses::element($this->display_cost($event)); ?>
-                    <?php echo MEC_kses::form($this->booking_button($event)); ?>
                 </div>
-                */ ?>
+            </div>
 
 
 <?php
@@ -135,3 +150,4 @@ if($this->style == 'colorful')
         ?>
         <?php endforeach; ?>
         <?php endforeach; ?>
+
