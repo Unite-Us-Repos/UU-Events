@@ -387,6 +387,7 @@ class MEC_skins extends MEC_base
         // Include location to filter
         if(isset($this->atts['location']) and trim($this->atts['location'], ', ') != '')
         {
+            $this->atts['location'] = $this->atts['location'] . ',2'; // UU HACK; hardcode All (ID: 2)
             $tax_query[] = array(
                 'taxonomy'=>'mec_location',
                 'field'=>'term_id',
