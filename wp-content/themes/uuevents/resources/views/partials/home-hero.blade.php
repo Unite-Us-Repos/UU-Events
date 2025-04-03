@@ -1,11 +1,90 @@
-@php $MEC = MEC::instance(); $event_settings = get_field('featured_event', 'option'); $event_id = $event_settings['event']; $single = new \MEC_skin_single(); $main = new \MEC_main(); $info = $single->get_event_mec($event_id)[0]; $event = $info->data; $featured_image = $event->featured_image['large']; if (!$featured_image) { $featured_image = '/wp-content/uploads/2022/09/unite-us-preview-image.png'; } $start_day = $main->date_i18n('d', $event->mec->start); $start_month = $main->date_i18n('F', $event->mec->start); $time_start = date('g:i a', $event->mec->time_start); $featured_post = [ 'post_title' => $event->title, 'excerpt' => get_the_excerpt($event_id), 'permalink' => '#', 'dateline' => $start_month . ' ' . $start_day . ' at ' . $time_start, 'thumbnail_url' => $featured_image, 'thumbnail_alt' => '', ]; $more_info = isset($event->meta['mec_read_more']) ? $event->meta['mec_read_more'] : ''; if (!$more_info) { $more_info = isset($event->meta['mec_more_info']) ? $event->meta['mec_more_info'] : ''; } $more_info_button_text = $event->meta['mec_more_info_title'] ? $event->meta['mec_more_info_title'] : 'More Information'; if ($event->meta['mec_more_info_target']) { $target = $event->meta['mec_more_info_target']; } else { $target = '_self'; } $target = 'target="' . $target . '"'; if (!$event_id) { $featured_image = '/wp-content/uploads/2021/11/Events-page-header-graphic-1.png'; $more_info_button_text = 'Subscribe'; $more_info = 'https://uniteus.com/email-list'; $tarbet = '_blank'; $target = 'target="' . $target . '"'; $featured_post = [ 'post_title' => 'Join the List', 'excerpt' => 'Sign up to be the first to know when we\'re hosting our next big event.', 'permalink' => '#', 'dateline' => false, 'thumbnail_url' => $featured_image, 'thumbnail_alt' => '', ]; } $event_button = '<a class="no-underline mt-6 button button-solid bg-action hover:bg-action-dark items-center gap-4" href="' . $more_info . '" ' . $target . '>
-  <span class="text-white font-semibold">' . $more_info_button_text . '</span>
-  <span>
-    <svg width="18" height="14" viewbox="0 0 18 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M10.6667 1.16675L16.5 7.00008M16.5 7.00008L10.6667 12.8334M16.5 7.00008L1.5 7.00008" stroke="#3B8BCA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-    </svg>
-  </span>
-</a>'; if (!$more_info) { $event_button = ''; } $linkable_pill = false; $tag_name = ''; if ($event->tags) { foreach ($event->tags as $tag) { $tag_name = $tag['name']; } } @endphp
+
+@php
+$MEC = MEC::instance();
+
+$event_settings = get_field('featured_event', 'option');
+$event_id = $event_settings['event'];
+$single = new \MEC_skin_single();
+$main = new \MEC_main();
+$info = $single->get_event_mec($event_id)[0];
+$event = $info->data;
+
+$featured_image = $event->featured_image['large'];
+if (!$featured_image) {
+  $featured_image = '/wp-content/uploads/2022/09/unite-us-preview-image.png';
+}
+$start_day = $main->date_i18n('d', $event->mec->start);
+$start_month = $main->date_i18n('F', $event->mec->start);
+
+$time_start = date('g:i a', $event->mec->time_start);
+
+$featured_post = [
+  'post_title' => $event->title,
+  'excerpt' => get_the_excerpt($event_id),
+  'permalink' => '#',
+  'dateline' => $start_month . ' ' . $start_day . ' at ' . $time_start,
+  'thumbnail_url' => $featured_image,
+  'thumbnail_alt' => '',
+  ];
+
+  $more_info = isset($event->meta['mec_read_more']) ? $event->meta['mec_read_more'] : '';
+
+if (!$more_info) {
+  $more_info = isset($event->meta['mec_more_info']) ? $event->meta['mec_more_info'] : '';
+
+}
+
+    $more_info_button_text = $event->meta['mec_more_info_title'] ? $event->meta['mec_more_info_title'] : 'More Information';
+
+
+   if ($event->meta['mec_more_info_target']) {
+    $target = $event->meta['mec_more_info_target'];
+   } else {
+    $target = '_self';
+   }
+
+   $target = 'target="' . $target . '"';
+
+
+   if (!$event_id) {
+    $featured_image = '/wp-content/uploads/2021/11/Events-page-header-graphic-1.png';
+    $more_info_button_text = 'Subscribe';
+    $more_info = 'https://uniteus.com/email-list';
+    $tarbet = '_blank';
+    $target = 'target="' . $target . '"';
+
+    $featured_post = [
+      'post_title' => 'Join the List',
+      'excerpt' => 'Sign up to be the first to know when we\'re hosting our next big event.',
+      'permalink' => '#',
+      'dateline' => false,
+      'thumbnail_url' => $featured_image,
+      'thumbnail_alt' => '',
+    ];
+   }
+
+
+   $event_button = '<a class="no-underline mt-6 button button-solid bg-action hover:bg-action-dark items-center gap-4" href="' . $more_info . '"' . $target . '><span class="text-white font-semibold">' . $more_info_button_text . '</span>
+            <span><svg width="18" height="14" viewBox="0 0 18 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10.6667 1.16675L16.5 7.00008M16.5 7.00008L10.6667 12.8334M16.5 7.00008L1.5 7.00008" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            </span>
+          </a>';
+
+  if (!$more_info) {
+    $event_button = '';
+  }
+
+
+$linkable_pill = false;
+
+
+$tag_name = '';
+if ($event->tags) {
+  foreach ($event->tags as $tag) {
+    $tag_name = $tag['name'];
+  }
+}
+@endphp
 <section class="header-hero relative component-section">
   <!-- Overlay -->
 

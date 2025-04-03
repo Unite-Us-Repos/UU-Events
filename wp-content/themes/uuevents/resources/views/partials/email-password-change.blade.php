@@ -194,7 +194,7 @@
                   <td valign="top" style="padding: 0px 0px 15px 0px;">
                    <table border="0" cellpadding="0" cellspacing="0" role="presentation">
                     <tr>
-                     <td valign="top" class="pc-font-alt pc-w620-fontSize-30 pc-w620-lineHeight-40" style="mso-line-height: exactly;line-height: 46px;letter-spacing: -0.6px;font-family: Arial Black, Gadget;font-size: 36px;font-weight: normal;color: #2c405a;">
+                     <td valign="top" class="pc-font-alt pc-w620-fontSize-30 pc-w620-lineHeight-40" style="mso-line-height: exactly;line-height: 46px;letter-spacing: -0.6px;font-family: Arial Black, Gadget;font-size: 36px;font-weight: normal;color: #216cff;">
                       <div><span>We received a request to change your password.</span>
                       </div>
                      </td>
@@ -408,7 +408,7 @@
                   <td align="center" valign="top" style="padding: 0px 0px 14px 0px;">
                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" align="center" style="margin-right: auto; margin-left: auto;">
                     <tr>
-                     <td valign="top" class="pc-font-alt" align="center" style="mso-line-height: exactly;line-height: 20px;letter-spacing: -0.2px;font-family: Arial, Helvetica;font-size: 14px;font-weight: normal;color: #2c405a;text-align: center;text-align-last: center;">
+                     <td valign="top" class="pc-font-alt" align="center" style="mso-line-height: exactly;line-height: 20px;letter-spacing: -0.2px;font-family: Arial, Helvetica;font-size: 14px;font-weight: normal;color: #216cff;text-align: center;text-align-last: center;">
                       <div><span>217 Broadway, Floor 8</span>
                       </div>
                       <div><span>New York, NY 10007</span>

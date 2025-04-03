@@ -860,7 +860,7 @@
         {
           "name": "Blue 900",
           "slug": "blue-900",
-          "color": "#182a44"
+          "color": "#0b1538"
         },
         {
           "name": "Blue 950",
@@ -1175,7 +1175,7 @@
         {
           "name": "Action-dark",
           "slug": "action-dark",
-          "color": "#105890"
+          "color": "#1a53c6"
         },
         {
           "name": "Action-light-blue",
@@ -1191,6 +1191,11 @@
           "name": "Pale-blue",
           "slug": "pale-blue",
           "color": "#e3ebf3"
+        },
+        {
+          "name": "Action-hover",
+          "slug": "action-hover",
+          "color": "#1a53c6"
         },
         {
           "name": "Dark",
@@ -1211,6 +1216,16 @@
           "name": "Electric-purple",
           "slug": "electric-purple",
           "color": "#9643ff"
+        },
+        {
+          "name": "Electric-purple-dark",
+          "slug": "electric-purple-dark",
+          "color": "#823cd9"
+        },
+        {
+          "name": "Electric-purple-hover",
+          "slug": "electric-purple-hover",
+          "color": "#7233c5"
         },
         {
           "name": "Morado",
