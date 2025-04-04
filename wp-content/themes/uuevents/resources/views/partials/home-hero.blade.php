@@ -395,7 +395,10 @@ if ($event->tags) {
     console.log(`Option containing ${stateValue} found at index: ${stateOptionIndex}`);
 
     if (stateOptionIndex >= 0) {
-      stateFound(stateValue, stateOptionIndex);
+      setTimeout(function () {
+        console.log(`selecting ${sValue}`);
+        stateFound(stateValue, stateOptionIndex);
+      }, 1200);
     } else {
       setTimeout(function () {
         jQuery("#mec_skin_events_63").html('No events found!');
