@@ -332,18 +332,16 @@ if ($event->tags) {
             //setEventLocation(state);
           }
         }
-        //console.log(city+state+st+county);
-        state = state
-          .replace(/\s+/g, '-')
-          .toLowerCase();
-        county = county
-          .replace(/\s+/g, '-')
-          .toLowerCase();
+        console.log(state);
 
         const stateOptionIndex = findStateOptionIndex(state);
         console.log(`Option containing ${state} found at index: ${stateOptionIndex}`);
 
         if (stateOptionIndex >= 0) {
+          state = state
+          .replace(/\s+/g, '-')
+          .toLowerCase();
+
           stateFound(state, stateOptionIndex);
         } else {
           setTimeout(function () {
@@ -396,7 +394,7 @@ if ($event->tags) {
 
     if (stateOptionIndex >= 0) {
       setTimeout(function () {
-        console.log(`selecting ${sValue}`);
+        console.log(`selecting ${stateValue}`);
         stateFound(stateValue, stateOptionIndex);
       }, 1200);
     } else {
