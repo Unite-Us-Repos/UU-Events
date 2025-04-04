@@ -5,10 +5,14 @@
 @extends('layouts.app')
 
 @section('content')
-  @while(have_posts()) @php(the_post())
-    @include('partials.content-page')
-    <!--@include('partials.event-search')-->
-  @endwhile
+<section class="component-section">
+  <div class="component-inner-section">
+    @while(have_posts()) @php(the_post())
+      @include('partials.content-page')
+      <!--@include('partials.event-search')-->
+    @endwhile
+  </div>
+</section>
 @endsection
 
 @include('partials.google-geocode')

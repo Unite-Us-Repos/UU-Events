@@ -1309,6 +1309,7 @@ ul.list-box {
     @apply absolute top-4 bottom-4 left-0 md:border-l md:border-r md:border-pale-blue
   }
 
+  .mec-searchbar-category-wrap ul li:nth-child(3) label::after,
   .mec-searchbar-category-wrap ul li:nth-child(2) label::after {
     content: '';
     @apply absolute top-4 bottom-4 right-0 md:border-l md:border-r md:border-pale-blue

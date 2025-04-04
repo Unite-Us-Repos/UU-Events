@@ -1,3 +1,4 @@
+
 @php
 $MEC = MEC::instance();
 
@@ -93,34 +94,28 @@ if ($event->tags) {
       <div class="flex flex-col items-center gap-10 lg:grid lg:grid-cols-2 lg:gap-28">
         <div class="order-1 lg:order-none">
 
-
-
           @if ($event_id)
           <div class="bg-light leading-normal mb-5 inline-flex items-center gap-4 text-sm rounded-2xl p-1 @if ($tag_name) @else px-3 @endif">
             @if ($linkable_pill)
-              <a class="no-underline" href="{{ $more_info }}">
-            @endif
-
-            @if ($tag_name)
-            <span style="line-height:19px" class="text-white inline-block uppercase bg-action font-normal text-xs rounded-full px-[15px] py-1 pill-span">
-              {{ $tag_name }}
-            </span>
-            @endif
-
-            @if ($linkable_pill)
-              </a>
+            <a class="no-underline" href="{{ $more_info }}">
+              @endif @if ($tag_name)
+              <span style="line-height:19px" class="text-white inline-block uppercase bg-action font-normal text-xs rounded-full px-[15px] py-1 pill-span">
+                {{ $tag_name }}
+              </span>
+              @endif @if ($linkable_pill)
+            </a>
             @endif
             <span class="flex flex-row">
-            @if ($linkable_pill)
+              @if ($linkable_pill)
               <a class="inline-flex no-underline" href="{{ $featured_post['permalink'] }}">
-            @endif
-            <span>Featured Event</span>
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M7.29289 14.7071C6.90237 14.3166 6.90237 13.6834 7.29289 13.2929L10.5858 10L7.29289 6.70711C6.90237 6.31658 6.90237 5.68342 7.29289 5.29289C7.68342 4.90237 8.31658 4.90237 8.70711 5.29289L12.7071 9.29289C13.0976 9.68342 13.0976 10.3166 12.7071 10.7071L8.70711 14.7071C8.31658 15.0976 7.68342 15.0976 7.29289 14.7071Z" fill="#6B7280"/>
-            </svg>
-            @if ($linkable_pill)
+                @endif
+                <span>Featured Event</span>
+                <svg width="20" height="20" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M7.29289 14.7071C6.90237 14.3166 6.90237 13.6834 7.29289 13.2929L10.5858 10L7.29289 6.70711C6.90237 6.31658 6.90237 5.68342 7.29289 5.29289C7.68342 4.90237 8.31658 4.90237 8.70711 5.29289L12.7071 9.29289C13.0976 9.68342 13.0976 10.3166 12.7071 10.7071L8.70711 14.7071C8.31658 15.0976 7.68342 15.0976 7.29289 14.7071Z" fill="#6B7280"/>
+                </svg>
+                @if ($linkable_pill)
               </a>
-            @endif
+              @endif
             </span>
           </div>
           @endif
@@ -130,41 +125,36 @@ if ($event->tags) {
           </h1>
 
           @if ($featured_post['dateline'])
-            <div class="text-2xl font-bold text-action my-5">
-              {!! $featured_post['dateline'] !!}
-            </div>
-          @endif
-
-          @if ($featured_post['post_title'])
-            <div class="text-xl">
-              {!! $featured_post['excerpt'] !!}
-            </div>
-          @endif
-
-          {!! $event_button !!}
+          <div class="text-2xl font-bold text-action my-5">
+            {!! $featured_post['dateline'] !!}
+          </div>
+          @endif @if ($featured_post['post_title'])
+          <div class="text-xl">
+            {!! $featured_post['excerpt'] !!}
+          </div>
+          @endif {!! $event_button !!}
         </div>
         <div>
-        @if($featured_post['thumbnail_url'])
-        <div class="relative h-full w-full podcast-featured-image shadow-lg rounded-xl overflow-hidden">
-          <img class="lazy w-full h-72 lg:h-full object-cover" src="{{ $featured_post['thumbnail_url'] }}" alt="{{ $featured_post['thumbnail_alt'] }}">
-        </div>
-        @endif
+          @if($featured_post['thumbnail_url'])
+          <div class="relative h-full w-full podcast-featured-image shadow-lg rounded-xl overflow-hidden">
+            <img class="lazy w-full h-72 lg:h-full object-cover" src="{{ $featured_post['thumbnail_url'] }}" alt="{{ $featured_post['thumbnail_alt'] }}">
+          </div>
+          @endif
         </div>
       </div>
     </div>
   </div>
 </section>
 
-
 <div class="section-divider relative h-5 sm:h-10 md:h-14 xl:h-20 -mb-2 -sm:mb-3 md:-mb-7 xl:-mb-10 text-light-gradient">
-<svg class="w-full h-full" width="1358" height="80" preserveAspectRatio="none" viewBox="0 0 1358 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path fill-rule="evenodd" clip-rule="evenodd" d="M0 9.85705L56.625 15.7023C113.25 21.5475 226.5 33.238 339.75 27.3928C453 21.5475 566.25 -1.83344 679.5 0.114975C792.75 2.06339 906 29.3412 1019.25 35.1865C1132.5 41.0317 1245.75 25.4444 1302.37 17.6507L1359 9.85705V80H1302.37C1245.75 80 1132.5 80 1019.25 80C906 80 792.75 80 679.5 80C566.25 80 453 80 339.75 80C226.5 80 113.25 80 56.625 80H0V9.85705Z" fill="currentColor"></path>
-  <defs>
-  <linearGradient x1="679.5" y1="0" x2="679.5" y2="80" gradientUnits="userSpaceOnUse">
-  <stop stop-color="#EEF5FC"></stop>
-  <stop offset="1" stop-color="#EEF5FC"></stop>
-  </linearGradient>
-  </defs>
+  <svg class="w-full h-full" width="1358" height="80" preserveaspectratio="none" viewbox="0 0 1358 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M0 9.85705L56.625 15.7023C113.25 21.5475 226.5 33.238 339.75 27.3928C453 21.5475 566.25 -1.83344 679.5 0.114975C792.75 2.06339 906 29.3412 1019.25 35.1865C1132.5 41.0317 1245.75 25.4444 1302.37 17.6507L1359 9.85705V80H1302.37C1245.75 80 1132.5 80 1019.25 80C906 80 792.75 80 679.5 80C566.25 80 453 80 339.75 80C226.5 80 113.25 80 56.625 80H0V9.85705Z" fill="currentColor"></path>
+    <defs>
+      <lineargradient x1="679.5" y1="0" x2="679.5" y2="80" gradientunits="userSpaceOnUse">
+        <stop stop-color="#EEF5FC"></stop>
+        <stop offset="1" stop-color="#EEF5FC"></stop>
+      </lineargradient>
+    </defs>
   </svg>
 </div>
 <section class="component-section bg-light-gradient">
@@ -174,126 +164,120 @@ if ($event->tags) {
   </div>
 </section>
 
-
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key={{ $googleApiKey }}&libraries=places"></script>
-<!--<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEWD8w_E1YlZLNJaVND481xGsLWCTdQZ4&libraries=places"></script>
--->
+<!--<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEWD8w_E1YlZLNJaVND481xGsLWCTdQZ4&libraries=places"></script> -->
 <script>
-jQuery().ready(function($) {
-  // refresh on clear address filter
-  $('#mec_sf_address_s_63').on("input", function() {
-    var inputValue = $(this).val();
-    if (! inputValue) {
-      jQuery('#mec_sf_location_63 option').eq(0).prop('selected', true).trigger('change');
-    }
-  });
-    /*
-    var searchButton = $('#mec_sf_address_s_63s');
-    var location = '';
-    var state = '';
-    var county = '';
-
-    // detect enter key
-    $(searchButton).keypress(function (e) {
-
-        if (e.which == 13) {
-
-            var inputValue = $(this).val();
-
-            location = getLocationCoordinate(inputValue);
-
-            state = location.state.replace(/\s+/g, '-').toLowerCase();
-            county = location.county.replace(/\s+/g, '-').toLowerCase();
-            redirectStatePage(state, county);
-
-        }
+  jQuery().ready(function ($) {
+    // refresh on clear address filter
+    $('#mec_sf_address_s_63').on("input", function () {
+      var inputValue = $(this).val();
+      if (!inputValue) {
+        jQuery('#mec_sf_location_63 option')
+          .eq(0)
+          .prop('selected', true)
+          .trigger('change');
+      }
     });
-    */
 
     function getLocationCoordinate(address) {
 
-        var position = {};
-        var location = {};
-        $.ajax({
-            url : 'https://maps.googleapis.com/maps/api/geocode/json',
-            type : 'GET',
-            data : {
-                address : address,
-                sensor : false,
-                key : '{{ $googleApiKey }}'
-            },
-            async : false,
-            success : function(result) {
+      var position = {};
+      var location = {};
+      $.ajax({
+        url: 'https://maps.googleapis.com/maps/api/geocode/json',
+        type: 'GET',
+        data: {
+          address: address,
+          sensor: false,
+          key: '{{ $googleApiKey }}'
+        },
+        async: false,
+        success: function (result) {
 
-                try {
-                    console.log(result.results[0]);
-                    const obj = result.results[0];
-                    var map = {
-                        street_number: ['street_number'],
-                        street_name: ['street_address', 'route'],
-                        city: ['locality', 'postal_town'],
-                        state: ['administrative_area_level_1', 'administrative_area_level_2', 'administrative_area_level_3', 'administrative_area_level_4', 'administrative_area_level_5'],
-                        county: ['administrative_area_level_2'],
-                        post_code: ['postal_code'],
-                        country: ['country']
-                    }; // Loop over map.
+          try {
+            console.log(result.results[0]);
+            const obj = result.results[0];
+            var map = {
+              street_number: ['street_number'],
+              street_name: [
+                'street_address', 'route'
+              ],
+              city: [
+                'locality', 'postal_town'
+              ],
+              state: [
+                'administrative_area_level_1', 'administrative_area_level_2', 'administrative_area_level_3', 'administrative_area_level_4', 'administrative_area_level_5'
+              ],
+              county: ['administrative_area_level_2'],
+              post_code: ['postal_code'],
+              country: ['country']
+            }; // Loop over map.
 
-                    for (var k in map) {
-                        var keywords = map[k]; // Loop over address components.
+            for (var k in map) {
+              var keywords = map[k]; // Loop over address components.
 
-                        for (var i = 0; i < obj.address_components.length; i++) {
-                        var component = obj.address_components[i];
-                        var component_type = component.types[0]; // Look for matching component type.
+              for (var i = 0; i < obj.address_components.length; i++) {
+                var component = obj.address_components[i];
+                var component_type = component.types[0]; // Look for matching component type.
 
-                        if (keywords.indexOf(component_type) !== -1) {
-                            // Append to result.
-                            location[k] = component.long_name; // Append short version.
+                if (keywords.indexOf(component_type) !== -1) {
+                  // Append to result.
+                  location[k] = component.long_name; // Append short version.
 
-                            if (component.long_name !== component.short_name) {
-                            location[k + '_short'] = component.short_name;
-                            }
-                        }
-                        }
-                    }
-
-                    //position.lat = result.results[0].geometry.location.lat;
-                    //position.lng = result.results[0].geometry.location.lng;
-                } catch(err) {
-                    position = null;
-                    location = null;
+                  if (component.long_name !== component.short_name) {
+                    location[k + '_short'] = component.short_name;
+                  }
                 }
-
+              }
             }
-        });
-        return location;
+
+            //position.lat = result.results[0].geometry.location.lat;
+            //position.lng = result.results[0].geometry.location.lng;
+          } catch (err) {
+            position = null;
+            location = null;
+          }
+
+        }
+      });
+      return location;
     }
-});
+  });
 </script>
 <script>
-jQuery().ready(function($) {
-    var selectFirstOnEnter = function(input) {  // store the original event binding function
-        var _addEventListener = (input.addEventListener) ? input.addEventListener : input.attachEvent;
-        function addEventListenerWrapper(type, listener) {  // Simulate a 'down arrow' keypress on hitting 'return' when no pac suggestion is selected, and then trigger the original listener.
-            if (type == "keydown") {
-                var orig_listener = listener;
-                listener = function(event) {
-                    var suggestion_selected = $(".pac-item-selected").length > 0;
-                    if (event.which == 13 && !suggestion_selected) {
-                        var simulated_downarrow = $.Event("keydown", {keyCode: 40, which: 40});
-                        orig_listener.apply(input, [simulated_downarrow]);
-                        if (jQuery('.mec-modal-result').length === 0) jQuery('.mec-wrap').append('<div class="mec-modal-result"></div>');
-                        jQuery('.mec-modal-result').addClass('mec-month-navigator-loading');
-                    }
-                    orig_listener.apply(input, [event]);
-                };
+  jQuery().ready(function ($) {
+    var selectFirstOnEnter = function (input) { // store the original event binding function
+      var _addEventListener = (input.addEventListener)
+        ? input.addEventListener
+        : input.attachEvent;
+
+      function addEventListenerWrapper(type, listener) { // Simulate a 'down arrow' keypress on hitting 'return' when no pac suggestion is selected, and then trigger the original listener.
+        if (type == "keydown") {
+          var orig_listener = listener;
+          listener = function (event) {
+            var suggestion_selected = $(".pac-item-selected").length > 0;
+            if (event.key === 'Enter' && !suggestion_selected) {
+              event.preventDefault();
+              var simulated_downarrow = $.Event("keydown", {
+                keyCode: 40,
+                which: 40
+              });
+              orig_listener.apply(input, [simulated_downarrow]);
+              if (jQuery('.mec-modal-result').length === 0) {
+                jQuery('.mec-wrap').append('<div class="mec-modal-result"></div>');
+              jQuery('.mec-modal-result').addClass('mec-month-navigator-loading');
+              }
             }
-            _addEventListener.apply(input, [type, listener]); // add the modified listener
+            orig_listener.apply(input, [event]);
+          };
         }
-        if (input.addEventListener) {
-            input.addEventListener = addEventListenerWrapper;
-        } else if (input.attachEvent) {
-            input.attachEvent = addEventListenerWrapper;
-        }
+        _addEventListener.apply(input, [type, listener]); // add the modified listener
+      }
+      if (input.addEventListener) {
+        input.addEventListener = addEventListenerWrapper;
+      } else if (input.attachEvent) {
+        input.attachEvent = addEventListenerWrapper;
+      }
     }
 
     var searchButton = $('#mec_sf_address_s_63');
@@ -302,117 +286,155 @@ jQuery().ready(function($) {
     var county = '';
     var setKeyDownListener = selectFirstOnEnter(searchButton[0]);
 
-    // detect enter key
-    $(searchButton).keypress(function (e) {
+    if (typeof google !== 'undefined')
+      var autocomplete = new google
+        .maps
+        .places
+        .Autocomplete(document.getElementById('mec_sf_address_s_63'));
+    autocomplete.setFields(['place_id', 'name', 'address_components', 'geometry']);
+    autocomplete.addListener('place_changed', function () {
+      const place = autocomplete.getPlace();
+      const components = place.address_components;
+      let county = '';
 
-        if (e.which == 13) {
-            var inputValue = $(this).val();
-            //selectFirstOnEnter(inputValue);
-            /*
-            var inputValue = $(this).val();
+      if (typeof components !== 'undefined') {
+        for (component of components) {
 
-            location = getLocationCoordinate(inputValue);
+          const type = component.types[0];
+          const longName = component.long_name;
+          const shortName = component.short_name;
 
-            state = location.state.replace(/\s+/g, '-').toLowerCase();
-            county = location.county.replace(/\s+/g, '-').toLowerCase();
-            redirectStatePage(state, county);
-            */
+          if (type == 'street_number') {
+            //streenumber = longName
+          }
+          if (type == 'route') {
+            //mainAddress = streenumber + " " + shortName;
+          }
+          if (type == 'sublocality_level_2') {
+            // mainAddress = mainAddress + " " + shortName;
+          }
+          if (type == 'sublocality_level_1') {
+            // mainAddress = mainAddress + " " + shortName;
+          }
+          if (type == 'locality') { // city
+            city = shortName;
+          }
+          if (type == 'postal_code') {
+            //setEventAdditionalLocation(shortName);
+          }
+          if (type == 'administrative_area_level_2') { // county
+            county = longName;
+            //setEventAdditionalLocation(county);
+          }
+          if (type == 'administrative_area_level_1') { // state
+            state = longName;
+            st = shortName;
+            //setEventLocation(state);
+          }
         }
-    });
+        //console.log(city+state+st+county);
+        state = state
+          .replace(/\s+/g, '-')
+          .toLowerCase();
+        county = county
+          .replace(/\s+/g, '-')
+          .toLowerCase();
 
+        const stateOptionIndex = findStateOptionIndex(state);
+        console.log(`Option containing ${state} found at index: ${stateOptionIndex}`);
 
-
-    if(typeof google !== 'undefined')
-        var autocomplete = new google.maps.places.Autocomplete(document.getElementById('mec_sf_address_s_63'));
-        autocomplete.setFields(['place_id', 'name', 'address_components', 'geometry']);
-        autocomplete.addListener('place_changed', function () {
-            const place = autocomplete.getPlace();
-            const components = place.address_components;
-            let county = '';
-
-            if (typeof components !== 'undefined') {
-                for (component of components) {
-
-                    const type = component.types[0];
-                    const longName = component.long_name;
-                    const shortName = component.short_name;
-
-                    if (type == 'street_number') {
-                        //streenumber = longName
-                    }
-                    if (type == 'route') {
-                        //mainAddress = streenumber + " " + shortName;
-                    }
-                    if (type == 'sublocality_level_2') {
-                       // mainAddress = mainAddress + " " + shortName;
-                    }
-                    if (type == 'sublocality_level_1') {
-                       // mainAddress = mainAddress + " " + shortName;
-                    }
-                    if (type == 'locality') { // city
-                        city = shortName;
-                    }
-                    if (type == 'postal_code') {
-                        //setEventAdditionalLocation(shortName);
-                    }
-                    if (type == 'administrative_area_level_2') { // county
-                        county = longName;
-                        //setEventAdditionalLocation(county);
-                    }
-                    if (type == 'administrative_area_level_1') { // state
-                        state = longName;
-                        st = shortName;
-                        //setEventLocation(state);
-                    }
-                }
-                //console.log(city+state+st+county);
-                state = state.replace(/\s+/g, '-').toLowerCase();
-                county = county.replace(/\s+/g, '-').toLowerCase();
-                redirectStatePage(state, county);
-            }
-        });
-
-
-});
-
-function redirectStatePage(state, county) {
-        stateMatch = state.replace(/-/gi, ' ');
-
-    console.log('selecting...' + stateMatch + ' ' + county);
-    let stateFound = false;
-    jQuery('#mec_sf_location_63 option').filter(function(index) {
-      var text = jQuery(this).text().toLowerCase();
-      text = text.replace('unite ', '');
-      text = text.replace(/[0-9]/g, '');
-      text = text.replace('(', '');
-      text = text.replace(')', '');
-     console.log (text + ' --- ' + stateMatch);
-      if (text == stateMatch) {
-        setTimeout(function() {
-          jQuery('#mec_sf_location_63 option').eq(index).prop('selected', true).trigger('change');
-        }, 1000);
-        stateFound = true;
-        console.log('found ' + state);
+        if (stateOptionIndex >= 0) {
+          stateFound(state, stateOptionIndex);
+        } else {
+          setTimeout(function () {
+            jQuery("#mec_skin_events_63").html('No events found!');
+          }, 1200);
+        }
       }
     });
-    console.log(stateFound);
-    if (!stateFound) {
-      setTimeout(function() {
-        jQuery("#mec_skin_events_63").html('No events found!');
-      }, 1500);
-    }
+
+  });
+
+  function stateFound(state, index) {
+    let stateFound = false;
+
     const nextURL = '/?state=' + state;
     const nextTitle = '';
-    const nextState = { additionalInformation: 'Updated the URL with JS' };
-    window.history.replaceState(nextState, nextTitle, nextURL);
+    const nextState = {
+      additionalInformation: 'Updated the URL with JS'
+    };
+    window
+      .history
+      .replaceState(nextState, nextTitle, nextURL);
 
-}
+    setTimeout(function () {
+      jQuery('#mec_sf_location_63 option')
+        .eq(index)
+        .prop('selected', true)
+        .trigger('change');
+    }, 1000);
 
+    if (index < 0) {
+    setTimeout(function () {
+        jQuery("#mec_skin_events_63").html('No events found!');
+      }, 1200);
+    }
+  }
 
-@isset ($_GET['state'])
-setTimeout(function() {
-  redirectStatePage(@php echo '"' . strtolower($_GET['state']) . '"' @endphp, '');
-}, 300);
-@endisset
+  const urlString = window.location.href; // Get the full URL
+  const url = new URL(urlString);
+  const params = new URLSearchParams(url.search);
+
+  // Check if state param exists
+  const hasState = params.has('state');
+
+  if (hasState) {
+    const stateValue = params.get('state');
+
+    const stateOptionIndex = findStateOptionIndex(stateValue);
+    console.log(`Option containing ${stateValue} found at index: ${stateOptionIndex}`);
+
+    if (stateOptionIndex >= 0) {
+      setTimeout(function () {
+        console.log(`selecting ${sValue}`);
+        stateFound(stateValue, stateOptionIndex);
+      }, 1200);
+    } else {
+      setTimeout(function () {
+        jQuery("#mec_skin_events_63").html('No events found!');
+      }, 1200);
+    }
+
+    // Get the value of the found option
+    if (stateOptionIndex !== -1) {
+      const selectElement = document.getElementById('mec_sf_location_63');
+      console.log(`Value of the state option: ${selectElement.options[stateOptionIndex].value}`);
+    }
+  }
+
+  // Function to find the option containing a specific state in the select element
+  function findStateOptionIndex(state) {
+    // Target the specific select element by its ID
+    const selectElement = document.getElementById('mec_sf_location_63');
+
+    // Check if the select element exists
+    if (!selectElement) {
+      console.error("Select element with ID 'mec_sf_location_63' not found");
+      return -1;
+    }
+
+    // Get all options from the select element
+    const options = selectElement.options;
+
+    // Loop through each option
+    for (let i = 0; i < options.length; i++) {
+      // Convert text to lowercase and check if it contains the state name
+      if (options[i].textContent.toLowerCase().includes(state.toLowerCase())) {
+        return i; // Return the index if found
+      }
+    }
+
+    // Return -1 if not found
+    return -1;
+  }
 </script>
-
