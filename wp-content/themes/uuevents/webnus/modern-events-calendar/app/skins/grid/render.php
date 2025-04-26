@@ -2,7 +2,12 @@
     .tw-mec-label-normal.mec-labels-group {
         margin-top: 0 !important;
     }
-    </style>
+    .mec-labels-group svg {
+        width: 20px;
+        height: 20px;
+        flex-shrink: 0;
+    }
+</style>
 <?php
 /** no direct access **/
 defined('MECEXEC') or die();
@@ -52,6 +57,13 @@ if($this->style == 'colorful')
         $event_start_date = !empty($event->date['start']['date']) ? $event->date['start']['date'] : '';
         $mec_data = $this->display_custom_data($event);
         $custom_data_class = !empty($mec_data) ? 'mec-custom-data' : '';
+
+        // get event custom data 'event location'
+        $event_custom_location = isset($event->data->meta['mec_fields_1']) ? $event->data->meta['mec_fields_1'] : '';
+
+        // some events have location name in custom data with 'location' and nothing else
+        // so we need to remove 'location' from the string
+        $event_custom_location = str_replace('location', '', $event_custom_location);
 
         if (!$location['thumbnail']) {
             $event_fallback_image = get_field('event_fallback_image', 'option');
@@ -124,8 +136,13 @@ if (isset($event->data->labels)) {
 <path fill-rule="evenodd" clip-rule="evenodd" d="M17.6013 10C17.6013 14.4183 14.1987 18 10.0013 18C5.804 18 2.40137 14.4183 2.40137 10C2.40137 5.58172 5.804 2 10.0013 2C14.1987 2 17.6013 5.58172 17.6013 10ZM11.9013 7C11.9013 8.10457 11.0507 9 10.0013 9C8.95201 9 8.10135 8.10457 8.10135 7C8.10135 5.89543 8.95201 5 10.0013 5C11.0507 5 11.9013 5.89543 11.9013 7ZM10.0013 11C8.08463 11 6.43311 12.195 5.68241 13.9157C6.72768 15.192 8.27487 16 10.0013 16C11.7278 16 13.2749 15.1921 14.3202 13.9158C13.5695 12.195 11.918 11 10.0013 11Z" fill="#2F71F4"/>
 </svg>';
 }
+                    // check if the label is 'In-Person' and if the event has a custom location
+                    // if so, replace the label name with the custom location
+                    if (str_contains($label['name'], 'In-Person') && $event_custom_location) {
+                        $label['name'] = $event_custom_location;
+                    }
 
-                    echo '<span class="mec-labels-normal shrink-0"><span data-style="Normal" class="tw-mec-label-normal mec-labels-group relative z-20" style="background-color:">'
+                    echo '<span class="mec-labels-normal"><span data-style="Normal" class="tw-mec-label-normal mec-labels-group relative z-20">'
                     . $location_icon . str_replace('Audience | ', '', $label['name']) . '</span></span>';
                 }
             }
