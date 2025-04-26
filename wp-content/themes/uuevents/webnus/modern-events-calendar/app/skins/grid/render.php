@@ -65,6 +65,9 @@ if($this->style == 'colorful')
         // so we need to remove 'location' from the string
         $event_custom_location = str_replace('location', '', $event_custom_location);
 
+        // hide event time
+        $hide_event_time = $event->data->meta['mec_hide_time'] ?? false;
+
         if (!$location['thumbnail']) {
             $event_fallback_image = get_field('event_fallback_image', 'option');
             if ($event_fallback_image) {
@@ -106,15 +109,21 @@ if($this->style == 'colorful')
 
                    <?php if($this->localtime) echo MEC_kses::full($this->main->module('local-time.type2', array('event' => $event))); ?>
 <div class="flex flex-wrap gap-2">
+
+            <?php // show event time only if $hide_event_time is not set ?>
+            <?php if (!$hide_event_time) : ?>
                 <div class="inline-flex mt-4 gap-2 px-2 py-1 justify-center items-start no-underline text-brand hover:shadow-inner border-2 border-pale-blue-dark rounded-[16px]">
                     <span>
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M10.0014 18C14.1987 18 17.6014 14.4183 17.6014 10C17.6014 5.58172 14.1987 2 10.0014 2C5.804 2 2.40137 5.58172 2.40137 10C2.40137 14.4183 5.804 18 10.0014 18ZM10.9514 6C10.9514 5.44772 10.526 5 10.0014 5C9.47669 5 9.05136 5.44772 9.05136 6V10C9.05136 10.2652 9.15145 10.5196 9.32961 10.7071L12.0166 13.5355C12.3876 13.9261 12.9891 13.9261 13.3601 13.5355C13.7311 13.145 13.7311 12.5118 13.3601 12.1213L10.9514 9.58579V6Z" fill="#216CFF"/>
-</span>
-        <span class="text-brand text-sm block">
-                <?php if($this->include_events_times) echo str_replace('mec-time-details', '', MEC_kses::element($this->main->display_time($start_time, $end_time))); ?>
-        </span>
-            </div>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M10.0014 18C14.1987 18 17.6014 14.4183 17.6014 10C17.6014 5.58172 14.1987 2 10.0014 2C5.804 2 2.40137 5.58172 2.40137 10C2.40137 14.4183 5.804 18 10.0014 18ZM10.9514 6C10.9514 5.44772 10.526 5 10.0014 5C9.47669 5 9.05136 5.44772 9.05136 6V10C9.05136 10.2652 9.15145 10.5196 9.32961 10.7071L12.0166 13.5355C12.3876 13.9261 12.9891 13.9261 13.3601 13.5355C13.7311 13.145 13.7311 12.5118 13.3601 12.1213L10.9514 9.58579V6Z" fill="#216CFF"/>
+                    </span>
+
+                    <span class="text-brand text-sm block">
+                            <?php if($this->include_events_times) echo str_replace('mec-time-details', '', MEC_kses::element($this->main->display_time($start_time, $end_time))); ?>
+                    </span>
+
+                </div>
+            <?php endif; ?>
 
             <div class="flex flex-wrap gap-2 mt-4 w-full">
 <?php
