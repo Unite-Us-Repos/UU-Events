@@ -42,9 +42,6 @@ if($this->style == 'colorful')
         foreach($this->events as $date):
         foreach($date as $event):
 
-
-
-
         echo '<div class="relative group bg-white border border-light shadow-lg rounded-lg overflow-hidden">';
 
         $location_id = $this->main->get_master_location_id($event);
