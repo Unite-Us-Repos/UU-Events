@@ -85,6 +85,16 @@ if($this->style == 'colorful')
 </svg>
 ';
 ?>
+<?php
+// get the timezone abbreviation
+$the_timezone = $event->data->meta['mec_timezone'] ?? $this->main->get_timezone();
+$event_timezone = $event->data->meta['mec_timezone'];
+$site_timezone = wp_timezone_string();
+if ($the_timezone == 'global') {
+    $the_timezone = $site_timezone;
+}
+$timezone_abbr = getTimezoneAbbreviation($the_timezone);
+// ?>
             <div class="p-2"></div>
             <div class="absolute w-full top-0 p-2 bg-action rounded-t-lg z-20"></div>
             <?php if ($event->data->thumbnails['large']) :?>
@@ -103,8 +113,6 @@ if($this->style == 'colorful')
 
 
                 </h3>
-
-                   <?php if($this->localtime) echo MEC_kses::full($this->main->module('local-time.type2', array('event' => $event))); ?>
 <div class="flex flex-wrap gap-2">
 
             <?php // show event time only if $hide_event_time is not set ?>
@@ -115,8 +123,9 @@ if($this->style == 'colorful')
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M10.0014 18C14.1987 18 17.6014 14.4183 17.6014 10C17.6014 5.58172 14.1987 2 10.0014 2C5.804 2 2.40137 5.58172 2.40137 10C2.40137 14.4183 5.804 18 10.0014 18ZM10.9514 6C10.9514 5.44772 10.526 5 10.0014 5C9.47669 5 9.05136 5.44772 9.05136 6V10C9.05136 10.2652 9.15145 10.5196 9.32961 10.7071L12.0166 13.5355C12.3876 13.9261 12.9891 13.9261 13.3601 13.5355C13.7311 13.145 13.7311 12.5118 13.3601 12.1213L10.9514 9.58579V6Z" fill="#216CFF"/>
                     </span>
 
-                    <span class="text-brand text-sm block">
+                    <span class="text-brand text-sm flex flex-wrap gap-2 items-center">
                             <?php if($this->include_events_times) echo str_replace('mec-time-details', '', MEC_kses::element($this->main->display_time($start_time, $end_time))); ?>
+                            <span><?php echo $timezone_abbr; ?></span>
                     </span>
 
                 </div>
