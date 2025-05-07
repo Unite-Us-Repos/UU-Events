@@ -455,11 +455,11 @@ body .map-wrap {
   @apply py-2
 }
 .button-solid {
-  @apply text-white bg-action border-action 
+  @apply text-white bg-action border-action
   hover:border-action-hover hover:bg-action-hover hover:text-white;
 }
 .button-solid-purple {
-  @apply text-white bg-electric-purple border-electric-purple 
+  @apply text-white bg-electric-purple border-electric-purple
   hover:bg-electric-purple-hover hover:border-electric-purple-hover hover:text-white;
 }
 .button-solid-white {
@@ -472,7 +472,7 @@ body .map-wrap {
   hover:!text-white hover:bg-action hover:border-action ;
 }
 .button-hollow-purple {
-  @apply text-electric-purple bg-transparent border-electric-purple 
+  @apply text-electric-purple bg-transparent border-electric-purple
   hover:bg-electric-purple hover:border-electric-purple hover:text-white;
 }
 .button-hollow-purple img {
@@ -498,7 +498,7 @@ body .map-wrap {
 .button-hollow-purple:hover {
   @apply bg-electric-purple border-electric-purple !text-white;
 }
-.button svg path, 
+.button svg path,
 .button img {
   fill: #fff;
   opacity: 0.25;
@@ -1304,12 +1304,12 @@ ul.list-box {
     @apply text-brand
   }
 
-  .mec-searchbar-category-wrap ul li:nth-child(2) label::before {
+  .mec-searchbar-category-wrap ul li:nth-child(2) label::before,
+  .mec-searchbar-category-wrap ul li:nth-child(4) label::before {
     content: '';
     @apply absolute top-4 bottom-4 left-0 md:border-l md:border-r md:border-pale-blue
   }
 
-  .mec-searchbar-category-wrap ul li:nth-child(3) label::after,
   .mec-searchbar-category-wrap ul li:nth-child(2) label::after {
     content: '';
     @apply absolute top-4 bottom-4 right-0 md:border-l md:border-r md:border-pale-blue
@@ -1801,7 +1801,7 @@ select.gt_selector {
   .content-video-header .video-wrapper iframe {
     min-height: 320px;
   }
-} 
+}
 
 
 @media only screen and (min-width: 1024px) {
