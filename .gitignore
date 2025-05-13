@@ -12,10 +12,6 @@
 # Track theme folder and its contents
 !/wp-content/themes/uuevents/**
 
-# Track MEC plugin folder and its contents
-!/wp-content/plugins/modern-events-calendar/app/skins/**
-!/wp-content/plugins/modern-events-calendar/app/liberaries/**
-
 # But ignore node_modules and vendor within theme
 /wp-content/themes/uuevents/._*
 /wp-content/themes/uuevents/**/._*
