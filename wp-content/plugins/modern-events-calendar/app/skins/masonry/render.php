@@ -112,9 +112,9 @@ $reason_for_cancellation = isset($this->skin_options['reason_for_cancellation'])
                                 <?php if(isset($location['name']) and trim($location['name'])): ?>
                                 <div class="mec-masonry-col6">
                                     <div class="mec-event-location">
-                                        <i class="mec-sl-location-pin mec-color"></i>
+                                        <?php echo $this->icons->display('location-pin'); ?>
                                         <div class="mec-event-location-det">
-                                            <h6 class="mec-location"><?php echo (isset($location['name']) ? esc_html($location['name']) : ''); ?></h6>
+                                            <h6 class="mec-location"><?php echo esc_html($location['name']); ?></h6>
                                             <address class="mec-events-address"><span class="mec-address"><?php echo (isset($location['address']) ? esc_html($location['address']) : ''); ?></span></address>
                                         </div>
                                     </div>

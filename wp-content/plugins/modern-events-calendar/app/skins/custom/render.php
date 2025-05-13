@@ -50,7 +50,7 @@ $with_css = $is_load_more ? false : true;
                         $post = $event->data->post;
 
                         if($this->count == '1' and $this->month_divider and $month_id != $current_month_divider): $current_month_divider = $month_id; ?>
-                            <div class="mec-month-divider" data-toggle-divider="mec-toggle-<?php echo date('Ym', strtotime($date)); ?>-<?php echo esc_attr($this->id); ?>"><span><?php echo esc_html($this->main->date_i18n('F Y', strtotime($date))); ?></span><i class="mec-sl-arrow-down"></i></div>
+                            <div class="mec-month-divider" data-toggle-divider="mec-toggle-<?php echo date('Ym', strtotime($date)); ?>-<?php echo esc_attr($this->id); ?>"><h5 style="display: inline;"><?php echo esc_html($this->main->date_i18n('F Y', strtotime($date))); ?></h5><i class="mec-sl-arrow-down"></i></div>
                         <?php endif;
 
                         echo ($rcount == 1) ? '<div class="row">' : '';
@@ -86,7 +86,7 @@ $with_css = $is_load_more ? false : true;
 	</div>
 </div>
 <?php
-$map_eventss = array();
+$map_eventss = [];
 if(isset($map_events) && !empty($map_events))
 {
     foreach($map_events as $key => $value)
@@ -130,7 +130,7 @@ if(isset($map_eventss) and !empty($map_eventss))
     $map_data->sf_status = null;
     $map_data->main = $this->main;
 
-    $map_javascript = apply_filters('mec_map_load_script', $map_javascript, $map_data, $settings);
+    $map_javascript = apply_filters('mec_map_load_script', $map_javascript, $map_data, $settings,true);
 
     // Include javascript code into the page
     if($this->main->is_ajax()) echo MEC_kses::full($map_javascript);

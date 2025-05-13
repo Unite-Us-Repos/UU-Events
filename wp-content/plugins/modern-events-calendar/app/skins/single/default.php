@@ -2,9 +2,6 @@
 
 use MEC\SingleBuilder\Widgets\EventOrganizers\EventOrganizers;
 
-/** no direct access **/
-defined('MECEXEC') or die();
-
 /** @var MEC_skin_single $this */
 /** @var boolean $fes */
 /** @var stdClass $event */
@@ -14,11 +11,11 @@ defined('MECEXEC') or die();
 /** @var string $occurrence_end_date */
 /** @var array $occurrence_end_full */
 
-wp_enqueue_style('mec-lity-style', $this->main->asset('packages/lity/lity.min.css'));
-wp_enqueue_script('mec-lity-script', $this->main->asset('packages/lity/lity.min.js'));
+wp_enqueue_style('mec-lity-style');
+wp_enqueue_script('mec-lity-script');
 
 $booking_options = get_post_meta(get_the_ID(), 'mec_booking', true);
-if(!is_array($booking_options)) $booking_options = array();
+if(!is_array($booking_options)) $booking_options = [];
 
 // Compatibility with Rank Math
 $rank_math_options = '';
@@ -30,7 +27,9 @@ $bookings_limit_for_users = $booking_options['bookings_limit_for_users'] ?? 0;
 $more_info = (isset($event->data->meta['mec_more_info']) and trim($event->data->meta['mec_more_info']) and $event->data->meta['mec_more_info'] != 'http://') ? $event->data->meta['mec_more_info'] : '';
 if(isset($event->date) and isset($event->date['start']) and isset($event->date['start']['timestamp'])) $more_info = MEC_feature_occurrences::param($event->ID, $event->date['start']['timestamp'], 'more_info', $more_info);
 
-$more_info_target = MEC_feature_occurrences::param($event->ID, $event->date['start']['timestamp'], 'more_info_target', (isset($event->data->meta['mec_more_info_target']) ? $event->data->meta['mec_more_info_target'] : '_self'));
+$more_info_target = MEC_feature_occurrences::param($event->ID, $event->date['start']['timestamp'], 'more_info_target', $event->data->meta['mec_more_info_target'] ?? '');
+if(!trim($more_info_target) && isset($settings['fes_event_link_target']) && trim($settings['fes_event_link_target'])) $more_info_target = $settings['fes_event_link_target'];
+
 $more_info_title = MEC_feature_occurrences::param($event->ID, $event->date['start']['timestamp'], 'more_info_title', ((isset($event->data->meta['mec_more_info_title']) and trim($event->data->meta['mec_more_info_title'])) ? $event->data->meta['mec_more_info_title'] : esc_html__('Read More', 'mec')));
 
 // Event Cost
@@ -74,8 +73,10 @@ $banner_module = $this->can_display_banner_module($event);
 			<div class="mec-event-content">
                 <?php if(!$banner_module): ?>
                     <?php echo MEC_kses::element($this->main->display_cancellation_reason($event, $this->display_cancellation_reason)); ?>
-                    <h1 class="mec-single-title"><?php the_title(); ?></h1>
+                    <h1 class="mec-single-title"><?php echo apply_filters('mec_occurrence_event_title', get_the_title(), $event); ?></h1>
                 <?php endif; ?>
+
+                <?php do_action('mec_advanced_map_customize_title_go_to',$event); ?>
 
 				<div class="mec-single-event-description mec-events-content"><?php the_content(); ?></div>
                 <?php echo MEC_kses::full($this->display_trailer_url($event)); ?>
@@ -93,12 +94,12 @@ $banner_module = $this->can_display_banner_module($event);
 			<div class="mec-event-info-mobile"></div>
 
 			<!-- Export Module -->
-			<?php echo MEC_kses::full($this->main->module('export.details', array('event' => $event))); ?>
+			<?php echo MEC_kses::full($this->main->module('export.details', array('event' => $event, 'icons' => $this->icons))); ?>
 
 			<!-- Countdown module -->
 			<?php if($this->main->can_show_countdown_module($event)): ?>
             <div class="mec-events-meta-group mec-events-meta-group-countdown">
-                <?php echo MEC_kses::full($this->main->module('countdown.details', array('event' => $this->events))); ?>
+                <?php echo MEC_kses::full($this->main->module('countdown.details', array('event' => $this->events, 'icons' => $this->icons))); ?>
             </div>
 			<?php endif; ?>
 
@@ -108,71 +109,100 @@ $banner_module = $this->can_display_banner_module($event);
 			<?php do_action('mec_before_booking_form', get_the_ID()); ?>
 
 			<!-- Booking Module -->
-			<?php if(!empty($event->date)):
-			   if($this->main->is_sold($event) and count($event->dates) <= 1): ?>
-				  <?php
-				  $event_id        = $event->ID;
-				  $dates = (isset($event->dates) ? $event->dates : array($event->date));
-				  $occurrence_time = ($dates[0]['start']['timestamp'] ?? strtotime($dates[0]['start']['date']));
-				  $tickets         = get_post_meta( $event_id, 'mec_tickets', true );
-				  $book         = $this->getBook();
-				  $availability = $book->get_tickets_availability( $event_id, $occurrence_time );
+			<?php if(!empty($event->date)): ?>
+			    <?php if($this->main->is_sold($event) and count($event->dates) <= 1): ?>
+			        <?php
+			        $event_id = $event->ID;
+			        $category_ids = array_map(function($category) { return $category['id']; }, $event->data->categories);
 
-				  $sales_end                   = 0;
-                  $ticket_limit                = -1;
-				  $ticket_sales_ended_messages = array();
-				  $stop_selling                = '';
-				  foreach ( $tickets as $ticket_id => $ticket ) {
+			        $settings_serialized = get_option('mec_options', false);
+			        $category_restricted = false;
+			        if ($settings_serialized !== false) {
+			            $settings = maybe_unserialize($settings_serialized);
+			            if (isset($settings['settings']['pmp_booking']) && is_array($settings['settings']['pmp_booking'])) {
+			                foreach ($category_ids as $category_id) {
+			                    if (in_array($category_id, $settings['settings']['pmp_booking'][2])) {
+			                        $category_restricted = true;
+			                        break;
+			                    }
+			                }
+			            }
+			        }
 
-					 $ticket_limit = $availability[$ticket_id] ?? -1;
-					 $ticket_name  = isset( $ticket['name'] ) ? '<strong>' . esc_html($ticket['name']) . '</strong>' : '';
-
-					 $key          = 'stop_selling_' . $ticket_id;
-					 if ( !isset( $availability[ $key ] ) ) {
-
-						continue;
-					 }
-
-					 if ( true === $availability[ $key ] ) {
-
-						$sales_end++;
-						$ticket_sales_ended_messages[ $ticket_id ] = sprintf( esc_html__( 'The %s ticket sales has ended!', 'mec' ), $ticket_name );
-					 }
-				  }
-
-				  $tickets_sales_end = false;
-				  if(count($tickets) === $sales_end){
-
-					 $tickets_sales_end = true;
-				  }
-
-				  if ( !empty( $ticket_sales_ended_messages ) ):
-
-					 foreach ( $ticket_sales_ended_messages as $ticket_id => $message ) :
-
-						?>
-						<div id="mec-ticket-message-<?php echo esc_attr($ticket_id); ?>" class="mec-ticket-unavailable-spots mec-error <?php echo( $ticket_limit == '0' ? '' : 'mec-util-hidden' ); ?>"><div><?php echo MEC_kses::element($message); ?></div></div>
-					 <?php
-					 endforeach;
-					 ?>
-
-				  <?php else: ?>
-					 <div id="mec-events-meta-group-booking-<?php echo esc_attr($this->uniqueid); ?>" class="mec-sold-tickets warning-msg"><?php esc_html_e( 'Sold out!', 'mec' );do_action( 'mec_booking_sold_out', $event, null, null, array( $event->date ) ); ?> </div>
-				  <?php endif; ?>
-			<?php elseif($this->main->can_show_booking_module($event)): ?>
-				<?php $data_lity_class = ''; if(isset($settings['single_booking_style']) and $settings['single_booking_style'] == 'modal' ) $data_lity_class = 'lity-hide '; ?>
-				<div id="mec-events-meta-group-booking-<?php echo esc_attr($this->uniqueid); ?>" class="<?php echo esc_attr($data_lity_class); ?> mec-events-meta-group mec-events-meta-group-booking">
-					<?php
-					if(isset($settings['booking_user_login']) and $settings['booking_user_login'] == '1' and !is_user_logged_in() ) {
-						echo do_shortcode('[MEC_login]');
-					} elseif (!is_user_logged_in() and isset($booking_options['bookings_limit_for_users']) and $booking_options['bookings_limit_for_users'] == '1' ) {
-						echo do_shortcode('[MEC_login]');
-					} else {
-						echo MEC_kses::full($this->main->module('booking.default', array('event' => $this->events)));
-					}
-					?>
-				</div>
-			<?php endif; endif; ?>
+			        $dates = (isset($event->dates) ? $event->dates : array($event->date));
+			        $occurrence_time = ($dates[0]['start']['timestamp'] ?? strtotime($dates[0]['start']['date']));
+			        $tickets = get_post_meta($event_id, 'mec_tickets', true);
+			        $book = $this->getBook();
+			        $availability = $book->get_tickets_availability($event_id, $occurrence_time);
+			        $sales_end = 0;
+			        $ticket_limit = -1;
+			        $ticket_sales_ended_messages = [];
+			        $stop_selling = '';
+			        foreach ($tickets as $ticket_id => $ticket) {
+			            $ticket_limit = $availability[$ticket_id] ?? -1;
+			            $ticket_name = isset($ticket['name']) ? '<strong>' . esc_html($ticket['name']) . '</strong>' : '';
+			            $key = 'stop_selling_' . $ticket_id;
+			            if (!isset($availability[$key])) continue;
+			            if (true === $availability[$key]) {
+			                $sales_end++;
+			                $ticket_sales_ended_messages[$ticket_id] = sprintf($availability['stop_selling_' . $ticket_id . '_message'], $ticket_name) ?? 			sprintf(esc_html__('The %s ticket sales has ended!', 'mec'), $ticket_name);
+			            }
+			        }
+			        $tickets_sales_end = (count($tickets) === $sales_end);
+			        ?>
+			        <?php if (!empty($ticket_sales_ended_messages)): ?>
+			            <?php foreach ($ticket_sales_ended_messages as $ticket_id => $message): ?>
+			                <div id="mec-ticket-message-<?php echo esc_attr($ticket_id); ?>" class="mec-ticket-unavailable-spots mec-error <?php echo 			($ticket_limit == '0' ? '' : 'mec-util-hidden'); ?>">
+			                    <div><?php echo MEC_kses::element($message); ?></div>
+			                </div>
+			            <?php endforeach; ?>
+			        <?php else: ?>
+			            <?php if ($category_restricted): ?>
+			                <div class="mec-event-restricted warning-msg">
+			                    <?php
+			                    if (function_exists('pmpro_get_no_access_message')) {
+			                        $restricted_message = pmpro_get_no_access_message('', array(2));
+			                        echo $restricted_message;
+			                    } else {
+			                        esc_html_e('This event is restricted due to category settings!', 'mec');
+			                    }
+			                    ?>
+			                </div>
+			            <?php else: ?>
+			                <div id="mec-events-meta-group-booking-<?php echo esc_attr($this->uniqueid); ?>" class="mec-sold-tickets warning-msg">
+			                    <?php esc_html_e('Sold out!', 'mec'); ?>
+			                    <?php do_action('mec_booking_sold_out', $event, null, null, array($event->date)); ?>
+			                </div>
+			                <?php if (shortcode_exists('MEC_waiting_list')): ?>
+			                    <?php echo do_shortcode('[MEC_waiting_list]'); ?>
+			                <?php endif; ?>
+			            <?php endif; ?>
+			        <?php endif; ?>
+			    <?php elseif ($this->main->can_show_booking_module($event)): ?>
+			        <?php $data_lity_class = ''; if (isset($settings['single_booking_style']) && $settings['single_booking_style'] == 'modal') $data_lity_class 			= 'lity-hide '; ?>
+			        <div id="mec-events-meta-group-booking-<?php echo esc_attr($this->uniqueid); ?>" class="<?php echo esc_attr($data_lity_class); ?> 			mec-events-meta-group mec-events-meta-group-booking">
+			            <?php
+			            if ($category_restricted): ?>
+			                <div class="mec-event-restricted warning-msg">
+			                    <?php
+			                    if (function_exists('pmpro_get_no_access_message')) {
+			                        $restricted_message = pmpro_get_no_access_message('', array(2));
+			                        echo $restricted_message;
+			                    } else {
+			                        esc_html_e('This event is restricted due to category settings!', 'mec');
+			                    }
+			                    ?>
+			                </div>
+			            <?php elseif (isset($settings['booking_user_login']) && $settings['booking_user_login'] == '1' && !is_user_logged_in()): ?>
+			                <?php echo do_shortcode('[MEC_login]'); ?>
+			            <?php elseif (!is_user_logged_in() && isset($booking_options['bookings_limit_for_users']) && $booking_options			['bookings_limit_for_users'] == '1'): ?>
+			                <?php echo do_shortcode('[MEC_login]'); ?>
+			            <?php else: ?>
+			                <?php echo MEC_kses::full($this->main->module('booking.default', array('event' => $this->events, 'icons' => $this->icons))); ?>
+			            <?php endif; ?>
+			        </div>
+			    <?php endif; ?>
+			<?php endif; ?>
 
 			<!-- Tags -->
 			<div class="mec-events-meta-group mec-events-meta-group-tags">
@@ -194,7 +224,7 @@ $banner_module = $this->can_display_banner_module($event);
 					?>
 
 					<!-- Local Time Module -->
-					<?php echo MEC_kses::full($this->main->module('local-time.details', array('event' => $event))); ?>
+					<?php echo MEC_kses::full($this->main->module('local-time.details', array('event' => $event, 'icons' => $this->icons))); ?>
 
 					<?php
 					// Event Cost
@@ -202,7 +232,7 @@ $banner_module = $this->can_display_banner_module($event);
 					{
 						?>
 						<div class="mec-event-cost">
-							<i class="mec-sl-wallet"></i>
+							<?php echo $this->icons->display('wallet'); ?>
 							<h3 class="mec-cost"><?php echo esc_html($this->main->m('cost', esc_html__('Cost', 'mec'))); ?></h3>
 							<dl><dd class="mec-events-event-cost"><?php echo MEC_kses::element($cost); ?></dd></dl>
 						</div>
@@ -220,7 +250,7 @@ $banner_module = $this->can_display_banner_module($event);
 					{
 						?>
 						<div class="mec-event-more-info">
-							<i class="mec-sl-info"></i>
+							<?php echo $this->icons->display('info'); ?>
 							<h3 class="mec-cost"><?php echo esc_html($this->main->m('more_info_link', esc_html__('More Info', 'mec'))); ?></h3>
 							<dl><dd class="mec-events-event-more-info"><a class="mec-more-info-button mec-color-hover" target="<?php echo esc_attr($more_info_target); ?>" href="<?php echo esc_url($more_info); ?>"><?php echo esc_html($more_info_title); ?></a></dd></dl>
 						</div>
@@ -251,8 +281,8 @@ $banner_module = $this->can_display_banner_module($event);
 					{
 						?>
 						<div class="mec-single-event-category">
-							<i class="mec-sl-folder"></i>
-							<dt><?php echo esc_html($this->main->m('taxonomy_categories', esc_html__('Category', 'mec'))); ?></dt>
+							<?php echo $this->icons->display('folder'); ?>
+							<h3 class="mec-events-single-section-title mec-category"><?php echo esc_html($this->main->m('taxonomy_categories', esc_html__('Category', 'mec'))); ?></h3>
 							<dl>
 							<?php
 							foreach($event->data->categories as $category)
@@ -281,43 +311,48 @@ $banner_module = $this->can_display_banner_module($event);
 					{
 						?>
 						<div class="mec-single-event-organizer">
+							<?php echo $this->icons->display('people'); ?>
+                            <h3 class="mec-events-single-section-title"><?php echo esc_html($this->main->m('taxonomy_organizer', esc_html__('Organizer', 'mec'))); ?></h3>
+
 							<?php if(isset($organizer['thumbnail']) and trim($organizer['thumbnail'])): ?>
 								<img class="mec-img-organizer" src="<?php echo esc_url($organizer['thumbnail']); ?>" alt="<?php echo (isset($organizer['name']) ? esc_attr($organizer['name']) : ''); ?>">
 							<?php endif; ?>
-                            <h3 class="mec-events-single-section-title"><?php echo esc_html($this->main->m('taxonomy_organizer', esc_html__('Organizer', 'mec'))); ?></h3>
                             <dl>
 							<?php if(isset($organizer['thumbnail'])): ?>
 								<dd class="mec-organizer">
-									<?php if( is_plugin_active('mec-advanced-organizer/mec-advanced-organizer.php') && $settings['advanced_organizer']['organizer_enable_link_section_title']??false ): ?>
-                                        <a href="<?php echo home_url().'/mec-organizer-details-single-page/?fesection=organizer&feparam='.$organizer['id']; ?>">
-                                            <i class="mec-sl-home"></i>
+									<?php if( is_plugin_active('mec-advanced-organizer/mec-advanced-organizer.php') && ( $settings['advanced_organizer']['organizer_enable_link_section_title'] ?? false ) ){
+                                        $skin = new \MEC_Advanced_Organizer\Core\Lib\MEC_Advanced_Organizer_Lib_Skin();
+                                        $organizer_link = $skin->single_page_url($organizer['id']);
+                                        ?>
+                                        <a href="<?php echo $organizer_link;?>" target="<?php echo $settings['advanced_organizer']['organizer_link_target']; ?>">
+                                            <i class="mec-sl-link"></i>
                                             <h6><?php echo (isset($organizer['name']) ? esc_html($organizer['name']) : ''); ?></h6>
                                         </a>
-                                    <?php else: ?>
-                                        <i class="mec-sl-home"></i>
+                                    <?php }else{ ?>
+										<?php echo $this->icons->display('people'); ?>
                                         <h6><?php echo (isset($organizer['name']) ? esc_html($organizer['name']) : ''); ?></h6>
-                                    <?php endif; ?>
+                                    <?php } ?>
                                 </dd>
 							<?php endif;
 							if(isset($organizer['tel']) && !empty($organizer['tel'])): ?>
 								<dd class="mec-organizer-tel">
-									<i class="mec-sl-phone"></i>
+									<?php echo $this->icons->display('phone'); ?>
 									<h6><?php esc_html_e('Phone', 'mec'); ?></h6>
 									<a href="tel:<?php echo esc_attr($organizer['tel']); ?>"><?php echo esc_html($organizer['tel']); ?></a>
 								</dd>
 							<?php endif;
 							if(isset($organizer['email']) && !empty($organizer['email'])): ?>
 								<dd class="mec-organizer-email">
-									<i class="mec-sl-envelope"></i>
+									<?php echo $this->icons->display('envelope'); ?>
 									<h6><?php esc_html_e('Email', 'mec'); ?></h6>
 									<a href="mailto:<?php echo esc_attr($organizer['email']); ?>"><?php echo esc_html($organizer['email']); ?></a>
 								</dd>
 							<?php endif;
 							if(isset($organizer['url']) && !empty($organizer['url']) and $organizer['url'] != 'http://'): ?>
 								<dd class="mec-organizer-url">
-									<i class="mec-sl-sitemap"></i>
+									<?php echo $this->icons->display('sitemap'); ?>
 									<h6><?php esc_html_e('Website', 'mec'); ?></h6>
-                                    <span><a href="<?php echo esc_url($organizer['url']); ?>" class="mec-color-hover" target="_blank"><?php echo (isset($organizer['page_label']) and trim($organizer['page_label'])) ? esc_html($organizer['page_label']) : esc_html($organizer['url']); ?></a></span>
+                                    <span><a href="<?php echo esc_url($organizer['url']); ?>" class="mec-color-hover" target="<?php echo isset($settings['advanced_organizer']) ? $settings['advanced_organizer']['organizer_link_target'] : ''; ?>"><?php echo (isset($organizer['page_label']) and trim($organizer['page_label'])) ? esc_html($organizer['page_label']) : esc_html($organizer['url']); ?></a></span>
                                     <?php do_action('mec_single_default_organizer', $organizer); ?>
 								</dd>
 							<?php endif;
@@ -335,12 +370,16 @@ $banner_module = $this->can_display_banner_module($event);
 					?>
 
 					<!-- Sponsors Module -->
-					<?php echo MEC_kses::full($this->main->module('sponsors.details', array('event' => $event))); ?>
+					<?php echo MEC_kses::full($this->main->module('sponsors.details', array('event' => $event, 'icons' => $this->icons))); ?>
 
 					<!-- Register Booking Button -->
-					<?php if($this->main->can_show_booking_module($event)): ?>
+					<?php if($this->main->can_show_booking_module($event, true)): ?>
 						<?php $data_lity_class = ''; if(isset($settings['single_booking_style']) and $settings['single_booking_style'] == 'modal' ){ $data_lity_class = 'mec-booking-data-lity'; }  ?>
-						<a class="mec-booking-button mec-bg-color <?php echo esc_attr($data_lity_class); ?> <?php if(isset($settings['single_booking_style']) and $settings['single_booking_style'] != 'modal' ) echo 'simple-booking'; ?>" href="#mec-events-meta-group-booking-<?php echo esc_attr($this->uniqueid); ?>"><?php echo esc_html($this->main->m('register_button', esc_html__('REGISTER', 'mec'))); ?></a>
+						<a class="mec-booking-button-register mec-booking-button mec-bg-color <?php echo esc_attr($data_lity_class); ?>"
+							data-action="<?php echo isset($settings['single_booking_style']) && $settings['single_booking_style'] == 'modal' ? 'modal' : 'scroll'; ?>"
+							data-target="#mec-events-meta-group-booking-<?php echo esc_attr($this->uniqueid); ?>">
+							<?php echo esc_html($this->main->m('register_button', esc_html__('REGISTER', 'mec'))); ?>
+						</a>
 					<?php elseif($more_info and !$this->main->is_expired($event)): ?>
 						<a class="mec-booking-button mec-bg-color" target="<?php echo esc_attr($more_info_target); ?>" href="<?php echo esc_url($more_info); ?>"><?php if($more_info_title) echo esc_html__($more_info_title, 'mec'); else echo esc_html($this->main->m('register_button', esc_html__('REGISTER', 'mec'))); ?></a>
 					<?php endif; ?>
@@ -350,27 +389,27 @@ $banner_module = $this->can_display_banner_module($event);
 				<?php do_action('mec_single_after_event_date', $event); ?>
 
 				<!-- Speakers Module -->
-				<?php echo MEC_kses::full($this->main->module('speakers.details', array('event' => $event))); ?>
+				<?php echo MEC_kses::full($this->main->module('speakers.details', array('event' => $event, 'icons' => $this->icons))); ?>
 
 				<!-- Attendees List Module -->
-				<?php echo MEC_kses::full($this->main->module('attendees-list.details', array('event' => $event))); ?>
+				<?php echo MEC_kses::full($this->main->module('attendees-list.details', array('event' => $event, 'icons' => $this->icons))); ?>
 
 				<!-- Next Previous Module -->
-				<?php echo MEC_kses::full($this->main->module('next-event.details', array('event' => $event))); ?>
+				<?php echo MEC_kses::full($this->main->module('next-event.details', array('event' => $event, 'icons' => $this->icons))); ?>
 
 				<!-- Links Module -->
-				<?php echo MEC_kses::full($this->main->module('links.details', array('event' => $event))); ?>
+				<?php echo MEC_kses::full($this->main->module('links.details', array('event' => $event, 'icons' => $this->icons))); ?>
 
 				<!-- Weather Module -->
-				<?php echo MEC_kses::full($this->main->module('weather.details', array('event' => $event))); ?>
+				<?php echo MEC_kses::full($this->main->module('weather.details', array('event' => $event, 'icons' => $this->icons))); ?>
 
 				<!-- Google Maps Module -->
 				<div class="mec-events-meta-group mec-events-meta-group-gmap">
-					<?php echo MEC_kses::full($this->main->module('googlemap.details', array('event' => $this->events))); ?>
+					<?php echo MEC_kses::full($this->main->module('googlemap.details', array('event' => $this->events, 'icons' => $this->icons))); ?>
 				</div>
 
 				<!-- QRCode Module -->
-				<?php echo MEC_kses::full($this->main->module('qrcode.details', array('event' => $event))); ?>
+				<?php echo MEC_kses::full($this->main->module('qrcode.details', array('event' => $event, 'icons' => $this->icons))); ?>
 
                 <!-- Public Download Module -->
                 <?php $this->display_public_download_module($event); ?>
@@ -397,6 +436,7 @@ $banner_module = $this->can_display_banner_module($event);
                     $GLOBALS['mec-widget-more_info_target'] = $more_info_target;
                     $GLOBALS['mec-widget-more_info_title'] = $more_info_title;
                     $GLOBALS['mec-banner_module'] = $banner_module;
+                    $GLOBALS['mec-icons'] = $this->icons;
                 ?>
 				<!-- Widgets -->
 				<?php dynamic_sidebar('mec-single-sidebar'); ?>
@@ -408,29 +448,51 @@ $banner_module = $this->can_display_banner_module($event);
 	<?php $this->display_next_previous_events($event); ?>
 
 </div>
+<?php do_action('mec_advanced_map_customize_single_event'); ?>
 <?php
 // MEC Schema
 if($rank_math_options != 'event') do_action('mec_schema', $event);
+
+$this->factory->params('footer', function()
+{
+	?>
+	<script>
+		jQuery(window).on('load', function()
+		{
+			// Fix modal speaker in some themes
+			jQuery(".mec-speaker-avatar-dialog a, .mec-schedule-speakers a").on('click', function(e)
+			{
+				e.preventDefault();
+				lity(jQuery(this).attr('href'));
+
+				return false;
+			});
+
+			// Fix modal booking in some themes
+			jQuery(document).ready(function ($) {
+				$(".mec-booking-button-register").on("click", function (e) {
+					e.preventDefault();
+
+					const action = $(this).data("action");
+					const target = $(this).data("target");
+
+					if (action === "modal") {
+						if (target) {
+							lity($(target));
+						}
+					} else if (action === "scroll") {
+						if (target && $(target).length) {
+							$("html, body").animate({
+								scrollTop: $(target).offset().top
+							}, 300);
+						}
+					}
+
+					return false;
+				});
+			});
+		});
+	</script>
+	<?php
+});
 ?>
-<script>
-// Fix modal speaker in some themes
-jQuery(".mec-speaker-avatar-dialog a, .mec-schedule-speakers a").on('click', function(e)
-{
-    e.preventDefault();
-    lity(jQuery(this).attr('href'));
-
-	return false;
-});
-
-// Fix modal booking in some themes
-jQuery(window).on('load', function()
-{
-    jQuery(".mec-booking-button.mec-booking-data-lity").on('click', function(e)
-    {
-        e.preventDefault();
-        lity(jQuery(this).attr('href'));
-
-		return false;
-    });
-});
-</script>
