@@ -387,7 +387,7 @@ class MEC_skins extends MEC_base
         // Include location to filter
         if(isset($this->atts['location']) and trim($this->atts['location'], ', ') != '')
         {
-            $this->atts['location'] = $this->atts['location'] . ',2'; // UU HACK; hardcode All (ID: 2)
+            $this->atts['location'] = $this->atts['location'] . ',2'; // UU Modification; hardcode "All" category (ID: 2)
             $tax_query[] = array(
                 'taxonomy'=>'mec_location',
                 'field'=>'term_id',
@@ -1048,7 +1048,7 @@ class MEC_skins extends MEC_base
             if(!is_array($IDs) || !count($IDs)) continue;
 
             // Check Finish Date
-            if(isset($this->maximum_date) and trim($this->maximum_date) and ((strtotime($date) > strtotime($this->maximum_date) and $this->order_method === 'ASC') or (strtotime($date) < strtotime($this->maximum_date) and $this->order_method === 'DESC'))) break;
+            if(isset($this->maximum_date) && trim($this->maximum_date) && ((strtotime($date) > strtotime($this->maximum_date) && $this->order_method === 'ASC') || (strtotime($date) < strtotime($this->maximum_date) && ($this->order_method === 'DESC' || $this->show_only_expired_events)))) break;
 
             // Include Available Events
             $this->args['post__in'] = array_unique($IDs);
@@ -1103,7 +1103,7 @@ class MEC_skins extends MEC_base
 
                         $data = new stdClass();
                         $data->ID = $ID;
-                        $data->data = $rendered;
+                        $data->data = clone $rendered;
 
                         $data->date = array
                         (
@@ -1338,7 +1338,7 @@ class MEC_skins extends MEC_base
             $form .= $fields;
 
             // Reset Button
-            if($this->sf_reset_button) $form .='<div class="mec-search-reset-button col-md-2"><button class="button mec-button" id="mec_search_form_'.esc_attr($this->id).'_reset" type="button">'.esc_html__('Reset', 'mec').'</button></div>';
+            if($this->sf_reset_button) $form .='<div class="mec-search-reset-button"><button class="button mec-button" id="mec_search_form_'.esc_attr($this->id).'_reset" type="button">'.esc_html__('Reset', 'mec').'</button></div>';
 
             $form = apply_filters('mec_sf_search_form_end', $form, $this);
 
@@ -1375,6 +1375,8 @@ class MEC_skins extends MEC_base
         {
             $label = $this->main->m('taxonomy_category', esc_html__('Category', 'mec'));
 
+            $label = apply_filters( 'mec_map_customize_label_category_filter', $label);
+
             if($type == 'dropdown')
             {
                 $output .='<div class="mec-dropdown-search">';
@@ -1384,7 +1386,7 @@ class MEC_skins extends MEC_base
                 $include = (isset($this->atts['category']) and trim($this->atts['category'])) ? explode(',', trim($this->atts['category'], ', ')) : [];
                 $include = $this->sf_only_valid_terms('mec_category', $include);
 
-                $output .= wp_dropdown_categories(array
+                $args = array
                 (
                     'echo'=>false,
                     'taxonomy'=>'mec_category',
@@ -1398,7 +1400,11 @@ class MEC_skins extends MEC_base
                     'orderby'=>'name',
                     'order'=>'ASC',
                     'show_count'=>0,
-                ));
+                );
+
+                $args = apply_filters( 'mec_map_customize_args_dropdown_categories', $args);
+
+                $output .= wp_dropdown_categories($args);
 
                 $output .= '</div>';
             }
@@ -1438,66 +1444,59 @@ class MEC_skins extends MEC_base
 
                 $selected = (isset($this->atts['category']) and trim($this->atts['category'])) ? explode(',', trim($this->atts['category'], ', ')) : [];
 
-
-				  // UU HACK
+                // UU Mofication
                 $output .= '
 
                 <div x-data="Components.menu({ open: true, timeout: null })" x-init="init(); width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
                     if (width < 768) {
-                     open = false
+                    open = false
                     } else {
-                     open = true
+                    open = true
                     }" @keydown.escape.stop="open = false; focusButton()" @click.away=" width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
                     if (width < 768) { onClickAway($event) }" @resize.window="
                     width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
                     if (width < 768) {
-                     open = false
+                    open = false
                     } else {
-                     open = true
+                    open = true
                     }" class="relative w-full text-left">
                     <div class="w-full rounded-md shadow-md overflow-hidden md:hidden">
-                      <button id="searchFilterButton" type="button" class="flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50" id="menu-button" x-ref="button" @click="onButtonClick()" @keyup.space.prevent="onButtonEnter()" @keydown.enter.prevent="onButtonEnter()" aria-expanded="true" aria-haspopup="true" x-bind:aria-expanded="open.toString()" @keydown.arrow-up.prevent="onArrowUp()" @keydown.arrow-down.prevent="onArrowDown()">
+                    <button id="searchFilterButton" type="button" class="flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50" id="menu-button" x-ref="button" @click="onButtonClick()" @keyup.space.prevent="onButtonEnter()" @keydown.enter.prevent="onButtonEnter()" aria-expanded="true" aria-haspopup="true" x-bind:aria-expanded="open.toString()" @keydown.arrow-up.prevent="onArrowUp()" @keydown.arrow-down.prevent="onArrowDown()">
                         Select a Filter
                         <svg width="9" height="14" viewBox="0 0 9 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M4.56152 0C4.82674 5.96046e-08 5.08109 0.105357 5.26863 0.292893L8.26863 3.29289C8.65915 3.68342 8.65915 4.31658 8.26863 4.70711C7.87811 5.09763 7.24494 5.09763 6.85442 4.70711L4.56152 2.41421L2.26863 4.70711C1.87811 5.09763 1.24494 5.09763 0.854417 4.70711C0.463892 4.31658 0.463892 3.68342 0.854417 3.29289L3.85442 0.292893C4.04195 0.105357 4.29631 0 4.56152 0ZM0.854417 9.29289C1.24494 8.90237 1.87811 8.90237 2.26863 9.29289L4.56152 11.5858L6.85442 9.29289C7.24494 8.90237 7.87811 8.90237 8.26863 9.29289C8.65915 9.68342 8.65915 10.3166 8.26863 10.7071L5.26863 13.7071C4.87811 14.0976 4.24494 14.0976 3.85442 13.7071L0.854417 10.7071C0.463892 10.3166 0.463892 9.68342 0.854417 9.29289Z" fill="#2874AF"/>
-</svg>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M4.56152 0C4.82674 5.96046e-08 5.08109 0.105357 5.26863 0.292893L8.26863 3.29289C8.65915 3.68342 8.65915 4.31658 8.26863 4.70711C7.87811 5.09763 7.24494 5.09763 6.85442 4.70711L4.56152 2.41421L2.26863 4.70711C1.87811 5.09763 1.24494 5.09763 0.854417 4.70711C0.463892 4.31658 0.463892 3.68342 0.854417 3.29289L3.85442 0.292893C4.04195 0.105357 4.29631 0 4.56152 0ZM0.854417 9.29289C1.24494 8.90237 1.87811 8.90237 2.26863 9.29289L4.56152 11.5858L6.85442 9.29289C7.24494 8.90237 7.87811 8.90237 8.26863 9.29289C8.65915 9.68342 8.65915 10.3166 8.26863 10.7071L5.26863 13.7071C4.87811 14.0976 4.24494 14.0976 3.85442 13.7071L0.854417 10.7071C0.463892 10.3166 0.463892 9.68342 0.854417 9.29289Z" fill="#2874AF"/>
+                </svg>
 
-                      </button>
+                    </button>
                     </div>
 
-                      <div x-show="open" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="absolute md:relative right-0 left-0 z-10 mt-2 md:mt-0 w-full origin-top-right origin divide-y divide-gray-100 rounded-md focus:outline-none" x-ref="menu-items" x-description="Dropdown menu, show/hide based on menu state." x-bind:aria-activedescendant="activeDescendant" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1" @keydown.arrow-up.prevent="onArrowUp()" @keydown.arrow-down.prevent="onArrowDown()" @keydown.tab="open = false" @keydown.enter.prevent="open = false; focusButton()" @keyup.space.prevent="open = false; focusButton()">
+                    <div x-show="open" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="absolute md:relative right-0 left-0 z-10 mt-2 md:mt-0 w-full origin-top-right origin divide-y divide-gray-100 rounded-md focus:outline-none" x-ref="menu-items" x-description="Dropdown menu, show/hide based on menu state." x-bind:aria-activedescendant="activeDescendant" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1" @keydown.arrow-up.prevent="onArrowUp()" @keydown.arrow-down.prevent="onArrowDown()" @keydown.tab="open = false" @keydown.enter.prevent="open = false; focusButton()" @keyup.space.prevent="open = false; focusButton()">
 
                 ';
 
-                // EO UU HACK
+                // EO UU Mofication
 
-
-				$exclude = (isset($this->atts['ex_category']) and trim($this->atts['ex_category'])) ? explode(',', trim($this->atts['ex_category'], ', ')) : [];
+                $exclude = (isset($this->atts['ex_category']) and trim($this->atts['ex_category'])) ? explode(',', trim($this->atts['ex_category'], ', ')) : [];
 
                 $output .= '<div class="mec-searchbar-category-wrap">';
                 $output .= '<ul id="mec_sf_category_'.esc_attr($this->id).'">';
 
                 $terms_category = get_terms([
                     'taxonomy' => 'mec_category',
-                    'hide_empty' => false, // UU HACK
+                    'hide_empty' => false, // UU Modification
                     'include' => $selected,
                     'exclude' => $exclude,
-                    'orderby'    => 'meta_value', // Sort by meta value
-                    'order'      => 'ASC', // Or 'DESC'
-                    'meta_key'   => 'category_order', // The custom field key
-                    'meta_value'  => '' // Empty string for numerical sorting
                 ]);
 
-foreach($terms_category as $term_category)
+                foreach($terms_category as $term_category)
                 {
 
-				// UU HACK
+                    // UU Mofication
+                    // Get all events in this category
                     $post_ids = [];
                     $cat_count = [];
                     $categories = [$term_category->term_id];
                     $all_events = $this->main->get_filtered_events([], $categories);
-
-
 
                     $ongoing_ids = $this->main->get_ongoing_event_ids(current_time('timestamp'), 'publish');
                     $upcoming_ids = $this->main->get_upcoming_event_ids(current_time('timestamp'), 'publish');
@@ -1511,21 +1510,24 @@ foreach($terms_category as $term_category)
                     }
 
                     $cat_count = count($post_ids);
-                    // EO UU HACK
+                    // EO UU Mofication
 
-
-					// UU HACK
+                    // UU Mofication
+                    // Unchecked checkboxes
+                    // Add number of events in each category
                     $output .= '<li id="mec_category-'.esc_attr($term_category->term_id).'">
-                    <label class="selectit"><input value="'.esc_attr($term_category->term_id).'" title="'.esc_attr($term_category->name).'" type="checkbox" name="tax_input[mec_category][]" id="in-mec_category-'.esc_attr($term_category->term_id).'" '.(in_array($term_category->term_id, $selected) ? '' : '').'> <span class="cat-name">'.esc_html($term_category->name). '</span></input> <span class="event-count">' . $cat_count . '<span></label>
+                        <label class="selectit"><input value="'.esc_attr($term_category->term_id).'" title="'.esc_attr($term_category->name).'" type="checkbox" name="tax_input[mec_category][]" id="in-mec_category-'.esc_attr($term_category->term_id).'" '.(in_array($term_category->term_id, $selected) ? '' : '').'> <span class="cat-name">'.esc_html($term_category->name). '</span></input> <span class="event-count">' . $cat_count . '<span></label>
                     </li>';
-}
+                }
 
                 $output .= '</ul>';
                 $output .= '</div>';
                 $output .= '</div>';
 
-				$output .= '</div>'; // UU HACK
-                $output .= '</div>'; // UU HACK
+                // UU Mofication
+                // Additional divs for styling
+                $output .= '</div>'; // UU Modification
+                $output .= '</div>'; // UU Modification
             }
         }
         elseif($field == 'location')
@@ -1539,9 +1541,11 @@ foreach($terms_category as $term_category)
                 $output .= $this->icons->display('location-pin');
 
                 $include = (isset($this->atts['location']) and trim($this->atts['location'])) ? explode(',', trim($this->atts['location'], ', ')) : [];
-                //$include = $this->sf_only_valid_terms('mec_location', $include); // UU HACK
+                // $include = $this->sf_only_valid_terms('mec_location', $include); // UU Modification
 
-                $include = range(1, 200); // UU HACK // Include all possible location (state) categories
+                // UU Mofication
+                // Include all possible location (state) categories
+                $include = range(1, 200);
 
                 $output .= wp_dropdown_categories(array
                 (
@@ -2065,7 +2069,9 @@ foreach($terms_category as $term_category)
         if(isset($sf['s'])) $atts['s'] = $sf['s'];
 
         // Apply Address Search Query
-        // if(isset($sf['address'])) $atts['address'] = $sf['address']; // UU HACK
+        // UU Mofication
+        // Don't apply address search
+        // if(isset($sf['address'])) $atts['address'] = $sf['address'];
 
         // Apply Category Query
         if(isset($sf['category']) and trim($sf['category'])) $atts['category'] = $sf['category'];
@@ -2584,31 +2590,41 @@ foreach($terms_category as $term_category)
 
     public function get_pagination_bar()
     {
-        if($this->pagination === 'loadmore' and $this->found >= $this->limit)
+        global $wpdb;
+
+        $total_events = $wpdb->get_var("SELECT COUNT(*) FROM {$wpdb->prefix}posts WHERE post_type = 'mec-events' AND post_status = 'publish'");
+
+        if ($this->pagination === 'loadmore' and $this->found >= $this->limit)
         {
             return '<div class="mec-load-more-wrap">
                 <div tabindex="0" onkeydown="if(event.keyCode===13){jQuery(this).trigger(\'click\');}" class="mec-load-more-button '.($this->has_more_events ? '' : 'mec-util-hidden').'">'.esc_html__('Load More', 'mec').'</div>
             </div>';
         }
 
-        if($this->pagination === 'scroll' and $this->found >= $this->limit)
+        if ($this->pagination === 'scroll' and $this->found >= $this->limit)
         {
             return '<div class="mec-load-more-wrap"></div>';
         }
 
-        if($this->pagination === 'nextprev' and $this->found >= $this->limit)
+        if ($this->pagination === 'nextprev' and $this->found >= $this->limit)
         {
-            $offset = $this->end_date.':'.$this->next_offset;
-
-            return '<div class="mec-nextprev-wrap" id="mec-nextprev-wrap-'.esc_attr($this->id).'">
-                <span class="mec-nextprev-prev-button mec-util-hidden">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="10" viewBox="0 0 13 10"><path id="next-icon" d="M92.034,76.719l-.657.675,3.832,3.857H84v.937H95.208l-3.832,3.857.657.675,4.967-5Z" transform="translate(-84.001 -76.719)" fill="#07bbe9"/></svg>
+            return '
+            <div class="mec-nextprev-wrap" id="mec-nextprev-wrap-'.esc_attr($this->id).'">
+                <span class="mec-nextprev-prev-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="10" viewBox="0 0 13 10">
+                        <path id="next-icon" d="M92.034,76.719l-.657.675,3.832,3.857H84v.937H95.208l-3.832,3.857.657.675,4.967-5Z" transform="translate(-84.001 -76.719)" fill="#07bbe9"/>
+                    </svg>
                     '.esc_html__('Prev', 'mec').'
                 </span>
-                <a class="mec-nextprev-next-button" href="'.esc_url($this->main->add_qs_var('mec_next_page', $offset)).'">
+                <a class="mec-nextprev-next-button" href="'.esc_url($this->main->add_qs_var('mec_next_page', '')).'">
                     '.esc_html__('Next', 'mec').'
-                    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="10" viewBox="0 0 13 10"><path id="next-icon" d="M92.034,76.719l-.657.675,3.832,3.857H84v.937H95.208l-3.832,3.857.657.675,4.967-5Z" transform="translate(-84.001 -76.719)" fill="#07bbe9"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="10" viewBox="0 0 13 10">
+                        <path id="next-icon" d="M92.034,76.719l-.657.675,3.832,3.857H84v.937H95.208l-3.832,3.857.657.675,4.967-5Z" transform="translate(-84.001 -76.719)" fill="#07bbe9"/>
+                    </svg>
                 </a>
+            </div>
+            <div class="mec-total-events">
+                '.esc_html__('Total Events:', 'mec').' '.$total_events.'
             </div>';
         }
 
