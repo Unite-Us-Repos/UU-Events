@@ -59,7 +59,12 @@ class MEC_skin_slider extends MEC_skins
         $this->atts = $atts;
         
         // Skin Options
-        $this->skin_options = (isset($this->atts['sk-options']) and isset($this->atts['sk-options'][$this->skin])) ? $this->atts['sk-options'][$this->skin] : array();
+        $this->skin_options = (isset($this->atts['sk-options']) and isset($this->atts['sk-options'][$this->skin])) ? $this->atts['sk-options'][$this->skin] : [];
+
+        // Icons
+        $this->icons = $this->main->icons(
+            isset($this->atts['icons']) && is_array($this->atts['icons']) ? $this->atts['icons'] : []
+        );
         
         // Date Formats
         $this->date_format_type1_1 = (isset($this->skin_options['type1_date_format1']) and trim($this->skin_options['type1_date_format1'])) ? $this->skin_options['type1_date_format1'] : 'd';
@@ -85,7 +90,7 @@ class MEC_skin_slider extends MEC_skins
         // Search Form Status
         $this->sf_status = false;
         
-        // Generate an ID for the sking
+        // Generate an ID for the skin
         $this->id = isset($this->atts['id']) ? $this->atts['id'] : mt_rand(100, 999);
         
         // Set the ID
@@ -109,7 +114,7 @@ class MEC_skin_slider extends MEC_skins
         if(isset($this->atts['html-class']) and trim($this->atts['html-class']) != '') $this->html_class = $this->atts['html-class'];
 
         // From Widget
-        $this->widget = (isset($this->atts['widget']) and trim($this->atts['widget'])) ? true : false;
+        $this->widget = isset($this->atts['widget']) && trim($this->atts['widget']);
 		if($this->widget)
         {
 			$this->skin_options['count'] = '1';
@@ -148,6 +153,7 @@ class MEC_skin_slider extends MEC_skins
         
         // Author
         $this->args['author'] = $this->author_query();
+        $this->args['author__not_in'] = $this->author_query_ex();
         
         // Pagination Options
         $this->paged = get_query_var('paged', 1);
@@ -173,6 +179,7 @@ class MEC_skin_slider extends MEC_skins
         // Show Past Events
         if($this->show_only_expired_events)
         {
+            $this->order_method = 'DESC';
             $this->atts['show_past_events'] = '1';
             $this->args['order'] = 'DESC';
         }

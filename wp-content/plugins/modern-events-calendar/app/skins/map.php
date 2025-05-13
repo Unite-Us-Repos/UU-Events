@@ -43,10 +43,15 @@ class MEC_skin_map extends MEC_skins
         $this->atts = $atts;
 
         // Skin Options
-        $this->skin_options = (isset($this->atts['sk-options']) and isset($this->atts['sk-options'][$this->skin])) ? $this->atts['sk-options'][$this->skin] : array();
+        $this->skin_options = (isset($this->atts['sk-options']) and isset($this->atts['sk-options'][$this->skin])) ? $this->atts['sk-options'][$this->skin] : [];
+
+        // Icons
+        $this->icons = $this->main->icons(
+            isset($this->atts['icons']) && is_array($this->atts['icons']) ? $this->atts['icons'] : []
+        );
 
         // Search Form Options
-        $this->sf_options = (isset($this->atts['sf-options']) and isset($this->atts['sf-options'][$this->skin])) ? $this->atts['sf-options'][$this->skin] : array();
+        $this->sf_options = (isset($this->atts['sf-options']) and isset($this->atts['sf-options'][$this->skin])) ? $this->atts['sf-options'][$this->skin] : [];
 
         $this->style = $this->skin_options['style'] ?? 'classic';
 
@@ -56,6 +61,7 @@ class MEC_skin_map extends MEC_skins
         // Search Form Status
         $this->sf_status = $this->atts['sf_status'] ?? true;
         $this->sf_display_label = $this->atts['sf_display_label'] ?? false;
+        $this->sf_dropdown_method = $this->atts['sf_dropdown_method'] ?? '1';
         $this->sf_reset_button = $this->atts['sf_reset_button'] ?? false;
         $this->sf_refine = $this->atts['sf_refine'] ?? false;
 
@@ -70,7 +76,7 @@ class MEC_skin_map extends MEC_skins
         if(isset($this->atts['html-class']) and trim($this->atts['html-class']) != '') $this->html_class = $this->atts['html-class'];
 
         // From Widget
-        $this->widget = (isset($this->atts['widget']) and trim($this->atts['widget']));
+        $this->widget = isset($this->atts['widget']) && trim($this->atts['widget']);
 
         // Init MEC
         $this->args['mec-skin'] = $this->skin;
@@ -95,6 +101,7 @@ class MEC_skin_map extends MEC_skins
 
         // Author
         $this->args['author'] = $this->author_query();
+        $this->args['author__not_in'] = $this->author_query_ex();
 
         // Pagination Options
         $this->paged = get_query_var('paged', 1);
@@ -155,13 +162,14 @@ class MEC_skin_map extends MEC_skins
 
     /**
      * Search and returns the filtered events
-     * @author Webnus <info@webnus.net>
      * @return array
+     * @throws Exception
+     * @author Webnus <info@webnus.net>
      */
     public function search()
     {
-        $events = array();
-        $sorted = array();
+        $events = [];
+        $sorted = [];
 
         $yesterday = ($this->end_date ? $this->start_date : date('Y-m-d', strtotime('Yesterday', strtotime($this->start_date))));
 
@@ -194,11 +202,11 @@ class MEC_skin_map extends MEC_skins
                     if((isset($this->atts['show_past_events']) and !$this->atts['show_past_events']) and strtotime($data->date['start']['date']) < strtotime($this->start_date)) continue;
                 }
 
-                // Caclculate event start time
+                // Calculate event start time
                 $event_start_time = (isset($data->date['start']) ? strtotime($data->date['start']['date']) : 0) + $rendered->meta['mec_start_day_seconds'];
 
                 // Add the event into the to be sorted array
-                if(!isset($sorted[$event_start_time])) $sorted[$event_start_time] = array();
+                if(!isset($sorted[$event_start_time])) $sorted[$event_start_time] = [];
                 $sorted[$event_start_time][] = $this->render->after_render($data, $this);
             }
 
@@ -219,13 +227,14 @@ class MEC_skin_map extends MEC_skins
     }
 
     /**
-     * Get markers for AJAX requert
-     * @author Webnus <info@webnus.net>
+     * Get markers for AJAX request
      * @return void
+     * @throws Exception
+     * @author Webnus <info@webnus.net>
      */
     public function get_markers()
     {
-        $this->sf = (isset($_REQUEST['sf']) and is_array($_REQUEST['sf'])) ? $this->main->sanitize_deep_array($_REQUEST['sf']) : array();
+        $this->sf = (isset($_REQUEST['sf']) and is_array($_REQUEST['sf'])) ? $this->main->sanitize_deep_array($_REQUEST['sf']) : [];
         $apply_sf_date = isset($_REQUEST['apply_sf_date']) ? sanitize_text_field($_REQUEST['apply_sf_date']) : 1;
         $atts = $this->sf_apply(((isset($_REQUEST['atts']) and is_array($_REQUEST['atts'])) ? $this->main->sanitize_deep_array($_REQUEST['atts']) : array()), $this->sf, $apply_sf_date);
 

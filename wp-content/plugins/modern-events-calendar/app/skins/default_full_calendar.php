@@ -50,18 +50,24 @@ class MEC_skin_default_full_calendar extends MEC_skins
         $this->atts = $atts;
 
         // Skin Options
-        $this->skin_options = (isset($this->atts['sk-options']) and isset($this->atts['sk-options'][$this->skin])) ? $this->atts['sk-options'][$this->skin] : array();
+        $this->skin_options = (isset($this->atts['sk-options']) and isset($this->atts['sk-options'][$this->skin])) ? $this->atts['sk-options'][$this->skin] : [];
 
-        $this->style = isset($this->skin_options['style']) ? $this->skin_options['style'] : 'classic';
+        // Icons
+        $this->icons = $this->main->icons(
+            isset($this->atts['icons']) && is_array($this->atts['icons']) ? $this->atts['icons'] : []
+        );
+
+        $this->style = $this->skin_options['style'] ?? 'classic';
 
         // Search Form Options
-        $this->sf_options = (isset($this->atts['sf-options']) and isset($this->atts['sf-options'][$this->skin])) ? $this->atts['sf-options'][$this->skin] : array();
+        $this->sf_options = (isset($this->atts['sf-options']) and isset($this->atts['sf-options'][$this->skin])) ? $this->atts['sf-options'][$this->skin] : [];
 
         // Search Form Status
-        $this->sf_status = isset($this->atts['sf_status']) ? $this->atts['sf_status'] : true;
-        $this->sf_display_label = isset($this->atts['sf_display_label']) ? $this->atts['sf_display_label'] : false;
-        $this->sf_reset_button = isset($this->atts['sf_reset_button']) ? $this->atts['sf_reset_button'] : false;
-        $this->sf_refine = isset($this->atts['sf_refine']) ? $this->atts['sf_refine'] : false;
+        $this->sf_status = $this->atts['sf_status'] ?? true;
+        $this->sf_display_label = $this->atts['sf_display_label'] ?? false;
+        $this->sf_dropdown_method = $this->atts['sf_dropdown_method'] ?? '1';
+        $this->sf_reset_button = $this->atts['sf_reset_button'] ?? false;
+        $this->sf_refine = $this->atts['sf_refine'] ?? false;
 
         // Show Only Expired Events
         $this->show_only_expired_events = (isset($this->atts['show_only_past_events']) and trim($this->atts['show_only_past_events'])) ? '1' : '0';
@@ -76,17 +82,17 @@ class MEC_skin_default_full_calendar extends MEC_skins
         $this->booking_button = isset($this->skin_options['booking_button']) ? (int) $this->skin_options['booking_button'] : 0;
 
         // SED Method
-        $this->sed_method = isset($this->skin_options['sed_method']) ? $this->skin_options['sed_method'] : '0';
+        $this->sed_method = $this->get_sed_method();
 
         // Image popup
-        $this->image_popup = isset($this->skin_options['image_popup']) ? $this->skin_options['image_popup'] : '0';
+        $this->image_popup = $this->skin_options['image_popup'] ?? '0';
 
         // Default View of Full Calendar
-        $this->default_view = isset($this->skin_options['default_view']) ? $this->skin_options['default_view'] : 'list';
+        $this->default_view = $this->skin_options['default_view'] ?? 'list';
         if(isset($this->skin_options[$this->default_view]) and !$this->skin_options[$this->default_view]) $this->default_view = 'list';
 
         // Default style for Monthly View
-        $this->monthly_style = isset($this->skin_options['monthly_style']) ? $this->skin_options['monthly_style'] : 'clean';
+        $this->monthly_style = $this->skin_options['monthly_style'] ?? 'clean';
         if(isset($this->skin_options[$this->monthly_style]) and !$this->skin_options[$this->monthly_style]) $this->monthly_style = 'clean';
 
 
@@ -232,13 +238,13 @@ class MEC_skin_default_full_calendar extends MEC_skins
     }
 
     /**
-     * Load skin for AJAX requert
+     * Load skin for AJAX request
      * @author Webnus <info@webnus.net>
      * @return void
      */
     public function switch_skin()
     {
-        $this->sf = (isset($_REQUEST['sf']) and is_array($_REQUEST['sf'])) ? $this->main->sanitize_deep_array($_REQUEST['sf']) : array();
+        $this->sf = (isset($_REQUEST['sf']) and is_array($_REQUEST['sf'])) ? $this->main->sanitize_deep_array($_REQUEST['sf']) : [];
         $apply_sf_date = isset($_REQUEST['apply_sf_date']) ? sanitize_text_field($_REQUEST['apply_sf_date']) : 1;
         $atts = $this->sf_apply(((isset($_REQUEST['atts']) and is_array($_REQUEST['atts'])) ? $this->main->sanitize_deep_array($_REQUEST['atts']) : array()), $this->sf, $apply_sf_date);
 

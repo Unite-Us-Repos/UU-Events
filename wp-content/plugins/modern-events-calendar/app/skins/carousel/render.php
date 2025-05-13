@@ -91,7 +91,7 @@ $reason_for_cancellation = isset($this->skin_options['reason_for_cancellation'])
                         <ul class="mec-event-sharing-wrap">
                             <li class="mec-event-share">
                                 <a href="#" class="mec-event-share-icon">
-                                    <i class="mec-sl-share mec-bg-color-hover mec-border-color-hover"></i>
+                                    <i class="mec-sl-share mec-bg-color-hover mec-border-color-hover" title="<?php esc_attr_e('Share', 'mec') ?>" alt="<?php esc_attr_e('Share', 'mec') ?>"></i>
                                 </a>
                             </li>
                             <li>
@@ -130,7 +130,7 @@ $reason_for_cancellation = isset($this->skin_options['reason_for_cancellation'])
                             <ul class="mec-event-sharing-wrap">
                                 <li class="mec-event-share">
                                     <a href="#" class="mec-event-share-icon">
-                                        <i class="mec-sl-share mec-bg-color-hover mec-border-color-hover"></i>
+                                        <i class="mec-sl-share mec-bg-color-hover mec-border-color-hover" title="<?php esc_attr_e('Share', 'mec') ?>" alt="<?php esc_attr_e('Share', 'mec') ?>"></i>
                                     </a>
                                 </li>
                                 <li>
@@ -161,7 +161,7 @@ $reason_for_cancellation = isset($this->skin_options['reason_for_cancellation'])
                         </div>
                         <?php if($this->include_events_times) echo MEC_kses::element($this->main->display_time($start_time, $end_time)); ?>
                         <?php if($this->localtime) echo MEC_kses::full($this->main->module('local-time.type3', array('event' => $event))); ?>
-                        <h4 class="mec-event-title"><?php echo MEC_kses::element($event->data->title).MEC_kses::element($this->main->get_flags($event).$event_color); ?><?php echo MEC_kses::embed($this->display_custom_data($event)); ?></h4>
+                        <h4 class="mec-event-title"><?php echo MEC_kses::element(apply_filters('mec_occurrence_event_title', $event->data->title, $event)).MEC_kses::element($this->main->get_flags($event).$event_color); ?><?php echo MEC_kses::embed($this->display_custom_data($event)); ?></h4>
                         <?php echo MEC_kses::element($this->main->get_normal_labels($event, $display_label).$this->main->display_cancellation_reason($event, $reason_for_cancellation)); ?><?php do_action('mec_shortcode_virtual_badge', $event->data->ID); ?>
                         <div class="mec-btn-wrapper">
                             <?php echo MEC_kses::element($this->display_link($event, ($this->main->m('event_detail', esc_html__('EVENT DETAIL', 'mec'))), 'mec-event-button')); ?>

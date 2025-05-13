@@ -67,14 +67,14 @@ $sed_method = isset($this->skin_options['sed_method']) ? $this->skin_options['se
                                     <h4 class="mec-event-title"><?php echo MEC_kses::element($this->display_link($event)); ?><?php echo MEC_kses::embed($this->display_custom_data($event)); ?><?php echo MEC_kses::element($soldout.$event_color); ?><?php echo MEC_kses::element($this->get_label_captions($event,'mec-fc-style')); ?></h4>
                                     <?php echo MEC_kses::element($this->main->get_normal_labels($event, $display_label).$this->main->display_cancellation_reason($event, $reason_for_cancellation)); ?><?php do_action('mec_shortcode_virtual_badge', $event->data->ID); ?>
                                     <p><?php echo MEC_kses::element($excerpt.(trim($excerpt) ? ' ...' : '')); ?></p>
-                                    <?php if($display_categories): ?>
+                                    <?php if($display_categories && !empty($this->display_categories($event))): ?>
                                         <div class="mec-timeline-event-details">
                                             <div class="mec-timeline-event-categories mec-color">
                                                <?php echo MEC_kses::element($this->display_categories($event)); ?>
                                             </div>
                                         </div>
                                     <?php endif; ?>
-                                    <?php if($display_organizer): ?>
+                                    <?php if($display_organizer && !empty($this->display_organizers($event))): ?>
                                         <div class="mec-timeline-event-details">
                                             <div class="mec-timeline-event-organizer mec-color">
                                                 <?php echo MEC_kses::element($this->display_organizers($event)); ?>
@@ -83,17 +83,17 @@ $sed_method = isset($this->skin_options['sed_method']) ? $this->skin_options['se
                                     <?php endif; ?>
                                     <div class="mec-timeline-event-details">
                                         <div class="mec-timeline-event-time mec-color">
-                                            <i class="mec-sl-clock"></i><?php echo MEC_kses::element($this->main->display_time($start_time, $end_time)); ?>
+                                            <?php echo $this->icons->display('clock'); ?><?php echo MEC_kses::element($this->main->display_time($start_time, $end_time)); ?>
                                         </div>
                                     </div>
                                     <?php if(!empty($location['address'])): ?>
                                         <div class="mec-timeline-event-details">
                                             <div class="mec-timeline-event-location mec-color">
-                                                <address class="mec-timeline-event-address"><i class="mec-sl-location-pin"></i><span><?php echo (isset($location['address']) ? esc_html($location['address']) : ''); ?></span></address>
+                                                <address class="mec-timeline-event-address"><?php echo $this->icons->display('location-pin'); ?><span><?php echo esc_html($location['address']); ?></span></address>
                                             </div>
                                         </div>
                                     <?php endif; ?>
-                                        <?php if($this->localtime): ?>
+                                        <?php if($this->localtime && !empty($this->main->module('local-time.type2', array('event' => $event)))): ?>
                                         <div class="mec-timeline-event-details">
                                             <div class="mec-timeline-event-local-time mec-color">
                                                 <?php echo MEC_kses::full($this->main->module('local-time.type2', array('event' => $event))); ?>

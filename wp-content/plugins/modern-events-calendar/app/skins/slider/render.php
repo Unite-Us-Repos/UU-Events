@@ -44,7 +44,7 @@ $reason_for_cancellation = isset($this->skin_options['reason_for_cancellation'])
                 <?php echo MEC_kses::element($this->get_label_captions($event)); ?>
                 <?php do_action('mec_schema', $event); // MEC Schema ?>
                 <?php if($this->style == 't1'): ?>
-                    <div class="mec-slider-t1-img" style="background: url(<?php echo esc_url($src); ?>);"></div>
+                    <div class="mec-slider-t1-img" style="background-image: url(<?php echo esc_url($src); ?>);"></div>
                     <div class="mec-slider-t1-content mec-event-grid-modern">
 
                         <div class="event-grid-modern-head clearfix">
@@ -65,7 +65,7 @@ $reason_for_cancellation = isset($this->skin_options['reason_for_cancellation'])
                         </div>
                     </div>
                 <?php elseif($this->style == 't2'): ?>
-                    <div class="mec-slider-t2-img" style="background: url(<?php echo esc_url($src); ?> );"></div>
+                    <div class="mec-slider-t2-img" style="background-image: url(<?php echo esc_url($src); ?> );"></div>
                     <div class="mec-slider-t2-content mec-event-grid-modern mec-bg-color">
 
                         <div class="event-grid-modern-head clearfix">
@@ -89,7 +89,7 @@ $reason_for_cancellation = isset($this->skin_options['reason_for_cancellation'])
                         </div>
                     </div>
                 <?php elseif($this->style == 't3'): ?>
-                    <div class="mec-slider-t3-img" style="background: url(<?php echo esc_url($src); ?> );"></div>
+                    <div class="mec-slider-t3-img" style="background-image: url(<?php echo esc_url($src); ?> );"></div>
                     <div class="mec-slider-t3-content mec-event-grid-modern">
                         <div class="event-grid-modern-head clearfix">
                             <div class="mec-event-date mec-color"><?php echo esc_html($this->main->date_i18n($this->date_format_type3_1, strtotime($event->date['start']['date']))); ?></div>
@@ -112,7 +112,7 @@ $reason_for_cancellation = isset($this->skin_options['reason_for_cancellation'])
                         </div>
                     </div>
                 <?php elseif($this->style == 't4'): ?>
-                    <div class="mec-slider-t4-img" style="background: url(<?php echo esc_url($src); ?> );"></div>
+                    <div class="mec-slider-t4-img" style="background-image: url(<?php echo esc_url($src); ?> );"></div>
                     <div class="mec-slider-t4-content mec-event-grid-modern">
 
                         <div class="event-grid-modern-head clearfix">
@@ -136,7 +136,7 @@ $reason_for_cancellation = isset($this->skin_options['reason_for_cancellation'])
                         </div>
                     </div>
                 <?php elseif($this->style == 't5'): ?>
-                    <div class="mec-slider-t5-img" style="background: url(<?php echo esc_url($src); ?> );"></div>
+                    <div class="mec-slider-t5-img" style="background-image: url(<?php echo esc_url($src); ?> );"></div>
                     <div class="mec-slider-t5-content mec-event-grid-modern">
                         <div class="event-grid-modern-head clearfix">
                             <div class="mec-slider-t5-col6">
@@ -149,7 +149,7 @@ $reason_for_cancellation = isset($this->skin_options['reason_for_cancellation'])
                             </div>
                             <div class="mec-slider-t5-col6">
                                 <div class="mec-event-location">
-                                    <i class="mec-sl-location-pin mec-color"></i>
+                                    <?php echo $this->icons->display('location-pin'); ?>
                                     <div class="mec-event-location-det">
                                         <h6 class="mec-location"><?php echo (isset($location['name']) ? esc_html($location['name']) : ''); ?></h6>
                                         <address class="mec-events-address"><span class="mec-address"><?php echo (isset($location['address']) ? esc_html($location['address']) : ''); ?></span></address>
