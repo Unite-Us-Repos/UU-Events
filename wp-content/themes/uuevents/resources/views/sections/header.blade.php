@@ -349,18 +349,18 @@ $watch('isSticky', value => {
                 </div>
               </div>
 
-              <div class="featured-block relative bg-cover bg-center p-4 px-8" style="background-image: url('https://uniteus.com/wp-content/uploads/2025/01/medicaid-advantage-menu-4.png');">
+              <div class="featured-block relative bg-cover bg-center p-4 px-8" style="background-image: url('https://uniteus.com/wp-content/uploads/2025/08/Frame-39342.jpg');">
                 <div class="wrapper relative z-10 flex flex-col items-start">
                   <div class="pill p-1 rounded-full flex items-center gap-2">
-                    <span class="tracking-2px bg-dark text-white px-2 py-1 rounded-full uppercase font-semibold">Webinar</span>
-                    <span class="text-white flex items-center pr-4 gap-2">Featured Event
+                    <span class="tracking-2px bg-dark text-white px-2 py-1 rounded-full uppercase font-semibold">Case Study</span>
+                    <span class="text-white flex items-center pr-4 gap-2">Featured
                       <svg width="15" height="12" viewbox="0 0 15 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M8.8331 1.04004L13.6695 5.87642M13.6695 5.87642L8.8331 10.7128M13.6695 5.87642L0.772461 5.87642" stroke="white" stroke-width="0.905178" stroke-linecap="round" stroke-linejoin="round"/>
                       </svg>
                     </span>
                   </div>
-                  <a href="https://uniteus.com/webinar/medicare-advantage-uncovered/" class=" menu-arrow btn bg-white text-dark font-semibold rounded-md">
-                    Watch Now
+                  <a href="https://uniteus.com/case-study/how-summit-county-delivers-21-million-roi/" class=" menu-arrow btn bg-white text-dark font-semibold rounded-md">
+                    Register Today
                     <svg width="12" height="9" viewbox="0 0 12 9" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M7.43219 0.887695L11.0747 4.53021M11.0747 4.53021L7.43219 8.17273M11.0747 4.53021L1.36133 4.53021" stroke="#2C405A" stroke-opacity="0.5" stroke-width="1.25793" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
