@@ -172,7 +172,7 @@ $cost = $this->main->get_event_cost($event);
             <?php echo MEC_kses::full($this->main->module('qrcode.details', array('event' => $event, 'icons' => $this->icons))); ?>
 
             <!-- Public Download Module -->
-            <?php $this->display_public_download_module($event); ?>
+            <?php echo $this->display_public_download_module($event); ?>
 
             <!-- Local Time Module -->
             <?php echo MEC_kses::full($this->main->module('local-time.details', array('event' => $event, 'icons' => $this->icons))); ?>

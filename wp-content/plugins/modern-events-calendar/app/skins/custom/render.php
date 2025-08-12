@@ -39,6 +39,7 @@ $with_css = $is_load_more ? false : true;
             $mec_old_post = $post;
 
             $rcount = 1;
+            $rendered_events = array(); // Track rendered events to prevent duplicates
             if(!empty($this->events))
             {
                 foreach($this->events as $date => $events)
@@ -46,6 +47,12 @@ $with_css = $is_load_more ? false : true;
                     $month_id = date('Ym', strtotime($date));
                     foreach($events as $event)
                     {
+                        // Skip if this event has already been rendered in this shortcode
+                        if(in_array($event->data->ID, $rendered_events)) {
+                            continue;
+                        }
+                        $rendered_events[] = $event->data->ID;
+                        
                         global $post;
                         $post = $event->data->post;
 

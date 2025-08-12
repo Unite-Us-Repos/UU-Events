@@ -12,11 +12,11 @@ $display_label = $this->skin_options['display_label'] ?? false;
 $reason_for_cancellation = $this->skin_options['reason_for_cancellation'] ?? false;
 
 $dark_mode = $styling['dark_mode'] ?? '';
-if($dark_mode == 1) $set_dark = 'mec-dark-mode';
+if ($dark_mode == 1) $set_dark = 'mec-dark-mode';
 else $set_dark = '';
 
 // Event is not valid!
-if(!isset($event->data)) return;
+if (!isset($event->data)) return;
 
 $event_colorskin = (isset($styling['mec_colorskin']) || isset($styling['color'])) ? 'colorskin-custom' : '';
 

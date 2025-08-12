@@ -86,7 +86,7 @@ class MEC_skin_single extends MEC_skins
      * @author Webnus <info@webnus.net>
      * @param mixed $event
      */
-    public function display_related_posts_widget($event, $thumbnail_size = 'thumblist')
+     public function display_related_posts_widget($event, $thumbnail_size = 'thumblist', $raw = false) // UU HACK; $raw
     {
         if(!isset($this->settings['related_events'])) return;
         if(isset($this->settings['related_events']) && $this->settings['related_events'] != '1') return;
@@ -280,6 +280,10 @@ class MEC_skin_single extends MEC_skins
         $related_args = apply_filters('mec_add_to_related_post_query', $related_args, $event_id);
 
         $query = new WP_Query($related_args);
+         // UU HACK
+        if ($raw) {
+            return $query;
+        }
 
         if(isset($this->settings['related_events_per_event']) && $this->settings['related_events_per_event'])
         {
@@ -290,7 +294,7 @@ class MEC_skin_single extends MEC_skins
             {
                 $query = new WP_Query([
                     'post_type' => $this->main->get_main_post_type(),
-                    'posts_per_page' => 4,
+                    'posts_per_page' => 3, // UU HACK
                     'post_status' => 'publish',
                     'post__not_in' => array($event_id),
                     'post__in' => $related_events,
@@ -732,12 +736,14 @@ class MEC_skin_single extends MEC_skins
         $occurrence = isset($_GET['occurrence']) ? sanitize_text_field($_GET['occurrence']) : (isset($this->atts['occurrence']) ? sanitize_text_field($this->atts['occurrence']) : current_time('Y-m-d'));
         $occurrence_time = isset($_GET['time']) ? (int) sanitize_text_field($_GET['time']) : NULL;
 
-        list($occurrence, $occurrence_time) = $this->main->get_start_date_to_get_event_dates($this->id, $occurrence, $occurrence_time);
+        [$occurrence, $occurrence_time] = $this->main->get_start_date_to_get_event_dates($this->id, $occurrence, $occurrence_time);
 
         $data = new stdClass();
         $data->ID = $this->id;
         $data->requested_id = $this->id;
         $data->data = $rendered;
+
+        if ($this->getAppointments()->get_entity_type($this->id) === 'appointment') $this->maximum_dates = 100;
 
         // Get Event Dates
         $dates = $this->render->dates($this->id, $rendered, $this->maximum_dates, ($occurrence_time ? date('Y-m-d H:i:s', $occurrence_time) : $occurrence));
@@ -1755,7 +1761,7 @@ class MEC_skin_single extends MEC_skins
                             <?php endif; ?>
 
                             <?php if(isset($field['label'])): ?>
-                            <span class="mec-event-data-field-name"><?php esc_html_e(stripslashes($field['label']), 'mec'); ?>: </span>
+                            <span class="mec-event-data-field-name"><?php esc_html_e(stripslashes($field['label']), 'mec'); ?></span>
                             <?php endif; ?>
 
                             <?php if($type === 'email'): ?>
@@ -1812,10 +1818,17 @@ class MEC_skin_single extends MEC_skins
         $title = ($event and isset($event->data) and isset($event->data->meta) and isset($event->data->meta['mec_public_dl_title']) and $event->data->meta['mec_public_dl_title']) ? $event->data->meta['mec_public_dl_title'] : NULL;
         $description = ($event and isset($event->data) and isset($event->data->meta) and isset($event->data->meta['mec_public_dl_description']) and $event->data->meta['mec_public_dl_description']) ? $event->data->meta['mec_public_dl_description'] : NULL;
 
-        echo MEC_kses::element('<div class="mec-public-download-details mec-frontbox">
-            '.($description ? '<p>'.wp_kses(wpautop($description), array('p' => array(), 'br' => array())).'</p>' : '').'
-            <a class="button" href="'.esc_url($url).'">'.(trim($title) ? esc_html($title) : esc_html__('Download', 'mec')).'</a>
-        </div>');
+        // echo MEC_kses::element('<div class="mec-public-download-details mec-frontbox">
+        //     '.($description ? '<p>'.wp_kses(wpautop($description), array('p' => array(), 'br' => array())).'</p>' : '').'
+        //     <a class="button" href="'.esc_url($url).'">'.(trim($title) ? esc_html($title) : esc_html__('Download', 'mec')).'</a>
+        // </div>');
+
+        $html= '<div class="mec-public-download-details mec-frontbox">'
+                    . ($description ? wp_kses(wpautop($description), array('p' => array(), 'br' => array())) : '')
+                    . '<a class="button" href="'.esc_url($url).'">'.(trim($title) ? esc_html($title) : esc_html__('Download', 'mec')).'</a>
+                </div>';
+
+        return $html;
     }
 
     public function display_disclaimer($event)
@@ -1975,17 +1988,33 @@ class MEC_skin_single extends MEC_skins
 
     public function display_datetime_widget($event, $occurrence_full, $occurrence_end_full)
     {
+        // Check if event data exists
+        if(!isset($event->data)) return;
+
+        // Get the date format
+        $this->date_format1 = (isset($this->ml_settings['single_date_format1']) and trim($this->ml_settings['single_date_format1'])) ? $this->ml_settings['single_date_format1'] : 'M d Y';
+
+        // Check if it's a midnight event
         $midnight_event = $this->main->is_midnight_event($event);
         ?>
         <div class="mec-single-event-date">
             <?php echo $this->icons->display('calendar'); ?>
             <h3 class="mec-date"><?php esc_html_e('Date', 'mec'); ?></h3>
             <dl>
-                <?php if($midnight_event): ?>
-                    <dd><abbr class="mec-events-abbr"><?php echo MEC_kses::element($this->main->dateify($event, $this->date_format1)); ?></abbr></dd>
-                <?php else: ?>
-                    <dd><abbr class="mec-events-abbr"><?php echo MEC_kses::element($this->main->date_label($occurrence_full, $occurrence_end_full, $this->date_format1, ' - ', true, 0, $event)); ?></abbr></dd>
-                <?php endif; ?>
+            <?php if($midnight_event): ?>
+                <dd><abbr class="mec-events-abbr"><?php echo MEC_kses::element($this->main->dateify($event, $this->date_format1)); ?></abbr></dd>
+            <?php else: ?>
+                <?php 
+                // If occurrence dates are not provided, get them from event data
+                if(!$occurrence_full && isset($event->date['start'])) {
+                    $occurrence_full = $event->date['start'];
+                }
+                if(!$occurrence_end_full && isset($event->date['end'])) {
+                    $occurrence_end_full = $event->date['end'];
+                }
+                ?>
+                <dd><abbr class="mec-events-abbr"><?php echo MEC_kses::element($this->main->date_label($occurrence_full, $occurrence_end_full, $this->date_format1, ' - ', true, 0, $event)); ?></abbr></dd>
+            <?php endif; ?>
             </dl>
             <?php echo MEC_kses::element($this->main->holding_status($event)); ?>
         </div>
@@ -2001,11 +2030,11 @@ class MEC_skin_single extends MEC_skins
                 <h3 class="mec-time"><?php esc_html_e('Time', 'mec'); ?></h3>
                 <i class="mec-time-comment"><?php echo (isset($time_comment) ? esc_html($time_comment) : ''); ?></i>
                 <dl>
-                    <?php if($allday == '0' and isset($event->data->time) and trim($event->data->time['start'])): ?>
-                        <dd><abbr class="mec-events-abbr"><?php echo esc_html($event->data->time['start']); ?><?php echo (trim($event->data->time['end']) ? ' - '.esc_html($event->data->time['end']) : ''); ?></abbr></dd>
-                    <?php else: ?>
-                        <dd><abbr class="mec-events-abbr"><?php echo esc_html($this->main->m('all_day', esc_html__('All Day' , 'mec'))); ?></abbr></dd>
-                    <?php endif; ?>
+                <?php if($allday == '0' and isset($event->data->time) and trim($event->data->time['start'])): ?>
+                    <dd><abbr class="mec-events-abbr"><?php echo esc_html($event->data->time['start']); ?><?php echo (trim($event->data->time['end']) ? ' - '.esc_html($event->data->time['end']) : ''); ?></abbr></dd>
+                <?php else: ?>
+                    <dd><abbr class="mec-events-abbr"><?php echo esc_html($this->main->m('all_day', esc_html__('All Day' , 'mec'))); ?></abbr></dd>
+                <?php endif; ?>
                 </dl>
             </div>
             <?php

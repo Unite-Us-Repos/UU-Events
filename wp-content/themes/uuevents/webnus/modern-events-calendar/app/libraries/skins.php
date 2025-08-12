@@ -2680,3 +2680,4 @@ class MEC_skins extends MEC_base
             '<a target="_blank" rel="noopener noreferrer" href="' . $feed_url . '">' . __('Export .ics file', 'mec') . '</a></div></div>';
     }
 }
+

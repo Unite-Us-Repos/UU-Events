@@ -46,6 +46,8 @@ if($sticky_sidebar == 1) $sticky_sidebar = 'mec-sticky';
 
 // Banner Image
 $banner_module = $this->can_display_banner_module($event);
+
+$category_restricted = false;
 ?>
 <div class="mec-wrap <?php echo esc_attr($event_colorskin); ?> clearfix <?php echo esc_attr($this->html_class); ?>" id="mec_skin_<?php echo esc_attr($this->uniqueid); ?>">
 
@@ -116,10 +118,9 @@ $banner_module = $this->can_display_banner_module($event);
 			        $category_ids = array_map(function($category) { return $category['id']; }, $event->data->categories);
 
 			        $settings_serialized = get_option('mec_options', false);
-			        $category_restricted = false;
 			        if ($settings_serialized !== false) {
 			            $settings = maybe_unserialize($settings_serialized);
-			            if (isset($settings['settings']['pmp_booking']) && is_array($settings['settings']['pmp_booking'])) {
+			            if (isset($settings['settings']['pmp_booking'][2]) && is_array($settings['settings']['pmp_booking'][2])) {
 			                foreach ($category_ids as $category_id) {
 			                    if (in_array($category_id, $settings['settings']['pmp_booking'][2])) {
 			                        $category_restricted = true;
@@ -287,7 +288,7 @@ $banner_module = $this->can_display_banner_module($event);
 							<?php
 							foreach($event->data->categories as $category)
 							{
-                                $color = ((isset($category['color']) and trim($category['color'])) ? $category['color'] : '');
+                                $color = isset($category['color']) && trim($category['color']) ? $category['color'] : '';
 
                                 $color_html = '';
                                 if($color) $color_html .= '<span class="mec-event-category-color" style="--background-color: '.esc_attr($color).';background-color: '.esc_attr($color).'">&nbsp;</span>';
@@ -412,7 +413,7 @@ $banner_module = $this->can_display_banner_module($event);
 				<?php echo MEC_kses::full($this->main->module('qrcode.details', array('event' => $event, 'icons' => $this->icons))); ?>
 
                 <!-- Public Download Module -->
-                <?php $this->display_public_download_module($event); ?>
+                <?php echo $this->display_public_download_module($event); ?>
 
 				<!-- Widgets -->
 				<?php dynamic_sidebar(); ?>

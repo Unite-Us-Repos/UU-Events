@@ -352,7 +352,7 @@ $map_events = [];
                                         <?php endif; ?>
 
                                         <?php if(isset($field['label'])): ?>
-                                            <span class="mec-event-data-field-name"><?php esc_html_e(stripslashes($field['label']), 'mec'); ?>: </span>
+                                            <span class="mec-event-data-field-name"><?php esc_html_e(stripslashes($field['label']), 'mec'); ?></span>
                                         <?php endif; ?>
 
                                         <?php if($type === 'email'): ?>

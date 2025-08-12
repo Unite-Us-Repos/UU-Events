@@ -63,10 +63,10 @@ $reason_for_cancellation = $this->skin_options['reason_for_cancellation'] ?? fal
                             <?php echo MEC_kses::element($this->display_link($event)); ?>
                             <?php echo MEC_kses::element($event_color); ?>
                             <?php echo MEC_kses::element($this->main->get_normal_labels($event, $display_label)).MEC_kses::element($this->main->display_cancellation_reason($event, $reason_for_cancellation)); ?><?php do_action('mec_shortcode_virtual_badge', $event->data->ID ); ?>
-                            <?php echo MEC_kses::form($this->booking_button($event)); ?>
+                            <?php echo MEC_kses::embed($this->display_custom_data($event)); ?>
                             <?php if($this->localtime) echo MEC_kses::full($this->main->module('local-time.type2', array('event' => $event))); ?>
                         </span>
-                        <?php echo MEC_kses::embed($this->display_custom_data($event)); ?>
+                        <?php echo MEC_kses::form($this->booking_button($event)); ?>
                         <?php echo MEC_kses::element($this->get_label_captions($event, 'mec-fc-style')); ?>
                     </div>
                 <?php endif; ?>
