@@ -23,7 +23,7 @@ $watch('isSticky', value => {
         <a href="/">
           <span class="sr-only">Main menu</span>
           <img fetchpriority="high"
-            src="https://uniteustailstg.wpengine.com/wp-content/themes/uniteus-sage/public/images/unite-us-logo.svg"
+            src="https://uniteus.com/wp-content/themes/uniteus-sage/public/images/unite-us-logo.svg"
             alt="Unite Us" width="192" height="48" />
         </a>
       </div>
@@ -32,7 +32,7 @@ $watch('isSticky', value => {
       <div class="lg:hidden -mr-2 -my-2 flex items-center gap-3">
         <button type="button" @click="showSearchModal = true" class="rounded-lg flex items-center justify-center">
           <span class="sr-only">Search site</span>
-          <img src="https://uniteustailstg.wpengine.com/wp-content/themes/uniteus-sage/public/images/nav-search.svg"
+          <img src="https://uniteus.com/wp-content/themes/uniteus-sage/public/images/nav-search.svg"
             alt="" width="20" height="20" />
         </button>
 
@@ -83,30 +83,30 @@ $watch('isSticky', value => {
             </div>
 
             <div class="solutions-industry-list">
-              <a href="https://uniteustailstg.wpengine.com/industries/government/" class="solutions-industry-link menu_click">
+              <a href="https://uniteus.com/industries/government/" class="solutions-industry-link menu_click">
                 <span class="solutions-industry-icon" aria-hidden="true">
-                  <img src="https://uniteustailstg.wpengine.com/wp-content/uploads/2025/12/building-2.svg" alt="" class="menu-icon-img">
+                  <img src="https://uniteus.com/wp-content/uploads/2025/12/building-2.svg" alt="" class="menu-icon-img">
                 </span>
                 <span class="solutions-industry-label">Government</span>
               </a>
 
-              <a href="https://uniteustailstg.wpengine.com/industries/providers/" class="solutions-industry-link menu_click">
+              <a href="https://uniteus.com/industries/providers/" class="solutions-industry-link menu_click">
                 <span class="solutions-industry-icon" aria-hidden="true">
-                  <img src="https://uniteustailstg.wpengine.com/wp-content/uploads/2025/12/stethoscope.svg" alt="" class="menu-icon-img">
+                  <img src="https://uniteus.com/wp-content/uploads/2025/12/stethoscope.svg" alt="" class="menu-icon-img">
                 </span>
                 <span class="solutions-industry-label">Providers</span>
               </a>
 
-              <a href="https://uniteustailstg.wpengine.com/industries/payers/" class="solutions-industry-link menu_click">
+              <a href="https://uniteus.com/industries/payers/" class="solutions-industry-link menu_click">
                 <span class="solutions-industry-icon" aria-hidden="true">
-                  <img src="https://uniteustailstg.wpengine.com/wp-content/uploads/2025/12/wallet.svg" alt="" class="menu-icon-img">
+                  <img src="https://uniteus.com/wp-content/uploads/2025/12/wallet.svg" alt="" class="menu-icon-img">
                 </span>
                 <span class="solutions-industry-label">Payers</span>
               </a>
 
-              <a href="https://uniteustailstg.wpengine.com/industries/community/" class="solutions-industry-link menu_click">
+              <a href="https://uniteus.com/industries/community/" class="solutions-industry-link menu_click">
                 <span class="solutions-industry-icon" aria-hidden="true">
-                  <img src="https://uniteustailstg.wpengine.com/wp-content/uploads/2025/12/users-1.svg" alt="" class="menu-icon-img">
+                  <img src="https://uniteus.com/wp-content/uploads/2025/12/users-1.svg" alt="" class="menu-icon-img">
                 </span>
                 <span class="solutions-industry-label">Community</span>
               </a>
@@ -123,53 +123,53 @@ $watch('isSticky', value => {
               <div class="solutions-product-group">
                 <div class="solutions-product-heading-row">
                   <span class="solutions-product-icon" aria-hidden="true">
-                    <img src="https://uniteustailstg.wpengine.com/wp-content/uploads/2025/12/search.svg" alt="" class="menu-icon-img">
+                    <img src="https://uniteus.com/wp-content/uploads/2025/12/search.svg" alt="" class="menu-icon-img">
                   </span>
                   <span class="solutions-product-heading">Insights</span>
                 </div>
                 <div class="solutions-product-list">
-                  <a href="https://uniteustailstg.wpengine.com/products/social-care-data/" class="solutions-product-link menu_click">Predictive Analytics</a>
-                  <a href="https://uniteustailstg.wpengine.com/solutions/self-sufficiency-score/" class="solutions-product-link menu_click">Self Sufficiency Score</a>
+                  <a href="https://uniteus.com/products/social-care-data/" class="solutions-product-link menu_click">Predictive Analytics</a>
+                  <a href="https://uniteus.com/solutions/self-sufficiency-score/" class="solutions-product-link menu_click">Self Sufficiency Score</a>
                 </div>
               </div>
 
               <div class="solutions-product-group">
                 <div class="solutions-product-heading-row">
                   <span class="solutions-product-icon" aria-hidden="true">
-                    <img src="https://uniteustailstg.wpengine.com/wp-content/uploads/2025/12/database.svg" alt="" class="menu-icon-img">
+                    <img src="https://uniteus.com/wp-content/uploads/2025/12/database.svg" alt="" class="menu-icon-img">
                   </span>
                   <span class="solutions-product-heading">Platform</span>
                 </div>
                 <div class="solutions-product-list">
-                  <a href="https://uniteustailstg.wpengine.com/products/closed-loop-referral-system/" class="solutions-product-link menu_click">Closed-Loop Referral System</a>
-                  <a href="https://uniteustailstg.wpengine.com/solutions/integrations/" class="solutions-product-link menu_click">Integrations</a>
-                  <a href="https://uniteustailstg.wpengine.com/products/resource-directory/" class="solutions-product-link menu_click">Resource Directory</a>
+                  <a href="https://uniteus.com/products/closed-loop-referral-system/" class="solutions-product-link menu_click">Closed-Loop Referral System</a>
+                  <a href="https://uniteus.com/solutions/integrations/" class="solutions-product-link menu_click">Integrations</a>
+                  <a href="https://uniteus.com/products/resource-directory/" class="solutions-product-link menu_click">Resource Directory</a>
                 </div>
               </div>
 
               <div class="solutions-product-group">
                 <div class="solutions-product-heading-row">
                   <span class="solutions-product-icon" aria-hidden="true">
-                    <img src="https://uniteustailstg.wpengine.com/wp-content/uploads/2025/12/credit-card.svg" alt="" class="menu-icon-img">
+                    <img src="https://uniteus.com/wp-content/uploads/2025/12/credit-card.svg" alt="" class="menu-icon-img">
                   </span>
                   <span class="solutions-product-heading">Payments</span>
                 </div>
                 <div class="solutions-product-list">
-                  <a href="https://uniteustailstg.wpengine.com/solutions/grant-tracking-billing/" class="solutions-product-link menu_click">Grant Tracking &amp; Billing</a>
-                  <a href="https://uniteustailstg.wpengine.com/products/social-care-revenue-cycle-management/" class="solutions-product-link menu_click">Revenue Cycle Management</a>
+                  <a href="https://uniteus.com/solutions/grant-tracking-billing/" class="solutions-product-link menu_click">Grant Tracking &amp; Billing</a>
+                  <a href="https://uniteus.com/products/social-care-revenue-cycle-management/" class="solutions-product-link menu_click">Revenue Cycle Management</a>
                 </div>
               </div>
 
               <div class="solutions-product-group">
                 <div class="solutions-product-heading-row">
                   <span class="solutions-product-icon" aria-hidden="true">
-                    <img src="https://uniteustailstg.wpengine.com/wp-content/uploads/2025/12/briefcase-1.svg" alt="" class="menu-icon-img">
+                    <img src="https://uniteus.com/wp-content/uploads/2025/12/briefcase-1.svg" alt="" class="menu-icon-img">
                   </span>
                   <span class="solutions-product-heading">Professional Services</span>
                 </div>
                 <div class="solutions-product-list">
-                  <a href="https://uniteustailstg.wpengine.com/products/professional-services/" class="solutions-product-link menu_click">Managed Services</a>
-                  <a href="https://uniteustailstg.wpengine.com/products/care-coordination-services/" class="solutions-product-link menu_click">Care Coordination</a>
+                  <a href="https://uniteus.com/products/professional-services/" class="solutions-product-link menu_click">Managed Services</a>
+                  <a href="https://uniteus.com/products/care-coordination-services/" class="solutions-product-link menu_click">Care Coordination</a>
                 </div>
               </div>
 
@@ -181,9 +181,9 @@ $watch('isSticky', value => {
               <div class="solutions-usecases-title">USE CASE</div>
 
               <div class="solutions-usecases-list">
-                <a href="https://uniteustailstg.wpengine.com/solutions/rural-health/" class="solutions-usecase-item is-featured menu_click">
+                <a href="https://uniteus.com/solutions/rural-health/" class="solutions-usecase-item is-featured menu_click">
                   <span class="solutions-usecase-icon" aria-hidden="true">
-                    <img src="https://uniteustailstg.wpengine.com/wp-content/uploads/2025/12/wheat.svg" alt="" class="menu-icon-img">
+                    <img src="https://uniteus.com/wp-content/uploads/2025/12/wheat.svg" alt="" class="menu-icon-img">
                   </span>
                   <div class="solutions-usecase-text">
                     <span class="solutions-usecase-label">Rural Health</span>
@@ -191,23 +191,23 @@ $watch('isSticky', value => {
                   </div>
                 </a>
 
-                <a href="https://uniteustailstg.wpengine.com/medicaid-community-engagement/" class="solutions-usecase-item menu_click">
+                <a href="https://uniteus.com/medicaid-community-engagement/" class="solutions-usecase-item menu_click">
                   <span class="solutions-usecase-icon" aria-hidden="true">
-                    <img src="https://uniteustailstg.wpengine.com/wp-content/uploads/2025/12/file-check.svg" alt="" class="menu-icon-img">
+                    <img src="https://uniteus.com/wp-content/uploads/2025/12/file-check.svg" alt="" class="menu-icon-img">
                   </span>
                   <span class="solutions-usecase-label">Medicaid Community Engagement Requirements</span>
                 </a>
 
-                <a href="https://uniteustailstg.wpengine.com/solutions/medicaid-transformation/" class="solutions-usecase-item menu_click">
+                <a href="https://uniteus.com/solutions/medicaid-transformation/" class="solutions-usecase-item menu_click">
                   <span class="solutions-usecase-icon" aria-hidden="true">
-                    <img src="https://uniteustailstg.wpengine.com/wp-content/uploads/2025/12/shield-check.svg" alt="" class="menu-icon-img">
+                    <img src="https://uniteus.com/wp-content/uploads/2025/12/shield-check.svg" alt="" class="menu-icon-img">
                   </span>
                   <span class="solutions-usecase-label">Medicaid Transformation</span>
                 </a>
 
-                <a href="https://uniteustailstg.wpengine.com/solutions/ed-utilization/" class="solutions-usecase-item menu_click">
+                <a href="https://uniteus.com/solutions/ed-utilization/" class="solutions-usecase-item menu_click">
                   <span class="solutions-usecase-icon" aria-hidden="true">
-                    <img src="https://uniteustailstg.wpengine.com/wp-content/uploads/2025/12/hospital.svg" alt="" class="menu-icon-img">
+                    <img src="https://uniteus.com/wp-content/uploads/2025/12/hospital.svg" alt="" class="menu-icon-img">
                   </span>
                   <span class="solutions-usecase-label">Emergency Department Utilization</span>
                 </a>
@@ -247,35 +247,35 @@ $watch('isSticky', value => {
             <div class="resources-links-column flex flex-col">
               <a href="/blog" class="resources-link menu_click">
                 <span class="resources-icon" aria-hidden="true">
-                  <img src="https://uniteustailstg.wpengine.com/wp-content/uploads/2025/12/file-text.svg" alt="" class="menu-icon-img">
+                  <img src="https://uniteus.com/wp-content/uploads/2025/12/file-text.svg" alt="" class="menu-icon-img">
                 </span>
                 <span class="resources-label">Blogs</span>
               </a>
 
               <a href="/webinar" class="resources-link menu_click">
                 <span class="resources-icon" aria-hidden="true">
-                  <img src="https://uniteustailstg.wpengine.com/wp-content/uploads/2025/12/video.svg" alt="" class="menu-icon-img">
+                  <img src="https://uniteus.com/wp-content/uploads/2025/12/video.svg" alt="" class="menu-icon-img">
                 </span>
                 <span class="resources-label">Webinars &amp; Videos</span>
               </a>
 
               <a href="https://events.uniteus.com" class="resources-link menu_click">
                 <span class="resources-icon" aria-hidden="true">
-                  <img src="https://uniteustailstg.wpengine.com/wp-content/uploads/2025/12/calendar.svg" alt="" class="menu-icon-img">
+                  <img src="https://uniteus.com/wp-content/uploads/2025/12/calendar.svg" alt="" class="menu-icon-img">
                 </span>
                 <span class="resources-label">Events</span>
               </a>
 
               <a href="/press" class="resources-link menu_click">
                 <span class="resources-icon" aria-hidden="true">
-                  <img src="https://uniteustailstg.wpengine.com/wp-content/uploads/2025/12/newspaper.svg" alt="" class="menu-icon-img">
+                  <img src="https://uniteus.com/wp-content/uploads/2025/12/newspaper.svg" alt="" class="menu-icon-img">
                 </span>
                 <span class="resources-label">Newsroom</span>
               </a>
 
               <a href="/studies-and-data" class="resources-link menu_click">
                 <span class="resources-icon" aria-hidden="true">
-                  <img src="https://uniteustailstg.wpengine.com/wp-content/uploads/2025/12/search.svg" alt="" class="menu-icon-img">
+                  <img src="https://uniteus.com/wp-content/uploads/2025/12/search.svg" alt="" class="menu-icon-img">
                 </span>
                 <span class="resources-label">Studies &amp; Data</span>
               </a>
@@ -291,7 +291,7 @@ $watch('isSticky', value => {
               <div class="resources-feature-content">
                 <div class="resources-feature-eyebrow">
                   <span class="resources-feature-eyebrow-icon" aria-hidden="true">
-                    <img src="https://uniteustailstg.wpengine.com/wp-content/themes/uniteus-sage/public/images/video.svg" alt="" />
+                    <img src="https://uniteus.com/wp-content/themes/uniteus-sage/public/images/video.svg" alt="" />
                   </span>
                   <span class="resources-feature-eyebrow-label">Featured Webinar</span>
                 </div>
@@ -304,14 +304,14 @@ $watch('isSticky', value => {
                   Explore how Unite Us and Missouri’s ToRCH model are transforming rural health th…
                 </p>
 
-                <a href="https://uniteustailstg.wpengine.com/webinar/rural-health-a-guide-for-digital-health-transformation/"
+                <a href="https://uniteus.com/webinar/rural-health-a-guide-for-digital-health-transformation/"
                   class="resources-feature-cta">
                   Learn more <span class="resources-feature-cta-arrow" aria-hidden="true">→</span>
                 </a>
               </div>
 
               <div class="resources-feature-image">
-                <img src="https://uniteustailstg.wpengine.com/wp-content/uploads/2025/09/Events-Banner-Image.png"
+                <img src="https://uniteus.com/wp-content/uploads/2025/09/Events-Banner-Image.png"
                   alt="Rural Health: A Guide for Digital Health Transformation"
                   class="resources-feature-image-img">
               </div>
@@ -348,44 +348,44 @@ $watch('isSticky', value => {
             <div class="company-title">WHO WE ARE</div>
 
             <div class="company-links-grid">
-              <a href="https://uniteustailstg.wpengine.com/about-unite-us/" class="company-link menu_click">
+              <a href="https://uniteus.com/about-unite-us/" class="company-link menu_click">
                 <span class="company-link-icon" aria-hidden="true">
-                  <img src="https://uniteustailstg.wpengine.com/wp-content/uploads/2025/12/Group-37403.svg" alt="" class="menu-icon-img">
+                  <img src="https://uniteus.com/wp-content/uploads/2025/12/Group-37403.svg" alt="" class="menu-icon-img">
                 </span>
                 <span class="company-link-label">About</span>
               </a>
 
-              <a href="https://uniteustailstg.wpengine.com/team/" class="company-link menu_click">
+              <a href="https://uniteus.com/team/" class="company-link menu_click">
                 <span class="company-link-icon" aria-hidden="true">
-                  <img src="https://uniteustailstg.wpengine.com/wp-content/uploads/2025/12/users.svg" alt="" class="menu-icon-img">
+                  <img src="https://uniteus.com/wp-content/uploads/2025/12/users.svg" alt="" class="menu-icon-img">
                 </span>
                 <span class="company-link-label">Team</span>
               </a>
 
-              <a href="https://uniteustailstg.wpengine.com/our-careers/" class="company-link menu_click">
+              <a href="https://uniteus.com/our-careers/" class="company-link menu_click">
                 <span class="company-link-icon" aria-hidden="true">
-                  <img src="https://uniteustailstg.wpengine.com/wp-content/uploads/2025/12/briefcase.svg" alt="" class="menu-icon-img">
+                  <img src="https://uniteus.com/wp-content/uploads/2025/12/briefcase.svg" alt="" class="menu-icon-img">
                 </span>
                 <span class="company-link-label">Careers</span>
               </a>
 
-              <a href="https://uniteustailstg.wpengine.com/loyalty-referral/" class="company-link menu_click">
+              <a href="https://uniteus.com/loyalty-referral/" class="company-link menu_click">
                 <span class="company-link-icon" aria-hidden="true">
-                  <img src="https://uniteustailstg.wpengine.com/wp-content/uploads/2025/12/Icon-1.svg" alt="" class="menu-icon-img">
+                  <img src="https://uniteus.com/wp-content/uploads/2025/12/Icon-1.svg" alt="" class="menu-icon-img">
                 </span>
                 <span class="company-link-label">Referral</span>
               </a>
 
-              <a href="https://uniteustailstg.wpengine.com/channel-partner/" class="company-link menu_click">
+              <a href="https://uniteus.com/channel-partner/" class="company-link menu_click">
                 <span class="company-link-icon" aria-hidden="true">
-                  <img src="https://uniteustailstg.wpengine.com/wp-content/uploads/2025/12/Group.svg" alt="" class="menu-icon-img">
+                  <img src="https://uniteus.com/wp-content/uploads/2025/12/Group.svg" alt="" class="menu-icon-img">
                 </span>
                 <span class="company-link-label">Channel Partners</span>
               </a>
 
-              <a href="https://uniteustailstg.wpengine.com/networks/" class="company-link menu_click">
+              <a href="https://uniteus.com/networks/" class="company-link menu_click">
                 <span class="company-link-icon" aria-hidden="true">
-                  <img src="https://uniteustailstg.wpengine.com/wp-content/uploads/2025/12/Group-372.svg" alt="" class="menu-icon-img">
+                  <img src="https://uniteus.com/wp-content/uploads/2025/12/Group-372.svg" alt="" class="menu-icon-img">
                 </span>
                 <span class="company-link-label">Networks</span>
               </a>
@@ -396,7 +396,7 @@ $watch('isSticky', value => {
             <article class="company-award-card" aria-label="Company Award Highlight">
               <div class="company-award-badge">
                 <span class="company-award-badge-icon" aria-hidden="true">
-                  <img src="https://uniteustailstg.wpengine.com/wp-content/themes/uniteus-sage/public/images/award.svg" alt="" />
+                  <img src="https://uniteus.com/wp-content/themes/uniteus-sage/public/images/award.svg" alt="" />
                 </span>
                 <span class="company-award-badge-text">Company Awards</span>
               </div>
@@ -409,13 +409,13 @@ $watch('isSticky', value => {
                 Honored for advancing healthcare through technology, measurable outcomes, and impact.
               </p>
 
-              <a href="https://uniteustailstg.wpengine.com/press/unite-us-awarded-on-times-list-of-the-worlds-top-healthtech-companies-2025/"
+              <a href="https://uniteus.com/press/unite-us-awarded-on-times-list-of-the-worlds-top-healthtech-companies-2025/"
                 class="company-award-cta" target="_self">
                 Read the Announcement
               </a>
 
               <div class="company-award-mark" aria-hidden="true"
-                style="background-image:url('https://uniteustailstg.wpengine.com/wp-content/themes/uniteus-sage/public/images/award.svg');"></div>
+                style="background-image:url('https://uniteus.com/wp-content/themes/uniteus-sage/public/images/award.svg');"></div>
             </article>
           </section>
 
@@ -431,10 +431,10 @@ $watch('isSticky', value => {
         <a href="https://app.uniteus.io/" class="whitespace-nowrap text-base font-medium text-brand hover:text-brand">
           Log In
         </a>
-        <a href="https://uniteustailstg.wpengine.com/demo/" class="button button-solid !rounded-full mx-6">Get Started</a>
+        <a href="https://uniteus.com/demo/" class="button button-solid !rounded-full mx-6">Get Started</a>
         <button type="button" @click="showSearchModal = true" class="rounded-lg flex items-center justify-center">
           <span class="sr-only">Search site</span>
-          <img src="https://uniteustailstg.wpengine.com/wp-content/themes/uniteus-sage/public/images/nav-search.svg"
+          <img src="https://uniteus.com/wp-content/themes/uniteus-sage/public/images/nav-search.svg"
             alt="" width="20" height="20" />
         </button>
       </div>
@@ -456,7 +456,7 @@ $watch('isSticky', value => {
     <div class="pt-5 pb-6 px-5">
       <div class="flex items-center justify-between">
         <img fetchpriority="high"
-          src="https://uniteustailstg.wpengine.com/wp-content/themes/uniteus-sage/public/images/unite-us-logo.svg"
+          src="https://uniteus.com/wp-content/themes/uniteus-sage/public/images/unite-us-logo.svg"
           alt="Unite Us" width="192" height="48" />
 
         <button type="button"
@@ -469,7 +469,7 @@ $watch('isSticky', value => {
 >
           <span class="sr-only">Close menu</span>
           <img
-            src="https://uniteustailstg.wpengine.com/wp-content/themes/uniteus-sage/public/images/nav-close.svg"
+            src="https://uniteus.com/wp-content/themes/uniteus-sage/public/images/nav-close.svg"
             alt="" width="24" height="24" />
         </button>
       </div>
@@ -497,19 +497,19 @@ $watch('isSticky', value => {
     x-bind:style="isOpen ? 'max-height: ' + $refs.container.scrollHeight + 'px' : ''">
     <div class="overflow-hidden">
       <div class="relative grid gap-6 rounded-lg bg-light mb-2 mt-6 px-5 py-6 sm:p-8">
-        <a href="https://uniteustailstg.wpengine.com/industries/government/"
+        <a href="https://uniteus.com/industries/government/"
           class="-m-3 p-3 flex items-start rounded-lg hover:bg-white menu_click">
           <span class="text-base font-medium text-brand">Government</span>
         </a>
-        <a href="https://uniteustailstg.wpengine.com/industries/providers/"
+        <a href="https://uniteus.com/industries/providers/"
           class="-m-3 p-3 flex items-start rounded-lg hover:bg-white menu_click">
           <span class="text-base font-medium text-brand">Providers</span>
         </a>
-        <a href="https://uniteustailstg.wpengine.com/industries/payers/"
+        <a href="https://uniteus.com/industries/payers/"
           class="-m-3 p-3 flex items-start rounded-lg hover:bg-white menu_click">
           <span class="text-base font-medium text-brand">Payers</span>
         </a>
-        <a href="https://uniteustailstg.wpengine.com/industries/community/"
+        <a href="https://uniteus.com/industries/community/"
           class="-m-3 p-3 flex items-start rounded-lg hover:bg-white menu_click">
           <span class="text-base font-medium text-brand">Community</span>
         </a>
@@ -547,14 +547,14 @@ $watch('isSticky', value => {
         <!-- INSIGHTS -->
         <div class="text-base  text-brand">Insights</div>
         <div class="mt-2 pl-5 space-y-2">
-          <a href="https://uniteustailstg.wpengine.com/products/social-care-data/"
+          <a href="https://uniteus.com/products/social-care-data/"
             class="flex items-center gap-3 text-base font-medium text-brand hover:text-action menu_click pb-2">
             <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true">
               <path d="M7.5 4.5L13 10l-5.5 5.5" fill="none" stroke="#2563EB" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
             Predictive Analytics
           </a>
-          <a href="https://uniteustailstg.wpengine.com/solutions/self-sufficiency-score/"
+          <a href="https://uniteus.com/solutions/self-sufficiency-score/"
             class="flex items-center gap-3 text-base font-medium text-brand hover:text-action menu_click pb-2 !mt-0">
             <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true">
               <path d="M7.5 4.5L13 10l-5.5 5.5" fill="none" stroke="#2563EB" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
@@ -566,21 +566,21 @@ $watch('isSticky', value => {
         <!-- PLATFORM -->
         <div class="text-base text-brand pt-2 pb-2">Platform</div>
         <div class="mt-2 pl-5 space-y-2 gap-4">
-          <a href="https://uniteustailstg.wpengine.com/products/closed-loop-referral-system/"
+          <a href="https://uniteus.com/products/closed-loop-referral-system/"
             class="flex items-center gap-3 text-base font-medium text-brand hover:text-action menu_click pb-2 !mt-0">
             <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true">
               <path d="M7.5 4.5L13 10l-5.5 5.5" fill="none" stroke="#2563EB" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
             Closed-Loop Referral System
           </a>
-          <a href="https://uniteustailstg.wpengine.com/solutions/integrations/"
+          <a href="https://uniteus.com/solutions/integrations/"
             class="flex items-center gap-3 text-base font-medium text-brand hover:text-action menu_click pb-2 !mt-0">
             <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true">
               <path d="M7.5 4.5L13 10l-5.5 5.5" fill="none" stroke="#2563EB" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
             Integrations
           </a>
-          <a href="https://uniteustailstg.wpengine.com/products/resource-directory/"
+          <a href="https://uniteus.com/products/resource-directory/"
             class="flex items-center gap-3 text-base font-medium text-brand hover:text-action menu_click pb-2 !mt-0">
             <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true">
               <path d="M7.5 4.5L13 10l-5.5 5.5" fill="none" stroke="#2563EB" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
@@ -592,14 +592,14 @@ $watch('isSticky', value => {
         <!-- PAYMENTS -->
         <div class="text-base text-brand pt-2 pb-2">Payments</div>
         <div class="mt-2 pl-5 space-y-2 gap-4">
-          <a href="https://uniteustailstg.wpengine.com/solutions/grant-tracking-billing/"
+          <a href="https://uniteus.com/solutions/grant-tracking-billing/"
             class="flex items-center gap-3 text-base font-medium text-brand hover:text-action menu_click pb-2 !mt-0">
             <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true">
               <path d="M7.5 4.5L13 10l-5.5 5.5" fill="none" stroke="#2563EB" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
             Grant Tracking &amp; Billing
           </a>
-          <a href="https://uniteustailstg.wpengine.com/products/social-care-revenue-cycle-management/"
+          <a href="https://uniteus.com/products/social-care-revenue-cycle-management/"
             class="flex items-center gap-3 text-base font-medium text-brand hover:text-action menu_click pb-2 !mt-0">
             <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true">
               <path d="M7.5 4.5L13 10l-5.5 5.5" fill="none" stroke="#2563EB" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
@@ -611,14 +611,14 @@ $watch('isSticky', value => {
         <!-- PROFESSIONAL SERVICES -->
         <div class="text-base text-brand pt-2 pb-2">Professional Services</div>
         <div class="mt-2 pl-5 space-y-2">
-          <a href="https://uniteustailstg.wpengine.com/products/professional-services/"
+          <a href="https://uniteus.com/products/professional-services/"
             class="flex items-center gap-3 text-base font-medium text-brand hover:text-action menu_click pb-2 !mt-0">
             <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true">
               <path d="M7.5 4.5L13 10l-5.5 5.5" fill="none" stroke="#2563EB" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
             Managed Services
           </a>
-          <a href="https://uniteustailstg.wpengine.com/products/care-coordination-services/"
+          <a href="https://uniteus.com/products/care-coordination-services/"
             class="flex items-center gap-3 text-base font-medium text-brand hover:text-action menu_click pb-2 !mt-0">
             <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true">
               <path d="M7.5 4.5L13 10l-5.5 5.5" fill="none" stroke="#2563EB" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
@@ -652,19 +652,19 @@ $watch('isSticky', value => {
     x-bind:style="isOpen ? 'max-height: ' + $refs.container.scrollHeight + 'px' : ''">
     <div class="overflow-hidden">
       <div class="relative grid gap-6 rounded-lg bg-light mb-2 mt-6 px-5 py-6 sm:p-8">
-        <a href="https://uniteustailstg.wpengine.com/solutions/rural-health/"
+        <a href="https://uniteus.com/solutions/rural-health/"
           class="-m-3 p-3 flex items-start rounded-lg hover:bg-white menu_click">
           <span class="text-base font-medium text-brand">Rural Health</span>
         </a>
-        <a href="https://uniteustailstg.wpengine.com/medicaid-community-engagement/"
+        <a href="https://uniteus.com/medicaid-community-engagement/"
           class="-m-3 p-3 flex items-start rounded-lg hover:bg-white menu_click">
           <span class="text-base font-medium text-brand">Medicaid Community Engagement Requirements</span>
         </a>
-        <a href="https://uniteustailstg.wpengine.com/solutions/medicaid-transformation/"
+        <a href="https://uniteus.com/solutions/medicaid-transformation/"
           class="-m-3 p-3 flex items-start rounded-lg hover:bg-white menu_click">
           <span class="text-base font-medium text-brand">Medicaid Transformation</span>
         </a>
-        <a href="https://uniteustailstg.wpengine.com/solutions/ed-utilization/"
+        <a href="https://uniteus.com/solutions/ed-utilization/"
           class="-m-3 p-3 flex items-start rounded-lg hover:bg-white menu_click">
           <span class="text-base font-medium text-brand">Emergency Department Utilization</span>
         </a>
@@ -737,22 +737,22 @@ $watch('isSticky', value => {
               x-bind:style="isOpen ? 'max-height: ' + $refs.container.scrollHeight + 'px' : ''">
               <div class="overflow-hidden">
                 <div class="relative grid gap-6 rounded-lg bg-light mb-2 mt-6 px-5 py-6 sm:gap-8 sm:p-8">
-                  <a href="https://uniteustailstg.wpengine.com/about-unite-us/" class="-m-3 p-3 flex items-start rounded-lg hover:bg-light menu_click">
+                  <a href="https://uniteus.com/about-unite-us/" class="-m-3 p-3 flex items-start rounded-lg hover:bg-light menu_click">
                     <span class="text-base font-medium text-brand">About</span>
                   </a>
-                  <a href="https://uniteustailstg.wpengine.com/team/" class="-m-3 p-3 flex items-start rounded-lg hover:bg-light menu_click">
+                  <a href="https://uniteus.com/team/" class="-m-3 p-3 flex items-start rounded-lg hover:bg-light menu_click">
                     <span class="text-base font-medium text-brand">Team</span>
                   </a>
-                  <a href="https://uniteustailstg.wpengine.com/our-careers/" class="-m-3 p-3 flex items-start rounded-lg hover:bg-light menu_click">
+                  <a href="https://uniteus.com/our-careers/" class="-m-3 p-3 flex items-start rounded-lg hover:bg-light menu_click">
                     <span class="text-base font-medium text-brand">Careers</span>
                   </a>
-                  <a href="https://uniteustailstg.wpengine.com/loyalty-referral/" class="-m-3 p-3 flex items-start rounded-lg hover:bg-light menu_click">
+                  <a href="https://uniteus.com/loyalty-referral/" class="-m-3 p-3 flex items-start rounded-lg hover:bg-light menu_click">
                     <span class="text-base font-medium text-brand">Referral</span>
                   </a>
-                  <a href="https://uniteustailstg.wpengine.com/channel-partner/" class="-m-3 p-3 flex items-start rounded-lg hover:bg-light menu_click">
+                  <a href="https://uniteus.com/channel-partner/" class="-m-3 p-3 flex items-start rounded-lg hover:bg-light menu_click">
                     <span class="text-base font-medium text-brand">Channel Partners</span>
                   </a>
-                  <a href="https://uniteustailstg.wpengine.com/networks/" class="-m-3 p-3 flex items-start rounded-lg hover:bg-light menu_click">
+                  <a href="https://uniteus.com/networks/" class="-m-3 p-3 flex items-start rounded-lg hover:bg-light menu_click">
                     <span class="text-base font-medium text-brand">Networks</span>
                   </a>
                 </div>
@@ -766,7 +766,7 @@ $watch('isSticky', value => {
 
     <!-- Bottom CTAs -->
     <div class="py-6 px-5 space-y-6">
-      <a href="https://uniteustailstg.wpengine.com/demo/" class="button button-solid !rounded-full">Get Started
+      <a href="https://uniteus.com/demo/" class="button button-solid !rounded-full">Get Started
       </a>
       <p class="mt-6 text-center text-base font-medium">
         Have an account already?
