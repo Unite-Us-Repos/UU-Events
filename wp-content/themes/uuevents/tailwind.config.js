@@ -30,6 +30,12 @@ const config = {
     'inline-flex',
     'sm:grid-cols-3', 
     'lg:grid-cols-5',
+    '!rounded-full',
+    'pl-5',
+    'pb-4',
+    'pt-2',
+    'pb-2',
+    '!mt-0'
   ],
   theme: {
     fontFamily: {
