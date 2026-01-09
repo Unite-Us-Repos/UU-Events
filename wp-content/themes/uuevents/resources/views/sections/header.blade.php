@@ -245,14 +245,14 @@ $watch('isSticky', value => {
             <div class="resources-title">LIBRARY</div>
 
             <div class="resources-links-column flex flex-col">
-              <a href="/blog" class="resources-link menu_click">
+              <a href="https://uniteus.com/blog" class="resources-link menu_click">
                 <span class="resources-icon" aria-hidden="true">
                   <img src="https://uniteus.com/wp-content/uploads/2025/12/file-text.svg" alt="" class="menu-icon-img">
                 </span>
                 <span class="resources-label">Blogs</span>
               </a>
 
-              <a href="/webinar" class="resources-link menu_click">
+              <a href="https://uniteus.com/webinar" class="resources-link menu_click">
                 <span class="resources-icon" aria-hidden="true">
                   <img src="https://uniteus.com/wp-content/uploads/2025/12/video.svg" alt="" class="menu-icon-img">
                 </span>
@@ -266,14 +266,14 @@ $watch('isSticky', value => {
                 <span class="resources-label">Events</span>
               </a>
 
-              <a href="/press" class="resources-link menu_click">
+              <a href="https://uniteus.com/press" class="resources-link menu_click">
                 <span class="resources-icon" aria-hidden="true">
                   <img src="https://uniteus.com/wp-content/uploads/2025/12/newspaper.svg" alt="" class="menu-icon-img">
                 </span>
                 <span class="resources-label">Newsroom</span>
               </a>
 
-              <a href="/studies-and-data" class="resources-link menu_click">
+              <a href="https://uniteus.com/studies-and-data" class="resources-link menu_click">
                 <span class="resources-icon" aria-hidden="true">
                   <img src="https://uniteus.com/wp-content/uploads/2025/12/search.svg" alt="" class="menu-icon-img">
                 </span>
@@ -281,7 +281,7 @@ $watch('isSticky', value => {
               </a>
             </div>
 
-            <a href="/knowledge-hub/" class="resources-view-all">
+            <a href="https://uniteus.com/knowledge-hub/" class="resources-view-all">
               View all resources <span class="resources-view-all-arrow" aria-hidden="true">→</span>
             </a>
           </section>
@@ -694,22 +694,22 @@ $watch('isSticky', value => {
               x-bind:style="isOpen ? 'max-height: ' + $refs.container.scrollHeight + 'px' : ''">
               <div class="overflow-hidden">
                 <div class="relative grid gap-6 rounded-lg bg-light mb-2 mt-6 px-5 py-6 sm:gap-8 sm:p-8">
-                  <a href="/blog" class="-m-3 p-3 flex items-start rounded-lg hover:bg-light menu_click">
+                  <a https="//uniteus.com/blog" class="-m-3 p-3 flex items-start rounded-lg hover:bg-light menu_click">
                     <span class="text-base font-medium text-brand">Blogs</span>
                   </a>
-                  <a href="/webinar" class="-m-3 p-3 flex items-start rounded-lg hover:bg-light menu_click">
+                  <a href="https://uniteus.com/webinar" class="-m-3 p-3 flex items-start rounded-lg hover:bg-light menu_click">
                     <span class="text-base font-medium text-brand">Webinars &amp; Videos</span>
                   </a>
                   <a href="https://events.uniteus.com" class="-m-3 p-3 flex items-start rounded-lg hover:bg-light menu_click">
                     <span class="text-base font-medium text-brand">Events</span>
                   </a>
-                  <a href="/press" class="-m-3 p-3 flex items-start rounded-lg hover:bg-light menu_click">
+                  <a href="https://uniteus.com/press" class="-m-3 p-3 flex items-start rounded-lg hover:bg-light menu_click">
                     <span class="text-base font-medium text-brand">Newsroom</span>
                   </a>
-                  <a href="/studies-and-data" class="-m-3 p-3 flex items-start rounded-lg hover:bg-light menu_click">
+                  <a href="https://uniteus.com/studies-and-data" class="-m-3 p-3 flex items-start rounded-lg hover:bg-light menu_click">
                     <span class="text-base font-medium text-brand">Studies &amp; Data</span>
                   </a>
-                  <a href="/knowledge-hub/" class="-m-3 p-3 flex items-start rounded-lg hover:bg-light menu_click">
+                  <a href="https://uniteus.com/knowledge-hub/" class="-m-3 p-3 flex items-start rounded-lg hover:bg-light menu_click">
                     <span class="text-base font-medium text-brand">View all resources</span>
                   </a>
                 </div>
