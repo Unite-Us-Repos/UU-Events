@@ -1216,11 +1216,26 @@ ul.list-box {
   }
 
   #app .mec-search-form {
-    @apply flex flex-col md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 items-center mb-10
+    @apply flex flex-col md:grid md:grid-cols-2 gap-6 items-center mb-10
   }
 
   #app .mec-dropdown-wrap {
-    @apply md:col-span-2
+    background: white;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        box-shadow: 0px 7px 5px -4px #d0d6dc;
+    @apply md:col-span-1
+  }
+  #app .mec-wrap :after, #app .mec-wrap :before {
+    color: #216cff;
+  }
+  #app  .mec-wrap .mec-search-form .mec-dropdown-wrap .mec-dropdown-search select {
+    margin-bottom: 0;
+  }
+
+  #app  .mec-sl-folder {
+    border: none;
+    padding-right: 2rem;
   }
 
   #app .mec-text-address-search {
@@ -1234,11 +1249,6 @@ ul.list-box {
 
   #app .mec-text-address-search input {
     @apply m-0 text-brand text-sm rounded-md px-2 pr-0 md:px-4
-  }
-
-  #app .mec-dropdown-search {
-    position: absolute;
-    left: -5000px;
   }
 
   #app .mec-event-detail {
