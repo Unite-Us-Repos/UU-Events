@@ -104,9 +104,9 @@ foreach ($this->events as $date):
             <div class="flex gap-4 items-start">
                 <h3 class="mb-4 text-[28px] flex flex-wrap gap-2"><?php echo str_replace('mec-color-hover', 'group-hover:text-action', MEC_kses::element($this->display_link($event))); ?><?php echo MEC_kses::embed($this->display_custom_data($event)); ?><?php echo MEC_kses::element($this->main->get_flags($event)); //.$event_color); ?>
                 </h3>
-                <div class="relative p-4 bg-white border border-pale-blue-light rounded-md flex flex-col justify-center items-center">
-                    <span class="text-action font-bold text-3xl"><?php echo esc_html($this->main->date_i18n($this->date_format_minimal_1, strtotime($event->date['start']['date']))); ?></span>
-                    <span class="text-brand font-normal text-lg uppercase"><?php echo esc_html($this->main->date_i18n('M', strtotime($event->date['start']['date']))); ?></span>
+                <div class="relative px-4 py-2 bg-white border border-pale-blue-light rounded-md flex flex-col justify-center items-center">
+                    <span class="text-action font-bold text-3xl leading-none"><?php echo esc_html($this->main->date_i18n($this->date_format_minimal_1, strtotime($event->date['start']['date']))); ?></span>
+                    <span class="text-brand font-normal text-lg uppercase leading-none"><?php echo esc_html($this->main->date_i18n('M', strtotime($event->date['start']['date']))); ?></span>
                 </div>
             </div>
             <div class="flex flex-wrap gap-2">

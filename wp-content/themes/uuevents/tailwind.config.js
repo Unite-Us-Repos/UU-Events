@@ -36,7 +36,8 @@ const config = {
     'pt-2',
     'pb-2',
     '!mt-0',
-    'mt-8'
+    'mt-8',
+    'leading-none'
   ],
   theme: {
     fontFamily: {
