@@ -1694,3 +1694,7 @@ select.gt_selector {
 .sf-field-post_type {
   display: none !important;
 }
+
+  .gradient-border {
+    background: linear-gradient(90deg, #2563eb 0%, #7c3aed 100%);
+  }

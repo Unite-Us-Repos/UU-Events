@@ -195,11 +195,7 @@
                         <article class=" mec-event-article mec-clear  " itemscope="">
                             <div class="p-2"></div>
                             <div class="absolute w-full top-0 p-2 bg-action rounded-t-lg z-20"></div>
-                            <a class="no-underline relative z-20" data-event-id="{{ $event->ID }}"
-                                href="{{ $data->permalink }}" target="_self" rel="noopener">
-                                <img width="300" height="200" src="{{ $featured_image }}"
-                                    class="related-gradient attachment-medium size-medium aspect-video h-full w-full object-cover"
-                                    alt="" data-mec-postid="{{ $event->ID }}"></a>
+                            
                             <div
                                 class="relative z-20 ml-8 -mt-8 w-16 h-16 mb-9 bg-white border border-pale-blue-light shadow-md rounded-md flex flex-col justify-center items-center">
                                 <span class="text-action font-bold text-3xl">{{ $start_day }}</span>
