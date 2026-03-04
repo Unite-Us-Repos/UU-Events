@@ -188,10 +188,10 @@
                   <td valign="top" style="padding: 0px 0px 10px 0px;">
                    <table border="0" cellpadding="0" cellspacing="0" role="presentation">
                     <tr>
-                     <td valign="top" class="pc-font-alt pc-w620-fontSize-30 pc-w620-lineHeight-40" style="mso-line-height: exactly;line-height: 46px;letter-spacing: -0.6px;font-family: Arial Black, Gadget;font-size: 38px;font-weight: normal;color: #2c405a;">
+                     <td valign="top" class="pc-font-alt pc-w620-fontSize-30 pc-w620-lineHeight-40" style="mso-line-height: exactly;line-height: 46px;letter-spacing: -0.6px;font-family: Arial Black, Gadget;font-size: 38px;font-weight: normal;color: #216cff;">
                       <div><span>{{ $name }}, welcome to </span>
                       </div>
-                      <div><span style="color: #2c405a;">Unite Us Events!</span>
+                      <div><span style="color: #216cff;">Unite Us Events!</span>
                       </div>
                      </td>
                     </tr>
@@ -232,13 +232,13 @@
                                <!--[if mso]>
         <table class="pc-w620-width-315" border="0" cellpadding="0" cellspacing="0" role="presentation" align="center" style="border-collapse: separate;">
             <tr>
-                <td valign="middle" align="center" style="text-align: center;color: #ffffff;border-radius: 8px;background-color: #2874af;padding: 14px 25px 14px 25px;" bgcolor="#2874af">
+                <td valign="middle" align="center" style="text-align: center;color: #ffffff;border-radius: 8px;background-color: #216CFF;padding: 14px 25px 14px 25px;" bgcolor="#216CFF">
                                     <a class="pc-font-alt" style="display: inline-block;text-decoration: none;white-space: nowrap;font-family: Arial, Helvetica;font-weight: bold;font-size: 16px;line-height: 24px;letter-spacing: -0.2px;color: #ffffff;" href="docs.uniteus.com" target="_blank">Explore All Events</a>
                                 </td>
             </tr>
         </table>
         <![endif]-->
-                               <!--[if !mso]><!-- --><a class="pc-w620-width-315" style="border-radius: 8px;background-color: #2874af;padding: 14px 25px 14px 25px;font-family: Arial, Helvetica;font-weight: bold;font-size: 16px;line-height: 24px;letter-spacing: -0.2px;color: #ffffff;display: inline-block;vertical-align: top;text-align: center;text-decoration: none;white-space: nowrap;-webkit-text-size-adjust: none;" href="{{ $login_url }}" target="_blank">Explore All Events</a>
+                               <!--[if !mso]><!-- --><a class="pc-w620-width-315" style="border-radius: 8px;background-color: #216CFF;padding: 14px 25px 14px 25px;font-family: Arial, Helvetica;font-weight: bold;font-size: 16px;line-height: 24px;letter-spacing: -0.2px;color: #ffffff;display: inline-block;vertical-align: top;text-align: center;text-decoration: none;white-space: nowrap;-webkit-text-size-adjust: none;" href="{{ $login_url }}" target="_blank">Explore All Events</a>
                                <!--<![endif]-->
                               </th>
                              </tr>
@@ -279,10 +279,10 @@
                    <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
                     <tr>
                      <!--[if gte mso 9]>
-                    <td height="1" valign="top" style="line-height: 1px; font-size: 1px; border-bottom: 10px solid #2874af;">&nbsp;</td>
+                    <td height="1" valign="top" style="line-height: 1px; font-size: 1px; border-bottom: 10px solid #216CFF;">&nbsp;</td>
                 <![endif]-->
                      <!--[if !gte mso 9]><!-- -->
-                     <td height="1" valign="top" style="line-height: 1px; font-size: 1px; border-bottom: 10px solid #2874af;">&nbsp;</td>
+                     <td height="1" valign="top" style="line-height: 1px; font-size: 1px; border-bottom: 10px solid #216CFF;">&nbsp;</td>
                      <!--<![endif]-->
                     </tr>
                    </table>
@@ -405,7 +405,7 @@
                   <td align="center" valign="top" style="padding: 0px 0px 14px 0px;">
                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" align="center" style="margin-right: auto; margin-left: auto;">
                     <tr>
-                     <td valign="top" class="pc-font-alt" align="center" style="mso-line-height: exactly;line-height: 20px;letter-spacing: -0.2px;font-family: Arial, Helvetica;font-size: 14px;font-weight: normal;color: #2c405a;text-align: center;text-align-last: center;">
+                     <td valign="top" class="pc-font-alt" align="center" style="mso-line-height: exactly;line-height: 20px;letter-spacing: -0.2px;font-family: Arial, Helvetica;font-size: 14px;font-weight: normal;color: #216cff;text-align: center;text-align-last: center;">
                       <div><span>217 Broadway, Floor 8</span>
                       </div>
                       <div><span>New York, NY 10007</span>

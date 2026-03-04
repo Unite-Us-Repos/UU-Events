@@ -1,7 +1,33 @@
+# Ignore everything
+*
+
+# Don't ignore directories
+!*/
+
+#Track github actions
+!.github/**
+!/.gitignore
+!/post-deploy.sh
+
+# Track theme folder and its contents
+!/wp-content/themes/uuevents/**
+
+# Track MEC plugin folder and its contents
+!/wp-content/plugins/modern-events-calendar/app/skins/**
+!/wp-content/plugins/modern-events-calendar/app/liberaries/**
+
+# But ignore node_modules and vendor within theme
+/wp-content/themes/uuevents/._*
+/wp-content/themes/uuevents/**/._*
+/wp-content/themes/uuevents/node_modules/
+/wp-content/themes/uuevents/vendor/
+
+# Additonal files to ignore
+/wp-content/themes/uuevents/.yarnrc.yml
+/wp-content/themes/uuevents/.yarn
+/wp-content/themes/uuevents/composer.lock
+/wp-content/themes/uuevents/yarn.lock
+/wp-content/themes/uuevents/package-lock.json
+
 /node_modules
 /vendor
-/public
-.env
-.budfiles
-npm-debug.log
-yarn-error.log

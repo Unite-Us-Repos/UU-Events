@@ -30,7 +30,7 @@
 </div>
 <style>
 #ajax-filters.search-filters input[type="submit"] {
-  background: #2874AF;
+  background: #216CFF;
   color: white;
   padding: 22px 48px;
 }

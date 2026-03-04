@@ -27,7 +27,17 @@ const config = {
     'xl:-ml-4',
     'xl:pl-4',
     'group-hover:text-action',
-    'inline-flex'
+    'inline-flex',
+    'sm:grid-cols-3', 
+    'lg:grid-cols-5',
+    '!rounded-full',
+    'pl-5',
+    'pb-4',
+    'pt-2',
+    'pb-2',
+    '!mt-0',
+    'mt-8',
+    'leading-none'
   ],
   theme: {
     fontFamily: {
@@ -41,18 +51,22 @@ const config = {
       },
       colors: {
         primary: 'orange',
-        secondary: '#2874AF',
+        secondary: '#216CFF',
         brand: '#2c405a',
-        action: '#2874AF',
-        'dark-blue' : '#182a44',
-        'action-dark': '#105890',
+        action: '#216CFF',
+        'dark-blue' : '#0b1538',
+        'action-dark': '#1A53C6',
         'action-light-blue': '#52b4ff',
         'action-lighter-blue' : '#3B8BCA',
         'pale-blue': '#E3EBF3',
-        dark: '#182a44',
+        'action-hover' : '#1A53C6',
+        dark: '#0b1538',
         light: '#eef5fc',
         'light-gradient': '#eef5fc',
         purple: '#825EB8',
+        'electric-purple': '#9643FF',
+        'electric-purple-dark': '#823cd9',
+        'electric-purple-hover': '#7233C5',
         morado: '#712F79',
         verde: '#117E15',
         'rojo' : '#CF2A2A',
@@ -63,7 +77,7 @@ const config = {
           300: '#c7d8e8', // dark pale blue
           400: '#52b4ff', // action light blue
           600: '#2c405a',
-          900: '#182a44', // dark blue
+          900: '#0b1538', // dark blue
         },
         'gray': {
           200: '#E5E7EB',

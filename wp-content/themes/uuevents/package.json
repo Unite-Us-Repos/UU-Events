@@ -25,6 +25,10 @@
   },
   "dependencies": {
     "alpinejs": "^3.12.0",
+<<<<<<< HEAD
     "is-error-instance": "^3.0.0"
+=======
+    "caniuse-lite": "^1.0.30001762"
+>>>>>>> staging
   }
 }

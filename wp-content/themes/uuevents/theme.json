@@ -860,7 +860,7 @@
         {
           "name": "Blue 900",
           "slug": "blue-900",
-          "color": "#182a44"
+          "color": "#0b1538"
         },
         {
           "name": "Blue 950",
@@ -1155,7 +1155,7 @@
         {
           "name": "Secondary",
           "slug": "secondary",
-          "color": "#2874af"
+          "color": "#216cff"
         },
         {
           "name": "Brand",
@@ -1165,17 +1165,17 @@
         {
           "name": "Action",
           "slug": "action",
-          "color": "#2874af"
+          "color": "#216cff"
         },
         {
           "name": "Dark-blue",
           "slug": "dark-blue",
-          "color": "#182a44"
+          "color": "#0b1538"
         },
         {
           "name": "Action-dark",
           "slug": "action-dark",
-          "color": "#105890"
+          "color": "#1a53c6"
         },
         {
           "name": "Action-light-blue",
@@ -1193,9 +1193,14 @@
           "color": "#e3ebf3"
         },
         {
+          "name": "Action-hover",
+          "slug": "action-hover",
+          "color": "#1a53c6"
+        },
+        {
           "name": "Dark",
           "slug": "dark",
-          "color": "#182a44"
+          "color": "#0b1538"
         },
         {
           "name": "Light",
@@ -1206,6 +1211,21 @@
           "name": "Light-gradient",
           "slug": "light-gradient",
           "color": "#eef5fc"
+        },
+        {
+          "name": "Electric-purple",
+          "slug": "electric-purple",
+          "color": "#9643ff"
+        },
+        {
+          "name": "Electric-purple-dark",
+          "slug": "electric-purple-dark",
+          "color": "#823cd9"
+        },
+        {
+          "name": "Electric-purple-hover",
+          "slug": "electric-purple-hover",
+          "color": "#7233c5"
         },
         {
           "name": "Morado",
