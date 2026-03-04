@@ -297,21 +297,22 @@ $watch('isSticky', value => {
                 </div>
 
                 <h3 class="resources-feature-heading">
-                  Rural Health: A Guide for Digital Health Transformation
+                  <b>Rural Health Transformation in Action:</b> Preparing for What’s Next
                 </h3>
 
                 <p class="resources-feature-text">
-                  Explore how Unite Us and Missouri’s ToRCH model are transforming rural health th…
+                   As Rural Health Transformation Program initiatives take shape nationwide, 
+                   organizations across sectors are preparing to scale what’s already working...
                 </p>
 
-                <a href="https://uniteus.com/webinar/rural-health-a-guide-for-digital-health-transformation/"
+                <a href="https://uniteus.registration.goldcast.io/webinar/52b84335-806d-46dd-b33d-c98315bdec02" target="_blank" 
                   class="resources-feature-cta">
-                  Learn more <span class="resources-feature-cta-arrow" aria-hidden="true">→</span>
+                  Register <span class="resources-feature-cta-arrow" aria-hidden="true">→</span>
                 </a>
               </div>
 
               <div class="resources-feature-image">
-                <img src="https://uniteus.com/wp-content/uploads/2025/09/Events-Banner-Image.png"
+                <img src="@asset('images/Featured-Image.png')"
                   alt="Rural Health: A Guide for Digital Health Transformation"
                   class="resources-feature-image-img">
               </div>
