@@ -160,7 +160,7 @@ if ($event->tags) {
 <section class="component-section bg-light-gradient">
   <div class="component-inner-section">
     <h2>Upcoming Events</h2>
-{!! do_shortcode('[mec_url_filtered id="63"]') !!}
+{!! do_shortcode('[MEC id="63"]') !!}
   </div>
 </section>
 
