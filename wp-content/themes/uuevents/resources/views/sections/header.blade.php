@@ -20,7 +20,7 @@ $watch('isSticky', value => {
     <div class="flex justify-between items-center max-w-7xl mx-auto px-8 lg:justify-start">
       <!-- LOGO -->
       <div class="flex justify-start py-4 lg:py-0 lg:w-0 lg:flex-1">
-        <a href="/">
+        <a href="https://uniteus.com/">
           <span class="sr-only">Main menu</span>
           <img fetchpriority="high"
             src="https://uniteus.com/wp-content/themes/uniteus-sage/public/images/unite-us-logo.svg"
