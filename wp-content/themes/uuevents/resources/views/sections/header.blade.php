@@ -312,7 +312,7 @@ $watch('isSticky', value => {
               </div>
 
               <div class="resources-feature-image">
-                <img src="https://events.uniteus.com/wp-content/uploads/2026/03/Featured-Image.png"
+                <img src="https://events.uniteus.com/wp-content/uploads/2026/03/Featured-Image-V2.png"
                   alt="Rural Health: A Guide for Digital Health Transformation"
                   class="resources-feature-image-img">
               </div>
