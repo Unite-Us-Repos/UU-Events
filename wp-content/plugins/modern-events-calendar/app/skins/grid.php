@@ -24,6 +24,7 @@ class MEC_skin_grid extends MEC_skins
     public $date_format_simple_1;
     public $date_format_novel_1;
     public $date_format_fluent_1;
+    public $date_format_liquid_1;
     public $loadMoreRunning;
     public $widget_autoplay = true;
     public $widget_autoplay_time = 3000;
@@ -458,6 +459,8 @@ class MEC_skin_grid extends MEC_skins
 
             // Initialize Occurrences' Data
             MEC_feature_occurrences::fetch($events);
+            // custom sort events by publish date
+            $events = apply_filters('mec_skin_events', $events, $this);
 
             // Set Offset for Last Page
             if($found < $this->limit)

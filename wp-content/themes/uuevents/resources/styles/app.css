@@ -1230,7 +1230,7 @@ ul.list-box {
     color: #216cff;
   }
   #app  .mec-wrap .mec-search-form .mec-dropdown-wrap .mec-dropdown-search select {
-    margin-bottom: 0;
+    margin-bottom: 0!important;
   }
 
   #app  .mec-sl-folder {
