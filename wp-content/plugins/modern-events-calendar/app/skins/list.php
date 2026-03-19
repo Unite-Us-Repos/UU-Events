@@ -26,6 +26,7 @@ class MEC_skin_list extends MEC_skins
     public $display_price;
     public $display_available_tickets;
     public $date_format_fluent_1;
+    public $date_format_liquid_1;
     public $reason_for_cancellation;
     public $display_label;
     public $loadMoreRunning;
@@ -457,6 +458,8 @@ class MEC_skin_list extends MEC_skins
 
             // Initialize Occurrences' Data
             MEC_feature_occurrences::fetch($events);
+            // custom sort events by publish date
+            $events = apply_filters('mec_skin_events', $events, $this);
 
             // Set Offset for Last Page
             if ($found < $this->limit)
@@ -530,6 +533,7 @@ class MEC_skin_list extends MEC_skins
     {
         $this->sf = (isset($_REQUEST['sf']) and is_array($_REQUEST['sf'])) ? $this->main->sanitize_deep_array($_REQUEST['sf']) : [];
         $apply_sf_date = isset($_REQUEST['apply_sf_date']) ? sanitize_text_field($_REQUEST['apply_sf_date']) : 1;
+        
         $atts = $this->sf_apply(((isset($_REQUEST['atts']) and is_array($_REQUEST['atts'])) ? $this->main->sanitize_deep_array($_REQUEST['atts']) : []), $this->sf, $apply_sf_date);
 
         // Initialize the skin

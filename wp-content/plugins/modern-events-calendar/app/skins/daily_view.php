@@ -12,6 +12,7 @@ class MEC_skin_daily_view extends MEC_skins
      * @var string
      */
     public $skin = 'daily_view';
+    public $date_format_liquid_1;
 
     /**
      * Constructor method
@@ -297,6 +298,8 @@ class MEC_skin_daily_view extends MEC_skins
 
         // Initialize Occurrences' Data
         MEC_feature_occurrences::fetch($events);
+        // custom sort events by publish date
+        $events = apply_filters('mec_skin_events', $events, $this);
 
         return $events;
     }
